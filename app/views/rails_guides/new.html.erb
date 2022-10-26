@@ -1,0 +1,11 @@
+<h1 class="display-1 mb-5 text-muted text-center">
+  New Rails Guide
+</h1>
+
+<div class="p-5 shadow card">
+  <%= render "form", rails_guide: @rails_guide %>
+</div>
+
+<div class="d-grid gap-2 mt-3">
+  <%= link_to "Back to rails guides", rails_guides_path, class: "btn btn-sm btn-secondary mt-3" %>
+</div>

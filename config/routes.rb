@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  root 'pages#home'
+  resources :rails_guides
+  root 'pages#home', as: 'home'
 end

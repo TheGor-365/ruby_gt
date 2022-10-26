@@ -1,0 +1,2 @@
+class RailsGuide < ApplicationRecord
+end

@@ -1,0 +1,28 @@
+<h1 class="display-1 mb-5 text-muted text-center">
+  Rails Guides
+</h1>
+
+<div class="p-5 shadow card">
+  <p style="color: green">
+    <%= notice %>
+  </p>
+
+  <% @rails_guides.map do |rails_guide| %>
+
+    <div id="rails_guides">
+      <div class="card p-5 m-5 shadow">
+        <h1 class="display-6 text-muted">
+          <%= render html: rails_guide.title %>
+        </h1>
+        <%= render rails_guide %>
+        <div class="d-grid gap-2 col-8">
+          <%= link_to "Show this rails guide", rails_guide, class: "btn btn-sm btn-success mt-3 shadow" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="d-grid gap-2 mt-5">
+  <%= link_to "New rails guide", new_rails_guide_path, class: "btn btn-sm btn-primary shadow" %>
+</div>
