@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card bg-light">
   <%= form_with(model: rails_guide) do |form| %>
   <% if rails_guide.errors.any? %>
   <div style="color: red">
@@ -25,6 +25,11 @@
   <div class="p-5 col-8">
     <%= form.label :description, style: "display: block", class: "form-label" %>
     <%= form.text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="p-5 col-8">
+    <%= form.label :body, style: "display: block", class: "form-label" %>
+    <%= form.rich_text_area :body, class: "form-control" %>
   </div>
 
   <div class="d-grid gap-2 col-8">

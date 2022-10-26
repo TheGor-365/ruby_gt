@@ -4,3 +4,5 @@ import { Turbo } from "@hotwired/turbo-rails"
 Turbo.session.drive = false
 import "./controllers"
 import * as bootstrap from "bootstrap"
+import "trix"
+import "@rails/actiontext"

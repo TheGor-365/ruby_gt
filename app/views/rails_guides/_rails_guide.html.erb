@@ -1,4 +1,4 @@
-<div id="<%= dom_id rails_guide %>" class="p-5 shadow col-8 card mb-3 mt-5">
+<div id="<%= dom_id rails_guide %>" class="p-5 shadow col-8 card mb-3 mt-5 bg-light">
   <div class="row">
     <div class="col-4">
       <strong>Author:</strong>
@@ -35,4 +35,11 @@
     </div>
   </div>
   <hr>
+  <div class="row mt-5">
+    <div class="col">
+      <div class="card p-5 shadow">
+        <%= rails_guide.body %>
+      </div>
+    </div>
+  </div>
 </div>
