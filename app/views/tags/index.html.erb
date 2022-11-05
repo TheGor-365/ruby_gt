@@ -1,5 +1,5 @@
 <h1 class="display-1 mb-5 text-muted text-center">
-  Rails Guides
+  Tags
 </h1>
 
 <div class="p-5 shadow card bg-light">
@@ -7,15 +7,15 @@
     <%= notice %>
   </p>
 
-  <% @rails_guides.map do |rails_guide| %>
-    <div id="rails_guides">
+  <% @tags.each do |tag| %>
+    <div id="tags">
       <div class="card p-5 m-5 shadow bg-dark">
         <h1 class="display-6 text-muted">
-          <%= render html: rails_guide.title %>
+          <%= render html: tag.name %>
         </h1>
-        <%= render rails_guide %>
+        <%= render tag %>
         <div class="d-grid gap-2 col-8">
-          <%= link_to "Show this rails guide", rails_guide, class: "btn btn-sm btn-success mt-3 shadow" %>
+          <%= link_to "Show this tag", tag, class: "btn btn-sm btn-success mt-3 shadow" %>
         </div>
       </div>
     </div>
@@ -23,5 +23,5 @@
 </div>
 
 <div class="d-grid gap-2 mt-5">
-  <%= link_to "New rails guide", new_rails_guide_path, class: "btn btn-sm btn-primary shadow" %>
+  <%= link_to "New tag", new_tag_path, class: "btn btn-sm btn-primary shadow" %>
 </div>

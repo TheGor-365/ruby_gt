@@ -1,0 +1,20 @@
+<div class="display-1 mb-5 text-muted text-center">
+  <%= render html:  @snippet.title %> snippet
+</div>
+
+<div class="p-5 shadow card">
+  <p style="color: green">
+    <%= notice %>
+  </p>
+
+  <%= render @snippet %>
+
+  <div class="btn-group col-8" role="group" aria-label="Basic mixed styles example">
+    <%= link_to "Edit this snippet", edit_snippet_path(@snippet), class: "btn btn-sm btn-primary mt-3 shadow" %>
+    <%= link_to "Back to snippets", snippets_path, class: "btn btn-sm btn-secondary mt-3 shadow" %>
+  </div>
+</div>
+
+<div class="d-grid gap-2 mt-5">
+  <%= button_to "Destroy this snippet", @snippet, method: :delete, type: "button", class: "btn btn-sm btn-danger shadow" %>
+</div>

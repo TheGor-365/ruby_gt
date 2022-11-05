@@ -1,0 +1,29 @@
+<div class="bg-light">
+  <%= form_with(model: snippet) do |form| %>
+    <% if snippet.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(snippet.errors.count, "error") %> prohibited this snippet from being saved:</h2>
+
+      <ul>
+        <% snippet.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+    <div class="p-5 col-8 card shadow m-3">
+      <%= form.label :title, style: "display: block", class: "form-label" %>
+      <%= form.text_field :title, class: "form-control" %>
+    </div>
+
+    <div class="p-5 col-8 card shadow m-3">
+      <%= form.label :body, style: "display: block", class: "form-label" %>
+      <%= form.text_area :body, class: "form-control" %>
+    </div>
+
+    <div class="d-grid gap-2 col-8 m-3 mt-4">
+      <%= form.submit class: "btn btn-sm btn-success mb-5 shadow" %>
+    </div>
+  <% end %>
+</div>

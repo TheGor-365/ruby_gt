@@ -1,0 +1,28 @@
+<h1 class="display-1 mb-5 text-muted text-center">
+  Snippets
+</h1>
+
+<div class="p-5 shadow card bg-light">
+  <p style="color: green">
+    <%= notice %>
+  </p>
+
+  <% @snippets.each do |snippet| %>
+    <div id="snippets">
+      <div class="card p-5 m-5 shadow bg-dark">
+        <div class="display-6 text-muted">
+          <%= render html: snippets.name %>
+        </div>
+      </div>
+      <%= render snippet %>
+      <div class="d-grid gap-2 col-8">
+        <%= link_to "Show this snippet", snippet, class: "btn btn-sm btn-success mt-3 shadow" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+<div class="d-grid gap-2 mt-5">
+  <%= link_to "New snippet", new_snippet_path, class: "btn btn-sm btn-primary shadow" %>
+</div>

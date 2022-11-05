@@ -18,10 +18,21 @@
           <a class="nav-link active" aria-current="page" href="/">Ruby GT</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Guides</a>
+          <a class="nav-link" href="<%= rails_guides_path %>">Guides</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= snippets_path %>">Snippets</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= languages_path %>">Languages</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= tags_path %>">Tags</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown08" data-bs-toggle="dropdown" aria-expanded="false">Guides</a>
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown08" data-bs-toggle="dropdown" aria-expanded="false">
+            Guides
+          </a>
           <ul class="dropdown-menu" aria-labelledby="dropdown08">
             <li><%= link_to "Home", home_path, class: "dropdown-item" %></li>
             <li><a class="dropdown-item" href=<%= rails_guides_path %> >Rails Guides</a></li>
