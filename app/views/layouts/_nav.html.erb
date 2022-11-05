@@ -39,6 +39,18 @@
             <li><a class="dropdown-item" href=<%= new_rails_guide_path %> >Create new Rails Guide</a></li>
           </ul>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-bs-toggle="dropdown" aria-expanded="false">
+            Languages
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdown09">
+            <% @languages.each do |lang| %>
+              <li><%= link_to lang.name, snippets_path(lang: lang.name), class: 'dropdown-item' %></li>
+            <% end %>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to 'Create new language', new_language_path, class: 'dropdown-item' %></li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
