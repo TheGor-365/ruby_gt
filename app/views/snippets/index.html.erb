@@ -9,12 +9,44 @@
 
   <% @snippets.each do |snippet| %>
     <div id="snippets">
-      <div class="card p-5 m-5 shadow bg-dark">
+      <div class="card p-5 m-5 ms-0 shadow bg-dark">
         <div class="display-6 text-muted">
-          <%= render html: snippets.name %>
+          <%= render html: snippet.title %>
         </div>
       </div>
       <%= render snippet %>
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Snippet</th>
+            <th scope="col">Tags</th>
+            <th scope="col" colspan="3">Manage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><%= snippet.id %></th>
+            <td><%= link_to snippet.title, snippet %></td>
+              <td>
+                <pre>
+                  <code class="hljs <%= snippet.language.name %>">
+                    <%= snippet.body %>
+                  </code>
+                </pre>
+              </td>
+            <td>
+              <% snippet.tags.each do |tag| %>
+                <%= link_to tag.name, snippets_path(tag: tag.name) %>
+              <% end %>
+            </td>
+            <td><%= link_to "Show", snippet %></td>
+            <td><%= link_to "Edit", edit_snippet_path(snippet) %></td>
+            <td><%= link_to "Delete", snippet, method: :delete, data: { confirm: "Are you shure?" } %></td>
+          </tr>
+        </tbody>
+      </table>
       <div class="d-grid gap-2 col-8">
         <%= link_to "Show this snippet", snippet, class: "btn btn-sm btn-success mt-3 shadow" %>
       </div>

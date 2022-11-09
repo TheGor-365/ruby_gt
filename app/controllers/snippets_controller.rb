@@ -56,6 +56,7 @@ class SnippetsController < ApplicationController
     tag_name = params[:tag]
     lang_name = params[:lang]
     filter_by_name(tag_name, lang_name)
+    @snippets = @snippets.order(created_at: :asc)
   end
 
   def filter_by_name(tag_name, lang_name)

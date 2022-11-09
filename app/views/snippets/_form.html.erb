@@ -22,6 +22,16 @@
       <%= form.text_area :body, class: "form-control" %>
     </div>
 
+    <div class="p-5 col-8 card shadow m-3">
+      <%= form.label :all_tags, style: "display: block", class: "form-label" %>
+      <%= form.text_field :all_tags, placeholder: "Enter tags, separated by commas...", class: "form-control" %>
+    </div>
+
+    <div class="p-5 col-8 card shadow m-3">
+      <%= form.label :language, style: "display: block", class: "form-label" %>
+      <%= collection_select(:snippet, :language_id, @languages, :id, :name, { class: 'form-control' }) %>
+    </div>
+
     <div class="d-grid gap-2 col-8 m-3 mt-4">
       <%= form.submit class: "btn btn-sm btn-success mb-5 shadow" %>
     </div>

@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css">
   </head>
 
   <body class="bg-dark">
@@ -26,7 +27,10 @@
     </main>
 
     <footer>
-      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+      <script type="text/javascript">
+        hljs.initHighlightingOnLoad();
+      </script>
     </footer>
   </body>
 </html>

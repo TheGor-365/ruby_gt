@@ -10,10 +10,14 @@
   <hr>
   <div class="row">
     <div class="col-4">
-      <strong>Body:</strong>
+      <strong>Code:</strong>
     </div>
-    <div class="col-4">
-      <%= snippet.body %>
+    <div class="col-12">
+      <pre>
+        <code class="hljs <%= snippet.language.name %>">
+          <%= snippet.body %>
+        </code>
+      </pre>
     </div>
   </div>
 </div>
