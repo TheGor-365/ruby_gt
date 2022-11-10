@@ -2,7 +2,7 @@
   <%= render html:  @rails_guide.title %> Guide
 </h1>
 
-<div class="p-5 shadow card">
+<div class="p-5 shadow card bg-secondary">
   <p style="color: green">
     <%= notice %>
   </p>
@@ -18,6 +18,6 @@
   </div>
 </div>
 
-<div class="d-grid gap-2 mt-5">
+<div class="d-grid gap-2 mt-4">
   <%= button_to "Destroy this rails guide", @rails_guide, method: :delete, type: "button", class: "btn btn-sm btn-danger shadow" %>
 </div>

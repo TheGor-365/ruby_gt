@@ -7,14 +7,16 @@
     <%= notice %>
   </p>
 
-  <%= render @snippet %>
+  <div class="row">
+    <div class="row">
+      <%= render @snippet %>
+    </div>
 
-  <div class="btn-group col-8" role="group" aria-label="Basic mixed styles example">
-    <%= link_to "Edit this snippet", edit_snippet_path(@snippet), class: "btn btn-sm btn-primary mt-3 shadow" %>
-    <%= link_to "Back to snippets", snippets_path, class: "btn btn-sm btn-secondary mt-3 shadow" %>
+    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+      <%= link_to "Edit this snippet", edit_snippet_path(@snippet), class: "btn btn-sm btn-primary mt-3 shadow" %>
+      <%= link_to "Back to snippets", snippets_path, class: "btn btn-sm btn-secondary mt-3 shadow" %>
+    </div>
   </div>
 </div>
 
-<div class="d-grid gap-2 mt-5">
-  <%= button_to "Destroy this snippet", @snippet, method: :delete, type: "button", class: "btn btn-sm btn-danger shadow" %>
-</div>
+<%= button_to "Destroy this snippet", @snippet, method: :delete, class: "btn btn-sm btn-danger shadow mt-4" %>

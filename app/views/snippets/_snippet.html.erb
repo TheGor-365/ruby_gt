@@ -1,23 +1,27 @@
-<div id="<%= dom_id snippet %>" class="p-5 shadow col-8 card mb-3 mt-5 bg-light">
-  <div class="row">
-    <div class="col-4">
-      <strong>Title:</strong>
-    </div>
-    <div class="col-4">
-      <%= snippet.title %>
+<div class="p-4 shadow col-8 card mb-3 mt-3 bg-secondary me-3">
+  <div id="<%= dom_id snippet %>" class="col-12">
+    <div class="row">
+      <div class="col-12">
+        <pre>
+          <code class="hljs <%= snippet.language.name %> rounded"><%= snippet.body %></code>
+        </pre>
+      </div>
     </div>
   </div>
-  <hr>
-  <div class="row">
-    <div class="col-4">
-      <strong>Code:</strong>
+</div>
+
+<div class="p-4 pt-5 shadow col-2 card mb-3 mt-3 bg-dark me-3">
+  <% snippet.tags.each do |tag| %>
+    <div class="px-3">
+      <%= link_to tag.name, snippets_path(tag: tag.name), class: "badge bg-info text-dark text-decoration-none" %>
     </div>
-    <div class="col-12">
-      <pre>
-        <code class="hljs <%= snippet.language.name %>">
-          <%= snippet.body %>
-        </code>
-      </pre>
-    </div>
+  <% end %>
+</div>
+
+<div class="p-4 pt-5 shadow col card mb-3 mt-3 me-0 bg-secondary">
+  <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+    <%= link_to "Show", snippet, type: 'button', class: 'btn btn-sm btn-dark' %>
+    <%= link_to "Edit", edit_snippet_path(snippet), type: 'button', class: 'btn btn-sm btn-dark' %>
+    <%= link_to "Delete", snippet, method: :delete, data: { confirm: "Are you shure?" }, type: 'button', class: 'btn btn-sm btn-dark' %>
   </div>
 </div>
