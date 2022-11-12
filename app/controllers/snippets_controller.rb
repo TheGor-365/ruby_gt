@@ -69,6 +69,7 @@ class SnippetsController < ApplicationController
     else
       @snippets = Snippet.all
     end
+    return @snippets
   end
 
   def set_snippet

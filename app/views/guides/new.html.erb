@@ -1,0 +1,11 @@
+<h1 class="display-1 mb-5 text-muted text-center">
+  New guide
+</h1>
+
+<div class="p-5 shadow card bg-secondary">
+  <%= render "form", guide: @guide %>
+</div>
+
+<div class="d-grid mt-3">
+  <%= link_to "Back to guides", guides_path, class: "btn btn-sm btn-secondary mt-3 shadow" %>
+</div>

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :rails_guides
 
+  resources :guides
   resources :tags
   resources :languages
   resources :snippets

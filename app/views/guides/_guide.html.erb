@@ -1,0 +1,27 @@
+<div class="p-4 shadow col-8 card mb-3 mt-3 bg-secondary me-3">
+  <div id="<%= dom_id guide %>" class="col-12">
+    <div class="row">
+      <div class="col-12">
+        <pre>
+          <code class="hljs <%= guide.language.name %> rounded"><%= guide.body %></code>
+        </pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="p-4 pt-5 shadow col-2 card mb-3 mt-3 bg-dark me-3">
+  <% guide.tags.each do |tag| %>
+    <div class="px-3">
+      <%= link_to tag.name, guides_path(tag: tag.name), class: "badge bg-info text-dark text-decoration-none" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="p-4 pt-5 shadow col card mb-3 mt-3 me-0 bg-secondary">
+  <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+    <%= link_to "Show", guide, type: 'button', class: 'btn btn-sm btn-dark' %>
+    <%= link_to "Edit", edit_guide_path(guide), type: 'button', class: 'btn btn-sm btn-dark' %>
+    <%= link_to "Delete", guide, method: :delete, data: { confirm: "Are you shure?" }, type: 'button', class: 'btn btn-sm btn-dark' %>
+  </div>
+</div>

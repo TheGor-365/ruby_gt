@@ -1,0 +1,22 @@
+<div class="display-1 mb-5 text-muted text-center">
+  <%= render html:  @guide.title %> guide
+</div>
+
+<div class="p-5 shadow card">
+  <p style="color: green">
+    <%= notice %>
+  </p>
+
+  <div class="row">
+    <div class="row">
+      <%= render @guide %>
+    </div>
+
+    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+      <%= link_to "Edit this guide", edit_guide_path(@guide), class: "btn btn-sm btn-primary mt-3 shadow" %>
+      <%= link_to "Back to guides", guides_path, class: "btn btn-sm btn-secondary mt-3 shadow" %>
+    </div>
+  </div>
+</div>
+
+<%= button_to "Destroy this guide", @guide, method: :delete, class: "btn btn-sm btn-danger shadow mt-4" %>

@@ -10,18 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_05_140338) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_10_201236) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "action_text_highlighted_code_blocks", force: :cascade do |t|
-    t.text "content"
-    t.string "language"
-    t.bigint "rich_text_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["rich_text_id"], name: "index_action_text_highlighted_code_blocks_on_rich_text_id"
-  end
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -59,6 +50,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_05_140338) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "guides", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "language_id", null: false
+    t.index ["language_id"], name: "index_guides_on_language_id"
   end
 
   create_table "languages", force: :cascade do |t|
@@ -102,9 +102,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_05_140338) do
     t.index ["name"], name: "index_tags_on_name"
   end
 
-  add_foreign_key "action_text_highlighted_code_blocks", "action_text_rich_texts", column: "rich_text_id", on_delete: :cascade
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "guides", "languages"
   add_foreign_key "snippets", "languages"
   add_foreign_key "taggables", "snippets"
   add_foreign_key "taggables", "tags"

@@ -1,11 +1,11 @@
 <div class="bg-secondary">
-  <%= form_with(model: snippet) do |form| %>
-    <% if snippet.errors.any? %>
+  <%= form_with(model: guide) do |form| %>
+    <% if guide.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(snippet.errors.count, "error") %> prohibited this snippet from being saved:</h2>
+      <h2><%= pluralize(guide.errors.count, "error") %> prohibited this guide from being saved:</h2>
 
       <ul>
-        <% snippet.errors.each do |error| %>
+        <% guide.errors.each do |error| %>
         <li><%= error.full_message %></li>
         <% end %>
       </ul>
@@ -29,7 +29,7 @@
 
     <div class="p-5 col-8 card shadow m-3 bg-light">
       <%= form.label :language, style: "display: block", class: "form-label" %>
-      <%= collection_select(:snippet, :language_id, @languages, :id, :name, { class: 'form-control' }) %>
+      <%= collection_select(:guide, :language_id, @languages, :id, :name, { class: 'form-control' }) %>
     </div>
 
     <div class="d-grid gap-2 col-8 m-3 mt-4">
