@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_10_201236) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_12_134824) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -86,6 +86,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_10_201236) do
     t.index ["language_id"], name: "index_snippets_on_language_id"
   end
 
+  create_table "taggable_guides", force: :cascade do |t|
+    t.bigint "tag_id", null: false
+    t.bigint "guide_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["guide_id"], name: "index_taggable_guides_on_guide_id"
+    t.index ["tag_id"], name: "index_taggable_guides_on_tag_id"
+  end
+
   create_table "taggables", force: :cascade do |t|
     t.bigint "tag_id", null: false
     t.bigint "snippet_id", null: false
@@ -106,6 +115,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_10_201236) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "guides", "languages"
   add_foreign_key "snippets", "languages"
+  add_foreign_key "taggable_guides", "guides"
+  add_foreign_key "taggable_guides", "tags"
   add_foreign_key "taggables", "snippets"
   add_foreign_key "taggables", "tags"
 end

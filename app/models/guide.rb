@@ -1,5 +1,6 @@
 class Guide < ApplicationRecord
-  has_many :taggables, dependent: :destroy
+  has_many :taggable_guides, dependent: :destroy
+  has_many :tags, through: :taggable_guides
   belongs_to :language
 
   def all_tags=(names)

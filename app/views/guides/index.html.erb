@@ -1,28 +1,26 @@
 <% @guides.each do |guide| %>
-  <div class="row">
-    <h1 class="display-1 mb-5 text-muted text-center">
-      <%= guide.language.name.upcase %> GUIDES
-    </h1>
-  </div>
+  <h1 class="display-6 mb-3 mt-5 text-muted text-center card shadow bg-dark p-5">
+    <%= guide.language.name.upcase %> GUIDES
+  </h1>
 
-  <div class="p-5 shadow card bg-light">
+  <div class="p-5 shadow card bg-secondary">
     <p style="color: green">
       <%= notice %>
     </p>
 
-      <div id="guides">
-        <div class="row">
-          <div class="card p-5 shadow bg-dark display-6 text-muted col-12">
-              <%= guide.language.name.upcase %> / GUIDES / <%= render html: guide.title %>
-          </div>
-        </div>
-        <div class="row">
-          <%= render guide %>
-        </div>
-        <div class="d-grid gap-2 col-12">
-          <%= link_to "Show this guide", guide, class: "btn btn-sm btn-success mt-3 shadow" %>
+    <div id="guides">
+      <div class="row">
+        <div class="card p-5 shadow bg-dark display-6 text-muted col-12">
+            <%= guide.language.name.upcase %> / GUIDES / <%= render html: guide.title %>
         </div>
       </div>
+      <div class="row">
+        <%= render guide %>
+      </div>
+      <div class="d-grid gap-2 col-12">
+        <%= link_to "Show this guide", guide, class: "btn btn-sm btn-success mt-3 shadow" %>
+      </div>
+    </div>
   </div>
 <% end %>
 
