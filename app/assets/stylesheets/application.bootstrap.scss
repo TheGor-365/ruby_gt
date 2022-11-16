@@ -2,3 +2,13 @@
 @import 'bootstrap-icons/font/bootstrap-icons';
 @import 'actiontext.css';
 @import "./at.scss";
+
+
+
+.card {
+  transition: transform .2s;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
