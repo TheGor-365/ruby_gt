@@ -1,4 +1,4 @@
-<div class="bg-light">
+<div class="bg-secondary">
   <%= form_with(model: language) do |form| %>
     <% if language.errors.any? %>
     <div style="color: red">
@@ -12,7 +12,7 @@
     </div>
     <% end %>
 
-    <div class="p-5 col-8 card shadow m-3">
+    <div class="p-5 col-8 card shadow m-3 bg-light">
       <%= form.label :name, style: "display: block", class: "form-label" %>
       <%= form.text_field :name, class: "form-control" %>
     </div>

@@ -1,20 +1,21 @@
-<h1 class="display-1 mb-5 text-muted text-center">
+<h1 class="display-6 mb-5 text-muted text-center card shadow bg-dark p-5">
   <%= render html:  @tag.name %>
 </h1>
 
-<div class="p-5 shadow card">
+<div class="p-5 shadow card bg-secondary">
   <p style="color: green">
     <%= notice %>
   </p>
-  <h1 class="display-6 text-muted">
-    <%= render html:  @tag.name %>
-  </h1>
-  
-  <%= render @tag %>
 
-  <div class="btn-group col-8" role="group" aria-label="Basic mixed styles example">
-    <%= link_to "Edit this tag", edit_tag_path(@tag), class: "btn btn-sm btn-primary mt-3 shadow" %>
-    <%= link_to "Back to tags", tags_path, class: "btn btn-sm btn-secondary mt-3 shadow" %>
+  <div class="row">
+    <div class="row">
+      <%= render @tag %>
+    </div>
+
+    <div class="btn-group col-8" role="group" aria-label="Basic mixed styles example">
+      <%= link_to "Edit this tag", edit_tag_path(@tag), class: "btn btn-sm btn-primary mt-3 shadow" %>
+      <%= link_to "Back to tags", tags_path, class: "btn btn-sm btn-secondary mt-3 shadow" %>
+    </div>
   </div>
 </div>
 
