@@ -77,6 +77,6 @@ class SnippetsController < ApplicationController
   end
 
   def snippet_params
-    params.require(:snippet).permit(:title, :body, :all_tags, :language_id)
+    params.require(:snippet).permit(:title, :body, :all_tags, :language_id, codes_attributes: [:id, :code, :_destroy])
   end
 end

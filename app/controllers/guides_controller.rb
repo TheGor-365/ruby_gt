@@ -77,6 +77,6 @@ class GuidesController < ApplicationController
   end
 
   def guide_params
-    params.require(:guide).permit(:title, :body, :all_tags, :language_id)
+    params.require(:guide).permit(:title, :body, :all_tags, :language_id, codes_attributes: [:id, :code, :_destroy])
   end
 end
