@@ -8,3 +8,6 @@ import * as bootstrap from "bootstrap"
 
 import "trix"
 import "@rails/actiontext"
+
+require("jquery")
+require("@nathanvda/cocoon")
