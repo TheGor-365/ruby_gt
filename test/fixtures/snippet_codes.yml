@@ -3,9 +3,7 @@
 one:
   body: MyText
   snippet: one
-  guide: one
 
 two:
   body: MyText
   snippet: two
-  guide: two

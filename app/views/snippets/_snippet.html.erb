@@ -1,13 +1,39 @@
-<div class="p-4 shadow col-8 card mb-3 mt-3 bg-secondary me-3">
-  <div id="<%= dom_id snippet %>" class="col-12">
-    <div class="row">
-      <div class="col-12">
-        <pre id="copy_txt">
-          <code class="hljs <%= snippet.language.name %> rounded"><%= snippet.body %></code>
-        </pre>
+<div class="col-8">
+  <div class="p-4 shadow card mb-3 mt-3 bg-secondary me-3">
+    <div id="<%= dom_id snippet %>" class="col-12">
+      <div class="row">
+        <div class="col-12">
+          <pre>
+            <code id="copy-input" class="hljs <%= snippet.language.name %> rounded"><%= snippet.body %></code>
+          </pre>
+        </div>
+        <button
+          onclick="copy('<%= snippet.body %>','#snippet_<%= snippet.id %>')"
+          id="snippet_<%= snippet.id %>"
+          class="btn btn-sm btn-success copy-button"
+          >
+          Copy
+        </button>
       </div>
     </div>
   </div>
+
+  <% snippet.snippet_codes.each do |snippet_code| %>
+    <div class="p-4 shadow mb-3 card mt-3 bg-secondary me-3">
+      <div class="col-12">
+        <pre>
+          <code id="" class="hljs <%= snippet.language.name %> rounded"><%= snippet_code.code %></code>
+        </pre>
+      </div>
+      <button
+        onclick="copy('<%= snippet_code.code %>','#snippet_code_<%= snippet_code.id %>')"
+        id="snippet_code_<%= snippet_code.id %>"
+        class="btn btn-sm btn-success copy-button"
+        >
+        Copy
+      </button>
+    </div>
+  <% end %>
 </div>
 
 <div class="p-4 pt-5 shadow col-2 card mb-3 mt-3 bg-secondary me-3">
@@ -23,36 +49,5 @@
     <%= link_to "Show", snippet, type: 'button', class: 'btn btn-sm btn-secondary shadow py-2' %>
     <%= link_to "Edit", edit_snippet_path(snippet), type: 'button', class: 'btn btn-sm btn-secondary shadow py-2' %>
     <%= link_to "Delete", snippet, method: :delete, data: { confirm: "Are you shure?" }, type: 'button', class: 'btn btn-sm btn-secondary shadow py-2' %>
-    <button
-      class="btn btn-sm btn-secondary shadow py-2"
-      onclick="copy_text_fun()"
-      >
-      Copy
-    </button>
-    <!-- <button
-      class="btn btn-sm btn-dark"
-      type="button"
-      id="copy-button"
-      data-toggle="tooltip"
-      data-placement="button"
-      title="Copy to Clipboard"
-    >
-      Copy
-    </button> -->
-    <!-- <button
-      onclick="copy(input.value,'#copy_button')"
-      id="copy_button"
-      class="btn btn-sm btn-dark copy-button"
-      >
-      Copy
-    </button> -->
   </div>
 </div>
-
-<input
-  type="hidden"
-  class="form-control"
-  value="<%= snippet.body %>"
-  placeholder="Some path"
-  id="copy_txt"
->

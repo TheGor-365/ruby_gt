@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_17_145232) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_19_093700) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,16 +52,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_17_145232) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "codes", force: :cascade do |t|
-    t.text "code"
-    t.bigint "snippet_id", null: false
-    t.bigint "guide_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["guide_id"], name: "index_codes_on_guide_id"
-    t.index ["snippet_id"], name: "index_codes_on_snippet_id"
-  end
-
   create_table "guides", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -85,6 +75,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_17_145232) do
     t.string "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "snippet_codes", force: :cascade do |t|
+    t.text "code"
+    t.bigint "snippet_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["snippet_id"], name: "index_snippet_codes_on_snippet_id"
   end
 
   create_table "snippets", force: :cascade do |t|
@@ -123,9 +121,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_17_145232) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "codes", "guides"
-  add_foreign_key "codes", "snippets"
   add_foreign_key "guides", "languages"
+  add_foreign_key "snippet_codes", "snippets"
   add_foreign_key "snippets", "languages"
   add_foreign_key "taggable_guides", "guides"
   add_foreign_key "taggable_guides", "tags"

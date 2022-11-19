@@ -1,8 +1,10 @@
 class SnippetsController < ApplicationController
   before_action :set_snippet, only: %i[ show edit update destroy ]
+  # before_action :set_snippet_codes, only: %i[ new ]
 
   def index
     set_snippets
+    @snippets = Snippet.all
   end
 
   def show
@@ -76,7 +78,11 @@ class SnippetsController < ApplicationController
     @snippet = Snippet.find(params[:id])
   end
 
+  def set_snippet_codes
+    @snippet_codes = @snippet.codes
+  end
+
   def snippet_params
-    params.require(:snippet).permit(:title, :body, :all_tags, :language_id, codes_attributes: [:id, :code, :_destroy])
+    params.require(:snippet).permit(:title, :body, :all_tags, :language_id, snippet_codes_attributes: [:id, :code, :_destroy])
   end
 end
