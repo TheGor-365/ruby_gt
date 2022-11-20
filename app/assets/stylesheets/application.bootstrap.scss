@@ -13,3 +13,15 @@
   transform: scale(1.02);
   filter: brightness(105%);
 }
+
+.header-nav {
+  position: sticky;
+  top: 85px;
+  z-index: 1;
+}
+
+.sticky-nav {
+  position: sticky;
+  top: 225px;
+  z-index: 1;
+}

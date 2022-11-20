@@ -1,0 +1,19 @@
+<h1 class="display-6 mb-3 mt-5 ms-3 text-muted text-center card shadow bg-dark p-5 header-nav">
+  Navigation
+</h1>
+
+<div class="col-2 sticky-nav">
+  <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-dark m-3 mt-3 card shadow rouded" style="width: 280px;">
+    <div class="list-group list-group-flush border-bottom scrollarea bg-dark shadow card">
+      <% @snippets.each do |snippet| %>
+        <a href="#snippet_<%= snippet.id %>" class="list-group-item list-group-item-action py-3 lh-sm card shadow rouded mb-1 bg-secondary" aria-current="true">
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1"><%= snippet.language.name.capitalize %></strong>
+            <small><%= snippet.created_at %></small>
+          </div>
+          <div class="col-10 mb-1 small"><%= snippet.title %></div>
+        </a>
+      <% end %>
+    </div>
+  </div>
+</div>

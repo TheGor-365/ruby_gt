@@ -1,29 +1,32 @@
-<% @snippets.each do |snippet| %>
-  <h1 class="display-6 mb-3 mt-5 text-muted text-center card shadow bg-dark p-5">
-    <%= snippet.language.name.upcase %> SNIPPETS
-  </h1>
+  <div class="row mt-5">
+    <div class="col-2">
+      <%= render "snippets_nav_group_list" %>
+    </div>
 
-  <div class="p-5 shadow card bg-secondary">
-    <p style="color: green">
-      <%= notice %>
-    </p>
+      <div class="col-8">
+        <h1 class="display-6 mb-3 mt-5 text-muted text-center card shadow bg-dark p-5 header-nav">
+          Ruby Snippets
+        </h1>
 
-    <div id="snippets">
-      <div class="row">
-        <div class="card p-5 shadow bg-dark display-6 text-muted col-12">
-            <%= snippet.language.name.upcase %> / SNIPPETS / <%= render html: snippet.title %>
+        <% @snippets.each do |snippet| %>
+          <div class="p-5 mb-5 shadow card bg-secondary">
+            <div id="snippets">
+              <div class="row">
+                <div id="snippet_<%= snippet.id %>" class="card p-5 shadow bg-dark display-6 text-muted col-12">
+                  <%= snippet.language.name.upcase %> / SNIPPETS / <%= render html: snippet.title %>
+                </div>
+              </div>
+              <div class="row">
+                <%= render snippet %>
+              </div>
+              <div class="d-grid gap-2 col-12">
+                <%= link_to "Show this snippet", snippet, class: "btn btn-sm btn-success mt-3 shadow" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <div class="d-grid gap-2 mt-4">
+          <%= link_to "New snippet", new_snippet_path, class: "btn btn-sm btn-primary shadow" %>
         </div>
       </div>
-      <div class="row">
-        <%= render snippet %>
-      </div>
-      <div class="d-grid gap-2 col-12">
-        <%= link_to "Show this snippet", snippet, class: "btn btn-sm btn-success mt-3 shadow" %>
-      </div>
-    </div>
   </div>
-<% end %>
-
-<div class="d-grid gap-2 mt-4">
-  <%= link_to "New snippet", new_snippet_path, class: "btn btn-sm btn-primary shadow" %>
-</div>
