@@ -3,7 +3,7 @@ class GuidesController < ApplicationController
 
   def index
     set_guides
-    @guides = Guide.all
+    @guides = Guide.paginate(page: params[:page], per_page: 3)
   end
 
   def show
@@ -68,7 +68,7 @@ class GuidesController < ApplicationController
       lang = Language.find_by_name(lang_name)
       @guides = lang.nil? ? Guide.all : lang.guides
     else
-      @guides = Guide.all
+      @guides = Guide.paginate(page: params[:page], per_page: 3)
     end
     return @guides
   end

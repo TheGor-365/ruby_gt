@@ -3,7 +3,7 @@ class SnippetsController < ApplicationController
 
   def index
     set_snippets
-    @snippets = Snippet.all
+    @snippets = Snippet.paginate(page: params[:page], per_page: 3)
   end
 
   def show
@@ -68,7 +68,7 @@ class SnippetsController < ApplicationController
       lang = Language.find_by_name(lang_name)
       @snippets = lang.nil? ? Snippet.all : lang.snippets
     else
-      @snippets = Snippet.all
+      @snippets = Snippet.paginate(page: params[:page], per_page: 3)
     end
     return @snippets
   end

@@ -25,4 +25,15 @@
     <% end %>
     <%= link_to "New guide", new_guide_path, class: "btn btn-sm btn-primary shadow d-grid gap-2 fixed-button col-8" %>
   </div>
+  <div class="col-2">
+    <h1 class="display-6 mb-3 mt-5 text-muted text-center card shadow bg-dark p-5 header-nav">
+      Filters
+    </h1>
+    <div class="p-5 mb-5 shadow card bg-secondary sticky-nav">
+      <p class="text-center h4 .text-black-50 p-3">
+        Find <%= @guides.all.length %> guides
+      </p>
+      <%= will_paginate @guides, list_classes: %w(pagination justify-content-center), previous_label: '&laquo;', next_label: '&raquo;' %>
+    </div>
+  </div>
 </div>

@@ -15,6 +15,8 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem "image_processing", "~> 1.2"
 gem "cocoon"
+gem 'will_paginate', '~> 3.3'
+gem 'will_paginate-bootstrap-style'
 
 
 # gem "redis", "~> 4.0"
