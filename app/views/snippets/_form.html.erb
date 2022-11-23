@@ -26,10 +26,6 @@
       <%= f.text_area :body, rows: 10, class: "form-control" %>
     </div>
 
-    <div class="btn-group ms-3" role="group" aria-label="Basic mixed styles example">
-      <%= link_to_add_association 'Add Snippet Code', f, :snippet_codes, { class: "btn btn-sm btn-success my-2 shadow" } %>
-    </div>
-
     <div id='snippet_codes'>
       <%= f.fields_for :snippet_codes do |snippet_code| %>
         <%= render 'snippet_code_fields', :f => snippet_code %>

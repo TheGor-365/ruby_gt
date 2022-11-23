@@ -4,12 +4,12 @@
       <div class="row">
         <div class="col-12">
           <pre>
-            <code id="copy-input" class="hljs <%= snippet.language.name %> rounded"><%= snippet.body %></code>
+            <code class="hljs <%= snippet.language.name %> rounded"><%= snippet.body %></code>
           </pre>
         </div>
         <button
-          onclick="copy('<%= snippet.body %>','#snippet_<%= snippet.id %>')"
-          id="snippet_<%= snippet.id %>"
+          onclick="copy(`<%= snippet.body %>`,'#snippet_copy_<%= snippet.id %>')"
+          id="snippet_copy_<%= snippet.id %>"
           class="btn btn-sm btn-success copy-button shadow"
           >
           Copy
@@ -22,12 +22,12 @@
     <div class="p-4 shadow mb-3 card mt-3 bg-secondary me-3">
       <div class="col-12">
         <pre>
-          <code id="" class="hljs <%= snippet.language.name %> rounded"><%= snippet_code.code %></code>
+          <code class="hljs <%= snippet.language.name %> rounded"><%= snippet_code.code %></code>
         </pre>
       </div>
       <button
-        onclick="copy('<%= snippet_code.code %>','#snippet_code_<%= snippet_code.id %>')"
-        id="snippet_code_<%= snippet_code.id %>"
+        onclick="copy(`<%= snippet_code.code %>`,'#snippet_code_copy_<%= snippet_code.id %>')"
+        id="snippet_code_copy_<%= snippet_code.id %>"
         class="btn btn-sm btn-success copy-button shadow"
         >
         Copy

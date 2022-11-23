@@ -1,9 +1,10 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
-@import 'actiontext.css';
+// @import 'actiontext.css';
 @import "./at.scss";
 
 
+// ALL CARDS STYLES
 
 .card {
   transition: transform .2s;
@@ -13,6 +14,9 @@
   transform: scale(1.02);
   filter: brightness(105%);
 }
+
+
+// FIXED ELEMETS
 
 .header-nav {
   position: sticky;
@@ -24,4 +28,55 @@
   position: sticky;
   top: 225px;
   z-index: 1;
+}
+
+.row {
+  --bs-gutter-x: 0 !important;
+}
+
+.fixed-button {
+  position: fixed;
+  bottom: 0px;
+  margin-bottom: 10px;
+}
+
+
+// COPY TO CLIPBOARD STYLES
+
+.tip {
+  background-color: #263646;
+  padding: 0 14px;
+  line-height: 27px;
+  position: absolute;
+  border-radius: 4px;
+  z-index: 100;
+  color: #fff;
+  font-size: 12px;
+  animation-name: tip;
+  animation-duration: .6s;
+  animation-fill-mode: both;
+}
+
+.tip:before {
+  content: "";
+  background-color: #263646;
+  height: 10px;
+  width: 10px;
+  display: block;
+  position: absolute;
+  transform: rotate(45deg);
+  top: -4px;
+  left: 17px;
+}
+
+#copied_tip {
+  animation-name: come_and_leave;
+  animation-duration: 1,5s;
+  animation-fill-mode: both;
+  bottom: 5px;
+  left:2px;
+}
+
+.text-line {
+  font-size: 14px;
 }
