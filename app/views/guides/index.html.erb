@@ -1,29 +1,28 @@
-<% @guides.each do |guide| %>
-  <h1 class="display-6 mb-3 mt-5 text-muted text-center card shadow bg-dark p-5">
-    <%= guide.language.name.upcase %> GUIDES
-  </h1>
+<div class="row mt-5">
+  <div class="col-2">
+    <%= render "guides_nav_group_list" %>
+  </div>
 
-  <div class="p-5 shadow card bg-secondary">
-    <p style="color: green">
-      <%= notice %>
-    </p>
+  <div class="col-8">
+    <h1 class="display-6 mb-3 mt-5 text-muted text-center card shadow bg-dark p-5 header-nav">
+      Ruby Guides
+    </h1>
 
-    <div id="guides">
-      <div class="row">
-        <div class="card p-5 shadow bg-dark display-6 text-muted col-12">
+    <% @guides.each do |guide| %>
+      <div class="p-5 shadow card bg-secondary">
+        <div class="row">
+          <div id="guide_<%= guide.id %>" class="card p-5 shadow bg-dark display-6 text-muted col-12">
             <%= guide.language.name.upcase %> / GUIDES / <%= render html: guide.title %>
+          </div>
+        </div>
+        <div class="row">
+          <%= render guide %>
+        </div>
+        <div class="d-grid gap-2">
+          <%= link_to "Show this guide", guide, class: "btn btn-sm btn-success mt-3 shadow" %>
         </div>
       </div>
-      <div class="row">
-        <%= render guide %>
-      </div>
-      <div class="d-grid gap-2 col-12">
-        <%= link_to "Show this guide", guide, class: "btn btn-sm btn-success mt-3 shadow" %>
-      </div>
-    </div>
+    <% end %>
+    <%= link_to "New guide", new_guide_path, class: "btn btn-sm btn-primary shadow d-grid gap-2 fixed-button col-8" %>
   </div>
-<% end %>
-
-<div class="d-grid gap-2 mt-4">
-  <%= link_to "New guide", new_guide_path, class: "btn btn-sm btn-primary shadow" %>
 </div>

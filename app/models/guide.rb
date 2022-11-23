@@ -3,8 +3,8 @@ class Guide < ApplicationRecord
   has_many :tags, through: :taggable_guides
   belongs_to :language
 
-  # has_many :codes, inverse_of: :guides
-  # accepts_nested_attributes_for :codes, reject_if: :all_blank, allow_destroy: true
+  has_many :guide_codes, class_name: 'GuideCode', dependent: :destroy
+  accepts_nested_attributes_for :guide_codes
 
   def all_tags=(names)
     self.tags = names.split(',').map do |name|

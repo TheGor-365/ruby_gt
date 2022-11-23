@@ -1,27 +1,24 @@
-<h1 class="display-6 mb-3 mt-5 text-muted text-center card shadow bg-dark p-5">
-  Languages
-</h1>
-
-<div class="p-5 shadow card bg-secondary">
-  <p style="color: green">
-    <%= notice %>
-  </p>
+<div class="container mt-5 mb-5 pb-5 pt-5">
+  <h1 class="display-6 mb-3 text-muted text-center card shadow bg-dark p-5 header-nav">
+    Languages
+  </h1>
 
   <% @languages.each do |language| %>
-    <div id="languages">
-      <div class="card p-5 m-5 shadow bg-dark">
-        <h1 class="display-6 text-muted">
-          <%= render html: language.name %>
-        </h1>
-        <%= render language %>
-        <div class="d-grid gap-2 col-8">
-          <%= link_to "Show this language", language, class: "btn btn-sm btn-success mt-3 shadow" %>
+    <div class="p-5 shadow card bg-secondary mb-3">
+      <div id="languages">
+        <div class="card p-5 m-5 shadow bg-dark">
+          <h1 class="display-6 text-muted">
+            <%= render html: language.name %>
+          </h1>
+          <div class="row">
+            <%= render language %>
+          </div>
+          <div class="d-grid gap-2 col-8">
+            <%= link_to "Show this language", language, class: "btn btn-sm btn-success mt-3 shadow" %>
+          </div>
         </div>
       </div>
     </div>
   <% end %>
-</div>
-
-<div class="d-grid gap-2 mt-5">
-  <%= link_to "New language", new_language_path, class: "btn btn-sm btn-primary shadow" %>
+  <%= link_to "New technology", new_language_path, class: "btn btn-sm btn-primary shadow d-grid gap-2 fixed-button col-8" %>
 </div>

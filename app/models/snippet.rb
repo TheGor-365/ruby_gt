@@ -3,9 +3,6 @@ class Snippet < ApplicationRecord
   has_many :tags, through: :taggables
   belongs_to :language
 
-  # has_many :snippet_codes, class_name: 'SnippetCode', dependent: :destroy, inverse_of: :snippet
-  # accepts_nested_attributes_for :snippet_codes, reject_if: :all_blank, allow_destroy: true
-
   has_many :snippet_codes, class_name: 'SnippetCode', dependent: :destroy
   accepts_nested_attributes_for :snippet_codes
 

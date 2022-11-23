@@ -1,13 +1,39 @@
-<div class="p-4 shadow col-8 card mb-3 mt-3 bg-secondary me-3">
-  <div id="<%= dom_id guide %>" class="col-12">
-    <div class="row">
-      <div class="col-12">
-        <pre>
-          <code id="copy_txt" class="hljs <%= guide.language.name %> rounded"><%= guide.body %></code>
-        </pre>
+<div class="col-8">
+  <div class="p-4 shadow card mb-3 bg-secondary me-3">
+    <div id="<%= dom_id guide %>" class="col-12">
+      <div class="row">
+        <div class="col-12">
+          <pre>
+            <code id="copy_txt" class="hljs <%= guide.language.name %> rounded"><%= guide.body %></code>
+          </pre>
+        </div>
+        <button
+          onclick="copy(`<%= guide.body %>`,'#guide_copy_<%= guide.id %>')"
+          id="guide_copy_<%= guide.id %>"
+          class="btn btn-sm btn-success copy-button shadow"
+          >
+          Copy
+        </button>
       </div>
     </div>
   </div>
+
+  <% guide.guide_codes.each do |guide_code| %>
+    <div class="p-4 shadow mb-3 card mt-3 bg-secondary me-3">
+      <div class="col-12">
+        <pre>
+          <code class="hljs <%= guide.language.name %> rounded"><%= guide_code.code %></code>
+        </pre>
+      </div>
+      <button
+        onclick="copy(`<%= guide_code.code %>`,'#guide_code_copy_<%= guide_code.id %>')"
+        id="guide_code_copy_<%= guide_code.id %>"
+        class="btn btn-sm btn-success copy-button shadow"
+        >
+        Copy
+      </button>
+    </div>
+  <% end %>
 </div>
 
 <div class="p-4 pt-5 shadow col-2 card mb-3 mt-3 bg-secondary me-3">
@@ -23,36 +49,5 @@
     <%= link_to "Show", guide, type: 'button', class: 'btn btn-sm btn-secondary shadow py-2' %>
     <%= link_to "Edit", edit_guide_path(guide), type: 'button', class: 'btn btn-sm btn-secondary shadow py-2' %>
     <%= link_to "Delete", guide, method: :delete, data: { confirm: "Are you shure?" }, type: 'button', class: 'btn btn-sm btn-secondary shadow py-2' %>
-    <button
-      class="btn btn-sm btn-secondary shadow py-2"
-      onclick="copy_text_fun()"
-    >
-      Copy
-    </button>
-    <!-- <button
-      class="btn btn-sm btn-dark"
-      type="button"
-      id="copy-button"
-      data-toggle="tooltip"
-      data-placement="button"
-      title="Copy to Clipboard"
-    >
-      Copy
-    </button> -->
-    <!-- <button
-      onclick="copy(input.value,'#copy_button')"
-      id="copy_button"
-      class="btn btn-sm btn-dark copy-button"
-      >
-      Copy
-    </button> -->
   </div>
 </div>
-
-<input
-  type="hidden"
-  class="form-control"
-  value="<%= guide.body %>"
-  placeholder="Some path"
-  id="copy_txt"
->

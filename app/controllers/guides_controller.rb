@@ -3,6 +3,7 @@ class GuidesController < ApplicationController
 
   def index
     set_guides
+    @guides = Guide.all
   end
 
   def show
@@ -77,6 +78,12 @@ class GuidesController < ApplicationController
   end
 
   def guide_params
-    params.require(:guide).permit(:title, :body, :all_tags, :language_id, codes_attributes: [:id, :code, :_destroy])
+    params.require(:guide).permit(
+      :title,
+      :body,
+      :all_tags,
+      :language_id,
+      guide_codes_attributes: [:id, :code, :_destroy]
+    )
   end
 end

@@ -1,24 +1,22 @@
-<h1 class="display-6 mb-5 text-muted text-center card shadow bg-dark p-5">
-  <%= render html:  @tag.name %>
-</h1>
+<div class="container mt-5 mb-5 pb-5 pt-5">
+  <h1 class="display-6 mb-3 text-muted text-center card shadow bg-dark p-5 header-nav">
+    <%= render html:  @tag.name %>
+  </h1>
 
-<div class="p-5 shadow card bg-secondary">
-  <p style="color: green">
-    <%= notice %>
-  </p>
-
-  <div class="row">
+  <div class="p-5 shadow card bg-secondary">
     <div class="row">
-      <%= render @tag %>
-    </div>
+      <div class="row">
+        <%= render @tag %>
+      </div>
 
-    <div class="btn-group col-8" role="group" aria-label="Basic mixed styles example">
-      <%= link_to "Edit this tag", edit_tag_path(@tag), class: "btn btn-sm btn-primary mt-3 shadow" %>
-      <%= link_to "Back to tags", tags_path, class: "btn btn-sm btn-secondary mt-3 shadow" %>
+      <div class="btn-group col-8" role="group" aria-label="Basic mixed styles example">
+        <%= link_to "Edit this tag", edit_tag_path(@tag), class: "btn btn-sm btn-primary mt-3 shadow" %>
+        <%= link_to "Back to tags", tags_path, class: "btn btn-sm btn-secondary mt-3 shadow" %>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="d-grid gap-2 mt-5">
-  <%= button_to "Destroy this tag", @tag, method: :delete, type: "button", class: "btn btn-sm btn-danger shadow" %>
+  <div class="d-grid gap-2 mt-5">
+    <%= button_to "Destroy this tag", @tag, method: :delete, type: "button", class: "btn btn-sm btn-danger shadow" %>
+  </div>
 </div>
