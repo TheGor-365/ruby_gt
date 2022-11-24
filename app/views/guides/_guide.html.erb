@@ -3,6 +3,13 @@
     <div id="<%= dom_id guide %>" class="col-12">
       <div class="row">
         <div class="col-12">
+          <div class="justify-content-center mb-5">
+            <hr>
+            <small>
+              <strong>Technology:</strong> <%= guide.language.name %>
+            </small>
+            <hr>
+          </div>
           <pre>
             <code id="copy_txt" class="hljs <%= guide.language.name %> rounded"><%= guide.body %></code>
           </pre>
@@ -48,6 +55,13 @@
   <% guide.guide_codes.each do |guide_code| %>
     <div class="p-4 shadow mb-3 card mt-3 bg-secondary me-3">
       <div class="col-12">
+        <div class="justify-content-center mb-5">
+          <hr>
+          <small>
+            <strong>Technology:</strong> <%= guide.language.name %>
+          </small>
+          <hr>
+        </div>
         <pre>
           <code class="hljs <%= guide.language.name %> rounded"><%= guide_code.code %></code>
         </pre>
@@ -56,10 +70,10 @@
         onclick="copy(`<%= guide_code.code %>`,'#guide_code_copy_<%= guide_code.id %>')"
         id="guide_code_copy_<%= guide_code.id %>"
         class="btn btn-sm btn-success copy-button shadow"
-        >
+      >
         Copy
       </button>
-      
+
       <div class="accordion card shadow bg-light rounded" id="accordionExample">
         <div class="accordion-item">
           <h1 class="accordion-header bg-secondary" id="headingTwo">
