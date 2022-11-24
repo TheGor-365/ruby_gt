@@ -17,7 +17,49 @@
       </div>
     </div>
 
-    <div class="col-12 p-4 pt-5 shadow col card mb-3 mt-3 me-0 bg-secondary">
+    <div class="accordion card shadow bg-light rounded" id="accordionExample">
+      <div class="accordion-item">
+        <h1 class="accordion-header bg-secondary" id="headingTwo">
+          <button
+            class="accordion-button collapsed display-5 bg-light"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseTwo"
+            aria-expanded="false"
+            aria-controls="collapseTwo"
+          >
+            <span class="fw-bold"><%= guide.title %></span>| | guide description
+          </button>
+        </h1>
+        <div
+          id="collapseTwo"
+          class="accordion-collapse collapse"
+          aria-labelledby="headingTwo"
+          data-bs-parent="#accordionExample"
+        >
+          <div class="accordion-body">
+            <%= guide.description.present? ? (guide.description) : (render 'guides/no_description') %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% guide.guide_codes.each do |guide_code| %>
+    <div class="p-4 shadow mb-3 card mt-3 bg-secondary me-3">
+      <div class="col-12">
+        <pre>
+          <code class="hljs <%= guide.language.name %> rounded"><%= guide_code.code %></code>
+        </pre>
+      </div>
+      <button
+        onclick="copy(`<%= guide_code.code %>`,'#guide_code_copy_<%= guide_code.id %>')"
+        id="guide_code_copy_<%= guide_code.id %>"
+        class="btn btn-sm btn-success copy-button shadow"
+        >
+        Copy
+      </button>
+      
       <div class="accordion card shadow bg-light rounded" id="accordionExample">
         <div class="accordion-item">
           <h1 class="accordion-header bg-secondary" id="headingTwo">
@@ -39,55 +81,9 @@
             data-bs-parent="#accordionExample"
           >
             <div class="accordion-body">
-              <%= guide.description.present? ? (guide.description) : (render 'guides/no_description') %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <% guide.guide_codes.each do |guide_code| %>
-    <div class="p-4 shadow mb-3 card mt-3 bg-secondary me-3">
-      <div class="col-12">
-        <pre>
-          <code class="hljs <%= guide.language.name %> rounded"><%= guide_code.code %></code>
-        </pre>
-      </div>
-      <button
-        onclick="copy(`<%= guide_code.code %>`,'#guide_code_copy_<%= guide_code.id %>')"
-        id="guide_code_copy_<%= guide_code.id %>"
-        class="btn btn-sm btn-success copy-button shadow"
-        >
-        Copy
-      </button>
-
-      <div class="col-12 p-4 pt-5 shadow col card mb-3 mt-3 me-0 bg-secondary">
-        <div class="accordion card shadow bg-light rounded" id="accordionExample">
-          <div class="accordion-item">
-            <h1 class="accordion-header bg-secondary" id="headingTwo">
-              <button
-                class="accordion-button collapsed display-5 bg-light"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseTwo"
-                aria-expanded="false"
-                aria-controls="collapseTwo"
-              >
-                <span class="fw-bold"><%= guide.title %></span>| | guide description
-              </button>
-            </h1>
-            <div
-              id="collapseTwo"
-              class="accordion-collapse collapse"
-              aria-labelledby="headingTwo"
-              data-bs-parent="#accordionExample"
-            >
-              <div class="accordion-body">
-                <% guide.guide_descriptions.each do |guide_description| %>
-                  <%= guide_description.description.present? ? (guide_description.description) : (render 'guides/no_description') %>
-                <% end %>
-              </div>
+              <% guide.guide_descriptions.each do |guide_description| %>
+                <%= guide_description.description.present? ? (guide_description.description) : (render 'guides/no_description') %>
+              <% end %>
             </div>
           </div>
         </div>

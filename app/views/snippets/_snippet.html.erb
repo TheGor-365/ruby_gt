@@ -16,31 +16,29 @@
         </button>
       </div>
     </div>
-    
-    <div class="col-12 p-4 pt-5 shadow col card mb-3 mt-3 me-0 bg-secondary">
-      <div class="accordion card shadow bg-light rounded" id="accordionExample">
-        <div class="accordion-item">
-          <h1 class="accordion-header bg-secondary" id="headingTwo">
-            <button
-              class="accordion-button collapsed display-5 bg-light"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseTwo"
-              aria-expanded="false"
-              aria-controls="collapseTwo"
-            >
-              <span class="fw-bold"><%= snippet.title %></span>| | snippet description
-            </button>
-          </h1>
-          <div
-            id="collapseTwo"
-            class="accordion-collapse collapse"
-            aria-labelledby="headingTwo"
-            data-bs-parent="#accordionExample"
+
+    <div class="accordion card shadow bg-light rounded" id="accordionExample">
+      <div class="accordion-item">
+        <h1 class="accordion-header bg-secondary" id="headingTwo">
+          <button
+            class="accordion-button collapsed display-5 bg-light"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseTwo"
+            aria-expanded="false"
+            aria-controls="collapseTwo"
           >
-            <div class="accordion-body">
-              <%= snippet.description.present? ? (snippet.description) : (render 'snippets/no_description') %>
-            </div>
+            <span class="fw-bold"><%= snippet.title %></span>| | snippet description
+          </button>
+        </h1>
+        <div
+          id="collapseTwo"
+          class="accordion-collapse collapse"
+          aria-labelledby="headingTwo"
+          data-bs-parent="#accordionExample"
+        >
+          <div class="accordion-body">
+            <%= snippet.description.present? ? (snippet.description) : (render 'snippets/no_description') %>
           </div>
         </div>
       </div>
@@ -62,32 +60,30 @@
         Copy
       </button>
 
-      <div class="col-12 p-4 pt-5 shadow col card mb-3 mt-3 me-0 bg-secondary">
-        <div class="accordion card shadow bg-light rounded" id="accordionExample">
-          <div class="accordion-item">
-            <h1 class="accordion-header bg-secondary" id="headingTwo">
-              <button
-                class="accordion-button collapsed display-5 bg-light"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseTwo"
-                aria-expanded="false"
-                aria-controls="collapseTwo"
-              >
-                <span class="fw-bold"><%= snippet.title %></span>| | snippet description
-              </button>
-            </h1>
-            <div
-              id="collapseTwo"
-              class="accordion-collapse collapse"
-              aria-labelledby="headingTwo"
-              data-bs-parent="#accordionExample"
+      <div class="accordion card shadow bg-light rounded" id="accordionExample">
+        <div class="accordion-item">
+          <h1 class="accordion-header bg-secondary" id="headingTwo">
+            <button
+              class="accordion-button collapsed display-5 bg-light"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo"
+              aria-expanded="false"
+              aria-controls="collapseTwo"
             >
-              <div class="accordion-body">
-                <% snippet.snippet_descriptions.each do |snippet_description| %>
-                  <%= snippet_description.description.present? ? (snippet_description.description) : (render 'snippets/no_description') %>
-                <% end %>
-              </div>
+              <span class="fw-bold"><%= snippet.title %></span>| | snippet description
+            </button>
+          </h1>
+          <div
+            id="collapseTwo"
+            class="accordion-collapse collapse"
+            aria-labelledby="headingTwo"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body">
+              <% snippet.snippet_descriptions.each do |snippet_description| %>
+                <%= snippet_description.description.present? ? (snippet_description.description) : (render 'snippets/no_description') %>
+              <% end %>
             </div>
           </div>
         </div>
