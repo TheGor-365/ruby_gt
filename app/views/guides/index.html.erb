@@ -34,6 +34,9 @@
         Find <%= @guides.all.length %> guides
       </p>
       <%= will_paginate @guides, list_classes: %w(pagination justify-content-center), previous_label: '&laquo;', next_label: '&raquo;' %>
+      <div class="text-center">
+        <%= page_entries_info @guides, list_classes: %w(text-center) %>
+      </div>
     </div>
   </div>
 </div>

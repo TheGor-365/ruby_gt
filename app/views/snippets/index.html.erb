@@ -34,6 +34,9 @@
         Find <%= @snippets.all.length %> snippets
       </p>
       <%= will_paginate @snippets, list_classes: %w(pagination justify-content-center), previous_label: '&laquo;', next_label: '&raquo;' %>
+      <div class="text-center">
+        <%= page_entries_info @snippets, list_classes: %w(text-center) %>
+      </div>
     </div>
   </div>
 </div>

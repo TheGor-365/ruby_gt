@@ -84,5 +84,23 @@
 // PAGINATION STYLES
 
 .pagination {
-  
+  --bs-pagination-bg: #6C757D !important;
+  --bs-pagination-border-color: #212529 !important;
+  --bs-pagination-hover-border-color: #212529 !important;
+  --bs-pagination-focus-bg: #212529 !important;
+  --bs-pagination-color: #212529 !important;
+  --bs-pagination-hover-color: #6C757D !important;
+  --bs-pagination-hover-bg: #212529 !important;
+  --bs-pagination-border-radius: 4px !important;
+  --bs-pagination-active-color: #fff;
+  --bs-pagination-active-bg: #0d6efd;
+  --bs-pagination-disabled-bg: #212529 !important;
+  --bs-pagination-disabled-border-color: #212529 !important;
+  --bs-pagination-active-border-color: #212529 !important;
+}
+
+li.page-item.disabled {
+  -webkit-box-shadow: 4px 4px 50px 0px rgba(34, 60, 80, 0.2) !important;
+  -moz-box-shadow: 4px 4px 50px 0px rgba(34, 60, 80, 0.2) !important;
+  box-shadow: 4px 4px 50px 0px rgba(34, 60, 80, 0.2) !important;
 }
