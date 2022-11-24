@@ -82,6 +82,7 @@ class SnippetsController < ApplicationController
       :title,
       :body,
       :all_tags,
+      :description,
       :language_id,
       snippet_codes_attributes: [:id, :code, :_destroy]
     )

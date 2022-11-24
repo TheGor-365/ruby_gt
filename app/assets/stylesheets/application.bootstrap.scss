@@ -4,6 +4,7 @@
 @import "./at.scss";
 
 
+
 // ALL CARDS STYLES
 
 .card {
@@ -14,6 +15,7 @@
   transform: scale(1.02);
   filter: brightness(105%);
 }
+
 
 
 // FIXED ELEMETS
@@ -39,6 +41,7 @@
   bottom: 0px;
   margin-bottom: 10px;
 }
+
 
 
 // COPY TO CLIPBOARD STYLES
@@ -81,6 +84,8 @@
   font-size: 14px;
 }
 
+
+
 // PAGINATION STYLES
 
 .pagination {
@@ -99,8 +104,18 @@
   --bs-pagination-active-border-color: #212529 !important;
 }
 
+
+
+// SHADOWS FOR ELEMETS
+
 li.page-item.disabled {
-  -webkit-box-shadow: 4px 4px 50px 0px rgba(34, 60, 80, 0.2) !important;
-  -moz-box-shadow: 4px 4px 50px 0px rgba(34, 60, 80, 0.2) !important;
-  box-shadow: 4px 4px 50px 0px rgba(34, 60, 80, 0.2) !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+input {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+textarea {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
