@@ -9,7 +9,7 @@
     </h1>
 
     <% @guides.each do |guide| %>
-      <div class="p-5 shadow card bg-secondary">
+      <div class="p-5 mb-5 shadow card bg-secondary">
         <div class="row">
           <div id="guide_<%= guide.id %>" class="card p-5 shadow bg-dark display-6 text-muted col-12">
             <%= guide.language.name.upcase %> / GUIDES / <%= render html: guide.title %>

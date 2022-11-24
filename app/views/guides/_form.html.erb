@@ -26,12 +26,26 @@
       <%= f.text_area :body, rows: 10, class: "form-control" %>
     </div>
 
+    <div class="p-5 col-8 card shadow m-3 bg-light">
+      <%= f.label :description, style: "display: block", class: "form-label" %>
+      <%= f.rich_text_area :description, placeholder: "Add short description of pasted guide...", class: "form-control" %>
+    </div>
+
     <div id='guide_codes'>
       <%= f.fields_for :guide_codes do |guide_code| %>
         <%= render 'guide_code_fields', :f => guide_code %>
       <% end %>
       <div class="btn-group ms-3" role="group" aria-label="Basic mixed styles example">
         <%= link_to_add_association 'Add Guide Code', f, :guide_codes, { class: "btn btn-sm btn-success my-2 shadow" } %>
+      </div>
+    </div>
+
+    <div id='guide_descriptions'>
+      <%= f.fields_for :guide_descriptions do |guide_description| %>
+        <%= render 'guide_description_fields', :f => guide_description %>
+      <% end %>
+      <div class="btn-group ms-3" role="group" aria-label="Basic mixed styles example">
+        <%= link_to_add_association 'Add Guide Description', f, :guide_descriptions, { class: "btn btn-sm btn-success my-2 shadow" } %>
       </div>
     </div>
 

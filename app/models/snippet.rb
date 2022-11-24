@@ -8,6 +8,9 @@ class Snippet < ApplicationRecord
   has_many :snippet_codes, class_name: 'SnippetCode', dependent: :destroy
   accepts_nested_attributes_for :snippet_codes
 
+  has_many :snippet_descriptions, class_name: 'SnippetDescription', dependent: :destroy
+  accepts_nested_attributes_for :snippet_descriptions
+
   def all_tags=(names)
     self.tags = names.split(',').map do |name|
       Tag.where(name: name.strip).first_or_create!

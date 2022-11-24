@@ -26,15 +26,6 @@
       <%= f.text_area :body, placeholder: "Add your code snippet...", rows: 10, class: "form-control" %>
     </div>
 
-    <div id='snippet_codes'>
-      <%= f.fields_for :snippet_codes do |snippet_code| %>
-        <%= render 'snippet_code_fields', :f => snippet_code %>
-      <% end %>
-      <div class="btn-group ms-3" role="group" aria-label="Basic mixed styles example">
-        <%= link_to_add_association 'Add Snippet Code', f, :snippet_codes, { class: "btn btn-sm btn-success my-2 shadow" } %>
-      </div>
-    </div>
-
     <div class="p-5 col-8 card shadow m-3 bg-light">
       <%= f.label :description, style: "display: block", class: "form-label" %>
       <%= f.rich_text_area :description, placeholder: "Add short description of pasted snippet...", class: "form-control" %>
@@ -46,6 +37,15 @@
       <% end %>
       <div class="btn-group ms-3" role="group" aria-label="Basic mixed styles example">
         <%= link_to_add_association 'Add Snippet Code', f, :snippet_codes, { class: "btn btn-sm btn-success my-2 shadow" } %>
+      </div>
+    </div>
+
+    <div id='snippet_descriptions'>
+      <%= f.fields_for :snippet_descriptions do |snippet_description| %>
+        <%= render 'snippet_description_fields', :f => snippet_description %>
+      <% end %>
+      <div class="btn-group ms-3" role="group" aria-label="Basic mixed styles example">
+        <%= link_to_add_association 'Add Snippet Description', f, :snippet_descriptions, { class: "btn btn-sm btn-success my-2 shadow" } %>
       </div>
     </div>
 
