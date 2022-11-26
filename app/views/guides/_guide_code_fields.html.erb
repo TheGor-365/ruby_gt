@@ -3,7 +3,7 @@
     <%= f.label :code, class: "form-label" %>
 
     <%= f.label :Choose_technology, style: "display: block", class: "form-label" %>
-    <%= collection_select(:snippet, :language_id, @languages, :id, :name, { class: 'form-control' }) %>
+    <%= collection_select(:guide_code, :language_id, @languages, :id, :name, { class: 'form-control' }) %>
 
     <%= f.text_area :code, rows: 10, class: "form-control" %>
 

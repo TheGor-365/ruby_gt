@@ -55,13 +55,6 @@
   <% guide.guide_codes.each do |guide_code| %>
     <div class="p-4 shadow mb-3 card mt-3 bg-secondary me-3">
       <div class="col-12">
-        <div class="justify-content-center mb-5">
-          <hr>
-          <small>
-            <strong>Technology:</strong> <%= guide.language.name %>
-          </small>
-          <hr>
-        </div>
         <pre>
           <code class="hljs <%= guide.language.name %> rounded"><%= guide_code.code %></code>
         </pre>
