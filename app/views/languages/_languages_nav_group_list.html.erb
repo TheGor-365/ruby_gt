@@ -5,13 +5,13 @@
 <div class="sticky-nav">
   <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-skyblue me-0 m-3 mt-3 card shadow rouded">
     <div class="list-group nav-group-list list-group-flush scrollarea">
-      <% @guides.each do |guide| %>
-        <a href="#guide_<%= guide.id %>" class="list-group-item list-group-item-action py-3 lh-sm rouded mb-1 bg-skyblue" aria-current="true">
+      <% @languages.each do |language| %>
+        <a href="#language_<%= language.id %>" class="list-group-item list-group-item-action py-3 lh-sm rouded mb-1 bg-skyblue" aria-current="true">
           <div class="d-flex w-100 align-items-center justify-content-between">
-            <strong class="mb-1"><%= guide.language.name.capitalize %></strong>
-            <small><%= guide.created_at %></small>
+            <strong class="mb-1"><%= language.name %></strong>
+            <small><%= language.created_at %></small>
           </div>
-          <div class="col-10 mb-1 small"><%= guide.title %></div>
+          <div class="col-10 mb-1 small"><%= language.guides.count %> guides</div>
         </a>
       <% end %>
     </div>

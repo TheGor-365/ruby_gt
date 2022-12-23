@@ -1,20 +1,41 @@
-<div class="container mt-5 mb-5 pb-5 pt-5 col-8">
-  <h1 class="display-6 mb-3 text-muted text-center card shadow bg-dark p-5 header-nav">
-    Languages
-  </h1>
+<div class="row mt-5">
+  <div class="col-2">
+    <%= render "languages_nav_group_list" %>
+  </div>
 
-  <% @languages.each do |language| %>
-    <div class="p-5 shadow card bg-skyblue mb-3">
-      <div class="card p-5 m-5 shadow bg-light">
-        <h1 class="display-6 text-muted">
-          <%= render html: language.name %>
-        </h1>
-        <div class="row">
-          <%= render language %>
+  <div class="col-7 mx-3">
+    <h1 class="display-6 mb-3 mt-5 text-muted text-center card shadow bg-dark p-5 header-nav">
+      Languages
+    </h1>
+
+    <% @languages.each do |language| %>
+      <div class="p-5 shadow card bg-skyblue mb-3">
+        <div class="card p-5 m-5 shadow bg-light">
+          <h1 class="display-6 text-muted">
+            <%= render html: language.name %>
+          </h1>
+          <div class="row">
+            <%= render language %>
+          </div>
+          <%= link_to "Show this language", language, class: "btn btn-sm btn-success mt-3 shadow d-grid gap-2 col-8" %>
         </div>
-        <%= link_to "Show this language", language, class: "btn btn-sm btn-success mt-3 shadow d-grid gap-2 col-8" %>
+      </div>
+    <% end %>
+    <%= link_to "New technology", new_language_path, class: "btn btn-sm btn-primary shadow d-grid gap-2 fixed-button col-7" %>
+  </div>
+
+  <div class="col">
+    <h1 class="display-6 mb-3 mt-5 text-muted text-center card shadow bg-dark p-5 me-2 header-nav">
+      Filters
+    </h1>
+    <div class="p-5 mb-5 shadow card bg-skyblue me-2 sticky-nav">
+      <p class="text-center h4 text-black-50 p-3">
+        <span class="text-muted">Finded</span> <%= pluralize(@languages.all.length, 'language') %>
+      </p>
+      <%= will_paginate @languages, list_classes: %w(pagination justify-content-center), previous_label: '&laquo;', next_label: '&raquo;' %>
+      <div class="text-center">
+        <%= page_entries_info @languages, list_classes: %w(text-center) %>
       </div>
     </div>
-  <% end %>
-  <%= link_to "New technology", new_language_path, class: "btn btn-sm btn-primary shadow d-grid gap-2 fixed-button col-8" %>
+  </div>
 </div>

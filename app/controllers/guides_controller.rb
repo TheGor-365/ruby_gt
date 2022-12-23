@@ -3,7 +3,7 @@ class GuidesController < ApplicationController
 
   def index
     set_guides
-    @guides = Guide.paginate(page: params[:page], per_page: 3)
+    @guides = Guide.paginate(page: params[:page], per_page: 10)
   end
 
   def show; end

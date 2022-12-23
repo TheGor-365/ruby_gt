@@ -2,7 +2,7 @@ class LanguagesController < ApplicationController
   before_action :set_language, only: %i[ show edit update destroy ]
 
   def index
-    @languages = Language.all
+    @languages = Language.paginate(page: params[:page], per_page: 10)
   end
 
   def show; end
