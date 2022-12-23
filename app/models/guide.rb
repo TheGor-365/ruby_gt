@@ -1,15 +1,17 @@
 class Guide < ApplicationRecord
   has_many :taggable_guides, dependent: :destroy
   has_many :tags, through: :taggable_guides
+
   belongs_to :language
 
-  has_rich_text :description
+  has_many :guide_codes, inverse_of: :guide
+  accepts_nested_attributes_for :guide_codes, allow_destroy: true, reject_if: :all_blank
+  # , reject_if: proc { |attributes| attributes['language_id'].blank? }
 
-  has_many :guide_codes, class_name: 'GuideCode', dependent: :destroy
-  accepts_nested_attributes_for :guide_codes
-
-  has_many :guide_descriptions, class_name: 'GuideDescription', dependent: :destroy
+  has_many :guide_descriptions
   accepts_nested_attributes_for :guide_descriptions
+
+  has_rich_text :description
 
   def all_tags=(names)
     self.tags = names.split(',').map do |name|

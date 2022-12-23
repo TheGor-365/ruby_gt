@@ -26,12 +26,12 @@
     <%= link_to "New snippet", new_snippet_path, class: "btn btn-sm btn-primary shadow d-grid fixed-button col-8" %>
   </div>
   <div class="col-2">
-    <h1 class="display-6 mb-3 mt-5 text-muted text-center card shadow bg-dark p-5 header-nav">
+    <h1 class="display-6 mb-3 mt-5 text-muted text-center card shadow bg-dark me-2 p-5 header-nav">
       Filters
     </h1>
-    <div class="p-5 mb-5 shadow card bg-secondary sticky-nav">
+    <div class="p-5 mb-5 shadow card bg-secondary me-2 sticky-nav">
       <p class="text-center h4 .text-black-50 p-3">
-        Find <%= @snippets.all.length %> snippets
+        <span class="text-muted">Finded</span> <%= pluralize(@snippets.all.length, 'snippet') %>
       </p>
       <%= will_paginate @snippets, list_classes: %w(pagination justify-content-center), previous_label: '&laquo;', next_label: '&raquo;' %>
       <div class="text-center">

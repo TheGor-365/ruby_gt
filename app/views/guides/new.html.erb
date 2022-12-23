@@ -1,13 +1,41 @@
-<div class="container mt-5 mb-5 pb-5 pt-5">
-  <h1 class="display-6 mb-3 text-muted text-center card shadow bg-dark p-5">
-    New guide
-  </h1>
+<div class="row mt-5">
+  <div class="col-2">
+    <h1 class="display-6 mb-3 mt-5 ms-3 text-muted text-center card shadow bg-dark p-5 header-nav">
+      Navigation
+    </h1>
 
-  <div class="p-5 shadow card bg-secondary">
-    <%= render "form", guide: @guide %>
+    <div class="sticky-nav">
+      <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-skyblue me-0 m-3 mt-3 card shadow rouded">
+        <div class="list-group list-group-flush scrollarea">
+          <a href="#guide_title" class="list-group-item list-group-item-action py-3 lh-sm rouded mb-1 bg-skyblue" aria-current="true">
+            <div class="d-flex w-100 align-items-center justify-content-between">
+              Add guide title
+            </div>
+          </a>
+          <a href="#guide_code" class="list-group-item list-group-item-action py-3 lh-sm rouded mb-1 bg-skyblue" aria-current="true">
+            <div class="d-flex w-100 align-items-center justify-content-between">
+              Add guide code
+            </div>
+          </a>
+          <a href="#guide_description" class="list-group-item list-group-item-action py-3 lh-sm rouded mb-1 bg-skyblue" aria-current="true">
+            <div class="d-flex w-100 align-items-center justify-content-between">
+              Add guide description
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="d-grid mt-3">
-    <%= link_to "Back to guides", guides_path, class: "btn btn-sm btn-secondary mt-3 shadow" %>
+  <div class="col-8 mx-3">
+    <h1 class="display-6 mb-3 mt-5 text-muted text-center card shadow bg-dark p-5 header-nav">
+      New guide
+    </h1>
+
+    <div class="p-5 shadow card bg-skyblue">
+      <%= render "form", guide: @guide %>
+    </div>
+
+    <%= link_to "Back to guides", guides_path, class: "btn btn-sm btn-secondary shadow d-grid gap-2 fixed-button col-8" %>
   </div>
 </div>

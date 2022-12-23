@@ -3,21 +3,14 @@
     <div id="<%= dom_id snippet %>" class="col-12">
       <div class="row">
         <div class="col-12">
-          <pre>
+          <pre class="hljs">
             <code class="hljs <%= snippet.language.name %> rounded"><%= snippet.body %></code>
           </pre>
         </div>
-        <button
-          onclick="copy(`<%= snippet.body %>`,'#snippet_copy_<%= snippet.id %>')"
-          id="snippet_copy_<%= snippet.id %>"
-          class="btn btn-sm btn-success copy-button shadow"
-          >
-          Copy
-        </button>
       </div>
     </div>
 
-    <div class="accordion card shadow bg-light rounded" id="accordionExample">
+    <div class="accordion card shadow bg-light rounded" id="snippet-accordion">
       <div class="accordion-item">
         <h1 class="accordion-header bg-secondary" id="headingTwo">
           <button
@@ -35,7 +28,7 @@
           id="collapseTwo"
           class="accordion-collapse collapse"
           aria-labelledby="headingTwo"
-          data-bs-parent="#accordionExample"
+          data-bs-parent="#snippet-accordion"
         >
           <div class="accordion-body">
             <%= snippet.description.present? ? (snippet.description) : (render 'snippets/no_description') %>
@@ -48,19 +41,12 @@
   <% snippet.snippet_codes.each do |snippet_code| %>
     <div class="p-4 shadow mb-3 card mt-3 bg-secondary me-3">
       <div class="col-12">
-        <pre>
+        <pre class="hljs">
           <code class="hljs <%= snippet.language.name %> rounded"><%= snippet_code.code %></code>
         </pre>
       </div>
-      <button
-        onclick="copy(`<%= snippet_code.code %>`,'#snippet_code_copy_<%= snippet_code.id %>')"
-        id="snippet_code_copy_<%= snippet_code.id %>"
-        class="btn btn-sm btn-success copy-button shadow"
-        >
-        Copy
-      </button>
 
-      <div class="accordion card shadow bg-light rounded" id="accordionExample">
+      <div class="accordion card shadow bg-light rounded" id="snippet_code-accordion">
         <div class="accordion-item">
           <h1 class="accordion-header bg-secondary" id="headingTwo">
             <button
@@ -78,7 +64,7 @@
             id="collapseTwo"
             class="accordion-collapse collapse"
             aria-labelledby="headingTwo"
-            data-bs-parent="#accordionExample"
+            data-bs-parent="#snippet_code-accordion"
           >
             <div class="accordion-body">
               <% snippet.snippet_descriptions.each do |snippet_description| %>

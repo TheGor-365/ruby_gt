@@ -5,31 +5,37 @@
 
 
 
+// ---------------------------------------------------------------------------------------------------------------------------
 // ALL CARDS STYLES
+// ---------------------------------------------------------------------------------------------------------------------------
 
 .card {
   transition: transform .2s;
 }
 
 .card:hover {
-  // transform: scale(1.02);
-  filter: brightness(107%);
+  // transform: scale(1.005);
+  filter: brightness(102%);
 }
 
 
 
+// ---------------------------------------------------------------------------------------------------------------------------
 // FIXED ELEMETS
+// ---------------------------------------------------------------------------------------------------------------------------
 
 .header-nav {
   position: sticky;
   top: 85px;
   z-index: 10;
+  opacity: .95;
 }
 
 .sticky-nav {
   position: sticky;
   top: 225px;
   z-index: 10;
+  opacity: .95;
 }
 
 .row {
@@ -40,53 +46,61 @@
   position: fixed;
   bottom: 0px;
   margin-bottom: 10px;
+  opacity: .95;
+}
+
+.navbar {
+  opacity: .95;
 }
 
 
 
-// COPY TO CLIPBOARD STYLES
+// ---------------------------------------------------------------------------------------------------------------------------
+// COPY TO CLIPBOARD
+// ---------------------------------------------------------------------------------------------------------------------------
 
-.tip {
-  background-color: #263646;
-  padding: 0 14px;
-  line-height: 27px;
+pre[class*="hljs"] {
+  position: relative;
+  overflow: auto;
+
+  margin: 5px 0;
+  padding: 1.75rem 0 1.75rem 1rem;
+  background-color: #1F262B !important;
+  border-radius: 5px;
+  // box-shadow: 5px 5px 5px 5px black;
+  box-shadow: 0 0.5rem 1rem black !important;
+}
+
+pre[class*="hljs"] button {
   position: absolute;
-  border-radius: 4px;
-  z-index: 100;
-  color: #fff;
-  font-size: 12px;
-  animation-name: tip;
-  animation-duration: .6s;
-  animation-fill-mode: both;
+  top: 5px;
+  right: 5px;
+
+  font-size: 0.9rem;
+  padding: 0.15rem;
+  background-color: #828282;
+
+  border: ridge 1px #7b7b7c;
+  border-radius: 5px;
+  text-shadow: #c4c4c4 0 0 2px;
 }
 
-.tip:before {
-  content: "";
-  background-color: #263646;
-  height: 10px;
-  width: 10px;
-  display: block;
-  position: absolute;
-  transform: rotate(45deg);
-  top: -4px;
-  left: 17px;
+pre[class*="hljs"] button:hover {
+  cursor: pointer;
+  background-color: #bcbabb;
 }
 
-#copied_tip {
-  animation-name: come_and_leave;
-  animation-duration: 1,5s;
-  animation-fill-mode: both;
-  bottom: 5px;
-  left:2px;
-}
-
-.text-line {
-  font-size: 14px;
+code {
+  background-color: #1F262B !important;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 
 
+// ---------------------------------------------------------------------------------------------------------------------------
 // PAGINATION STYLES
+// ---------------------------------------------------------------------------------------------------------------------------
 
 .pagination {
   --bs-pagination-bg: #6C757D !important;
@@ -106,7 +120,9 @@
 
 
 
-// SHADOWS FOR ELEMETS
+// ---------------------------------------------------------------------------------------------------------------------------
+// SHADOWS FOR ELEMETS - INPUT GROUP
+// ---------------------------------------------------------------------------------------------------------------------------
 
 li.page-item.disabled {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -120,8 +136,68 @@ textarea {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-
-
 .input-group {
   z-index: 1;
+}
+
+
+
+// ---------------------------------------------------------------------------------------------------------------------------
+// CUSTOM BACKGROUND COLORS
+// ---------------------------------------------------------------------------------------------------------------------------
+
+.bg-bootstrap {
+  background-color: #7430F9;
+}
+
+.bg-darlbar {
+  background-color: #793A19;
+}
+
+.bg-nightsky {
+  background-color: #063A50;
+}
+
+.bg-skyblue {
+  background-color: #87CEEB;
+}
+
+.bg-pinksome {
+  background-color: #DB6362;
+}
+
+.bg-dark {
+  background-color: #1F262B;
+}
+
+
+
+// ---------------------------------------------------------------------------------------------------------------------------
+// GENERAL NAVBAR DROPDOWNS
+// ---------------------------------------------------------------------------------------------------------------------------
+
+#dropdown08 {
+  display: inline-block;
+}
+
+#dropdown09 {
+  display: inline-block;
+}
+
+.container {
+  --bs-gutter-x: 0 !important;
+}
+
+.dropdown-item {
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.dropdown-menu {
+  opacity: .95;
+  background-color: #1F262B;
+}
+
+.pre {
+  background-color: #282C34;
 }

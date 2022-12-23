@@ -1,12 +1,18 @@
 <div class='nested-fields'>
-  <div class="p-5 col-8 card shadow m-3 bg-light">
-    <%= f.label :code, class: "form-label" %>
+  <div class="p-5 card shadow mb-3 bg-light">
+    <div class="p-5 col-8 card shadow m-3 bg-light">
+      <%= f.label :guide_code, class: "form-label h5 text-muted" %>
 
-    <%= f.label :Choose_technology, style: "display: block", class: "form-label" %>
-    <%= collection_select(:guide_code, :language_id, @languages, :id, :name, { class: 'form-control' }) %>
+      <%= f.label :Choose_technology, class: "form-label text-muted" %>
+      <%= collection_select :guide_code, :lang_id, Lang.all, :id, :name, { class: 'form-select form-select-sm bg-dark' } %>
 
-    <%= f.text_area :code, rows: 10, class: "form-control" %>
+      <%= f.text_area :code, rows: 10, class: "form-control" %>
+    </div>
 
-    <%= link_to_remove_association "Remove Guide Code", f, { class: "btn btn-sm btn-danger my-2 ms-3 shadow" } %>
+    <div class="p-5 col-8 card shadow m-3 bg-light" id="guide_description">
+      <%= f.label :description, class: "form-label h5 text-muted" %>
+      <%= f.rich_text_area :description, placeholder: "Add short description of pasted guide...", class: "form-control" %>
+    </div>
+    <%= link_to_remove_association "Remove Guide Code", f, { class: "btn btn-sm btn-danger my-2 shadow" } %>
   </div>
 </div>

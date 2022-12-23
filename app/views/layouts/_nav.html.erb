@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" aria-label="Tenth navbar example">
+<nav class="navbar navbar-expand-lg navbar-dark bg-nightsky fixed-top" aria-label="Tenth navbar example">
   <div class="container-fluid">
     <button
       class="navbar-toggler"
@@ -20,23 +20,23 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link card p-2 m-1 bg-dark shadow" href="<%= rails_guides_path %>">Rails Guides</a>
+          <a class="nav-link card p-2 m-1 bg-nightsky shadow" href="<%= rails_guides_path %>">Rails Guides</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link card p-2 m-1 bg-dark shadow" href="<%= guides_path %>">Guides</a>
+          <a class="nav-link card p-2 m-1 bg-nightsky shadow" href="<%= guides_path %>">Guides</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link card p-2 m-1 bg-dark shadow" href="<%= snippets_path %>">Snippets</a>
+          <a class="nav-link card p-2 m-1 bg-nightsky shadow" href="<%= snippets_path %>">Snippets</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link card p-2 m-1 bg-dark shadow" href="<%= languages_path %>">Languages</a>
+          <a class="nav-link card p-2 m-1 bg-nightsky shadow" href="<%= languages_path %>">Languages</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link card p-2 m-1 bg-dark shadow" href="<%= tags_path %>">Tags</a>
+          <a class="nav-link card p-2 m-1 bg-nightsky shadow" href="<%= tags_path %>">Tags</a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown px-10">
           <a
-            class="nav-link dropdown-toggle card p-2 m-1 bg-dark shadow"
+            class="nav-link dropdown-toggle card p-2 m-1 bg-nightsky shadow px-10"
             href="#"
             id="dropdown08"
             data-bs-toggle="dropdown"
@@ -47,7 +47,7 @@
           <ul class="dropdown-menu dropdown-menu-dark shadow" aria-labelledby="dropdown08">
             <li><%= link_to "Home", home_path, class: "dropdown-item" %></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href=<%= rails_guides_path %> >Rails Guides</a></li>
+            <li><a class="dropdown-item px-10" href=<%= rails_guides_path %> >Rails Guides</a></li>
             <li><a class="dropdown-item" href=<%= new_rails_guide_path %> >Create new Rails Guide</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href=<%= guides_path %> >Guides</a></li>
@@ -56,7 +56,7 @@
         </li>
         <li class="nav-item dropdown">
           <a
-            class="nav-link dropdown-toggle card p-2 m-1 bg-dark shadow"
+            class="nav-link dropdown-toggle card p-2 m-1 bg-nightsky shadow px-10"
             href="#"
             id="dropdown09"
             data-bs-toggle="dropdown"
@@ -65,12 +65,13 @@
             Languages
           </a>
           <ul class="dropdown-menu dropdown-menu-dark shadow" aria-labelledby="dropdown09">
-            <li><%= link_to 'All languages', languages_path, class: 'dropdown-item' %></li>
             <% @languages.each do |lang| %>
               <li><%= link_to lang.name, snippets_path(lang: lang.name), class: 'dropdown-item' %></li>
             <% end %>
             <li><hr class="dropdown-divider"></li>
-            <li><%= link_to 'Create new language', new_language_path, class: 'dropdown-item' %></li>
+            <li><%= link_to 'All languages', languages_path, class: 'dropdown-item' %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to 'Add language', new_language_path, class: 'dropdown-item' %></li>
           </ul>
         </li>
       </ul>

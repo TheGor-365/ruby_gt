@@ -1,30 +1,21 @@
 <div class="col-8">
-  <div class="p-4 shadow card mb-3 mt-3 bg-secondary me-3">
+  <div class="p-4 shadow card mb-3 mt-3 bg-light me-3">
     <div id="<%= dom_id guide %>" class="col-12">
       <div class="row">
         <div class="col-12">
-          <div class="justify-content-center mb-5">
-            <hr>
+          <div>
             <small>
-              <strong>Technology:</strong> <%= guide.language.name %>
+              <strong class="text-muted">Technology |</strong> <%= guide.language.name %>
             </small>
-            <hr>
           </div>
-          <pre>
+          <pre class="hljs">
             <code id="copy_txt" class="hljs <%= guide.language.name %> rounded"><%= guide.body %></code>
           </pre>
         </div>
-        <button
-          onclick="copy(`<%= guide.body %>`,'#guide_copy_<%= guide.id %>')"
-          id="guide_copy_<%= guide.id %>"
-          class="btn btn-sm btn-success copy-button shadow"
-          >
-          Copy
-        </button>
       </div>
     </div>
 
-    <div class="accordion card shadow bg-light rounded" id="accordionExample">
+    <div class="accordion card shadow bg-light rounded" id="guide-accordion">
       <div class="accordion-item">
         <h1 class="accordion-header bg-secondary" id="headingTwo">
           <button
@@ -42,7 +33,7 @@
           id="collapseTwo"
           class="accordion-collapse collapse"
           aria-labelledby="headingTwo"
-          data-bs-parent="#accordionExample"
+          data-bs-parent="#guide-accordion"
         >
           <div class="accordion-body">
             <%= guide.description.present? ? (guide.description) : (render 'guides/no_description') %>
@@ -53,21 +44,19 @@
   </div>
 
   <% guide.guide_codes.each do |guide_code| %>
-    <div class="p-4 shadow mb-3 card mt-3 bg-secondary me-3">
+    <div class="p-4 shadow mb-3 card mt-3 bg-light me-3">
       <div class="col-12">
-        <pre>
-          <code class="hljs <%= guide.language.name %> rounded"><%= guide_code.code %></code>
+        <div>
+          <small>
+            <strong class="text-muted">Technology |</strong> <%= guide_code.lang.name %>
+          </small>
+        </div>
+        <pre class="hljs">
+          <code class="hljs <%= guide_code.lang.name %> rounded"><%= guide_code.code %></code>
         </pre>
       </div>
-      <button
-        onclick="copy(`<%= guide_code.code %>`,'#guide_code_copy_<%= guide_code.id %>')"
-        id="guide_code_copy_<%= guide_code.id %>"
-        class="btn btn-sm btn-success copy-button shadow"
-      >
-        Copy
-      </button>
 
-      <div class="accordion card shadow bg-light rounded" id="accordionExample">
+      <div class="accordion card shadow bg-light rounded" id="guide_code-accordion">
         <div class="accordion-item">
           <h1 class="accordion-header bg-secondary" id="headingTwo">
             <button
@@ -85,12 +74,10 @@
             id="collapseTwo"
             class="accordion-collapse collapse"
             aria-labelledby="headingTwo"
-            data-bs-parent="#accordionExample"
+            data-bs-parent="#guide_code-accordion"
           >
             <div class="accordion-body">
-              <% guide.guide_descriptions.each do |guide_description| %>
-                <%= guide_description.description.present? ? (guide_description.description) : (render 'guides/no_description') %>
-              <% end %>
+              <%= guide_code.description.present? ? (guide_code.description) : (render 'guides/no_description') %>
             </div>
           </div>
         </div>
@@ -99,7 +86,7 @@
   <% end %>
 </div>
 
-<div class="p-4 pt-5 shadow col-2 card mb-3 mt-3 bg-secondary me-3">
+<div class="p-4 pt-5 shadow col-2 card mb-3 mt-3 bg-light me-3">
   <% guide.tags.each do |tag| %>
     <div>
       <%= link_to tag.name, guides_path(tag: tag.name), class: "badge bg-secondary text-decoration-none shadow p-2 m-1" %>
@@ -107,7 +94,7 @@
   <% end %>
 </div>
 
-<div class="p-4 pt-5 shadow col card mb-3 mt-3 me-0 bg-secondary">
+<div class="p-4 pt-5 shadow col card mb-3 mt-3 me-0 bg-light">
   <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
     <%= link_to "Show", guide, type: 'button', class: 'btn btn-sm btn-secondary shadow py-2' %>
     <%= link_to "Edit", edit_guide_path(guide), type: 'button', class: 'btn btn-sm btn-secondary shadow py-2' %>

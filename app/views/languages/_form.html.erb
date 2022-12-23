@@ -1,24 +1,26 @@
-<div class="bg-secondary">
-  <%= form_with(model: language) do |form| %>
-    <% if language.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(language.errors.count, "error") %> prohibited this language from being saved:</h2>
+<%= form_for @language do |f| %>
 
-      <ul>
-        <% language.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-    <% end %>
-
-    <div class="p-5 col-8 card shadow m-3 bg-light">
-      <%= form.label :name, style: "display: block", class: "form-label" %>
-      <%= form.text_field :name, class: "form-control" %>
-    </div>
-
-    <div class="d-grid gap-2 col-8 m-3 mt-4">
-      <%= form.submit class: "btn btn-sm btn-success mb-5 shadow" %>
+  <% if @language.errors.any? %>
+    <div class="card p-5 shadow bg-white mb-5 border border-danger rouded">
+      <div id="error_explanation" class="danger">
+        <h5><%= pluralize(@language.errors.count, "error") %> <span class="text-muted">prohibited this language from being saved:</span></h5>
+        <ul>
+          <% @language.errors.each do |error| %>
+            <li><small class="text-muted"><%= error.full_message %></small></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
-</div>
+
+  <div class="p-5 card shadow m-3 bg-skyblue">
+    <div class="p-5 col-8 card shadow mb-3 bg-light">
+      <%= f.label :add_technology, class: "form-label h5 text-muted" %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="d-grid gap-2 col-8">
+      <%= f.submit class: "btn btn-sm btn-success mb-5 shadow" %>
+    </div>
+  </div>
+<% end %>

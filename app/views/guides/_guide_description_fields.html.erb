@@ -1,8 +1,8 @@
 <div class='nested-fields'>
   <div class="p-5 col-8 card shadow m-3 bg-light">
-    <%= f.label :description, class: "form-label" %>
+    <%= f.label :description, class: "form-label h5 text-muted" %>
     <%= f.rich_text_area :description, placeholder: "Add short description of pasted guide...", rows: 10, class: "form-control" %>
 
-    <%= link_to_remove_association "Remove Guide Description", f, { class: "btn btn-sm btn-danger my-2 ms-3 shadow" } %>
+    <%= link_to_remove_association "Remove Guide Description", f, { class: "btn btn-sm btn-danger my-2 shadow" } %>
   </div>
 </div>

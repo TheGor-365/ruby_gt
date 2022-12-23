@@ -6,26 +6,28 @@ class GuidesController < ApplicationController
     @guides = Guide.paginate(page: params[:page], per_page: 3)
   end
 
-  def show
-  end
+  def show; end
+  def edit; end
 
   def new
     @guide = Guide.new
-  end
 
-  def edit
+    @guide.guide_codes.build
   end
 
   def create
-    @guide = Guide.new(guide_params)
-
     respond_to do |format|
+      @guide = Guide.new(guide_params)
+
+      @guide.guide_codes.each do |guide_code|
+        guide_code.build_lang
+        guide_code.lang = Lang.find(params[:guide_code][:lang_id])
+      end
+
       if @guide.save
-        format.html { redirect_to guide_url(@guide), notice: "Guide was successfully created." }
-        format.json { render :show, status: :created, location: @guide }
+        format.html { redirect_to guide_url(@guide) }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @guide.errors, status: :unprocessable_entity }
+        format.html { render :new }
       end
     end
   end
@@ -33,21 +35,17 @@ class GuidesController < ApplicationController
   def update
     respond_to do |format|
       if @guide.update(guide_params)
-        format.html { redirect_to guide_url(@guide), notice: "Guide was successfully updated." }
-        format.json { render :show, status: :ok, location: @guide }
+        format.html { redirect_to guide_url(@guide) }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @guide.errors, status: :unprocessable_entity }
+        format.html { render :edit }
       end
     end
   end
 
   def destroy
     @guide.destroy
-
     respond_to do |format|
-      format.html { redirect_to guides_url, notice: "Guide was successfully destroyed." }
-      format.json { head :no_content }
+      format.html { redirect_to guides_url }
     end
   end
 
@@ -84,8 +82,15 @@ class GuidesController < ApplicationController
       :all_tags,
       :description,
       :language_id,
-      guide_codes_attributes: [:id, :code, :_destroy],
-      guide_descriptions_attributes: [:id, :description, :_destroy]
+      :_destroy,
+      guide_codes_attributes: [
+        :id,
+        :code,
+        :description,
+        :guide_id,
+        :lang_id,
+        :_destroy
+      ]
     )
   end
 end

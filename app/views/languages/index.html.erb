@@ -1,22 +1,18 @@
-<div class="container mt-5 mb-5 pb-5 pt-5">
+<div class="container mt-5 mb-5 pb-5 pt-5 col-8">
   <h1 class="display-6 mb-3 text-muted text-center card shadow bg-dark p-5 header-nav">
     Languages
   </h1>
 
   <% @languages.each do |language| %>
-    <div class="p-5 shadow card bg-secondary mb-3">
-      <div id="languages">
-        <div class="card p-5 m-5 shadow bg-dark">
-          <h1 class="display-6 text-muted">
-            <%= render html: language.name %>
-          </h1>
-          <div class="row">
-            <%= render language %>
-          </div>
-          <div class="d-grid gap-2 col-8">
-            <%= link_to "Show this language", language, class: "btn btn-sm btn-success mt-3 shadow" %>
-          </div>
+    <div class="p-5 shadow card bg-skyblue mb-3">
+      <div class="card p-5 m-5 shadow bg-light">
+        <h1 class="display-6 text-muted">
+          <%= render html: language.name %>
+        </h1>
+        <div class="row">
+          <%= render language %>
         </div>
+        <%= link_to "Show this language", language, class: "btn btn-sm btn-success mt-3 shadow d-grid gap-2 col-8" %>
       </div>
     </div>
   <% end %>

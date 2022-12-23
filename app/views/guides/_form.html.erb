@@ -1,42 +1,52 @@
-<div class="bg-secondary">
-  <%= form_with(model: guide) do |f| %>
-    <% if guide.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(guide.errors.count, "error") %> prohibited this guide from being saved:</h2>
+<div class="bg-skyblue">
+  <%= form_for @guide do |f| %>
 
-      <ul>
-        <% guide.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+    <% if @guide.errors.any? %>
+      <div class="card p-5 shadow bg-white mb-5 border border-danger rouded">
+        <div id="error_explanation" class="danger">
+          <h5><%= pluralize(@guide.errors.count, "error") %> <span class="text-muted">prohibited this guide from being saved:</span></h5>
+          <ul>
+            <% @guide.errors.each do |error| %>
+              <li><small class="text-muted"><%= error.full_message %></small></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
     <% end %>
 
-    <div class="p-5 col-8 card shadow m-3 bg-light">
-      <%= f.label :title, style: "display: block", class: "form-label" %>
-      <%= f.text_field :title, class: "form-control" %>
+    <div class="row mb-3">
+      <div class="p-5 card col-6 shadow me-3 bg-light" id="guide_title">
+        <%= f.label :guide_title, class: "form-label h5 text-muted" %>
+        <%= f.text_area :title, rows: 3, placeholder: "Enter title...", class: "form-control" %>
+      </div>
+      <div class="p-5 card col shadow bg-light" id="guide_title">
+        <%= f.label :guide_tags, class: "form-label h5 text-muted" %>
+        <%= f.text_area :all_tags, rows: 3, placeholder: "Enter tags, separated by commas...", class: "form-control" %>
+      </div>
     </div>
 
-    <div class="p-5 col-8 card shadow m-3 bg-light">
-      <%= f.label :body, style: "display: block", class: "form-label" %>
+    <div class="p-5 card shadow mb-3 bg-light">
+      <div class="p-5 col-8 card shadow mb-3 bg-light" id="guide_code">
+        <%= f.label :guide_code, class: "form-label h5 text-muted" %>
 
-      <%= f.label :Choose_technology, style: "display: block", class: "form-label" %>
-      <%= collection_select(:guide, :language_id, @languages, :id, :name, { class: 'form-control' }) %>
+        <%= f.label :Choose_technology, class: "form-label text-muted" %>
+        <%= collection_select :guide, :language_id, @languages, :id, :name, { class: 'form-select form-select-sm bg-dark' } %>
 
-      <%= f.text_area :body, rows: 10, class: "form-control" %>
-    </div>
+        <%= f.text_area :body, rows: 10, class: "form-control" %>
+      </div>
 
-    <div class="p-5 col-8 card shadow m-3 bg-light">
-      <%= f.label :description, style: "display: block", class: "form-label" %>
-      <%= f.rich_text_area :description, placeholder: "Add short description of pasted guide...", class: "form-control" %>
+      <div class="p-5 col-8 card shadow mb-3 bg-light" id="guide_description">
+        <%= f.label :description, class: "form-label h5 text-muted" %>
+        <%= f.rich_text_area :description, placeholder: "Add short description of pasted guide...", class: "form-control" %>
+      </div>
     </div>
 
     <div id='guide_codes'>
       <%= f.fields_for :guide_codes do |guide_code| %>
         <%= render 'guide_code_fields', :f => guide_code %>
       <% end %>
-      <div class="btn-group ms-3" role="group" aria-label="Basic mixed styles example">
-        <%= link_to_add_association 'Add Guide Code', f, :guide_codes, { class: "btn btn-sm btn-success my-2 shadow" } %>
+      <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+        <%= link_to_add_association 'Add Guide', f, :guide_codes, { class: "btn btn-sm btn-success my-2 shadow" } %>
       </div>
     </div>
 
@@ -44,17 +54,12 @@
       <%= f.fields_for :guide_descriptions do |guide_description| %>
         <%= render 'guide_description_fields', :f => guide_description %>
       <% end %>
-      <div class="btn-group ms-3" role="group" aria-label="Basic mixed styles example">
+      <div class="btn-group" role="group" aria-label="Basic mixed styles example">
         <%= link_to_add_association 'Add Guide Description', f, :guide_descriptions, { class: "btn btn-sm btn-success my-2 shadow" } %>
       </div>
     </div>
 
-    <div class="p-5 col-8 card shadow m-3 bg-light">
-      <%= f.label :all_tags, style: "display: block", class: "form-label" %>
-      <%= f.text_field :all_tags, placeholder: "Enter tags, separated by commas...", class: "form-control" %>
-    </div>
-
-    <div class="d-grid gap-2 col-8 m-3 mt-4">
+    <div class="d-grid gap-2">
       <%= f.submit class: "btn btn-sm btn-success mb-5 shadow" %>
     </div>
   <% end %>

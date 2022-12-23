@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_24_151404) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_21_184343) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,10 +54,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_151404) do
 
   create_table "guide_codes", force: :cascade do |t|
     t.text "code"
+    t.text "description"
     t.bigint "guide_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "lang_id", null: false
     t.index ["guide_id"], name: "index_guide_codes_on_guide_id"
+    t.index ["lang_id"], name: "index_guide_codes_on_lang_id"
   end
 
   create_table "guide_descriptions", force: :cascade do |t|
@@ -78,6 +81,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_151404) do
     t.index ["language_id"], name: "index_guides_on_language_id"
   end
 
+  create_table "langs", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_langs_on_name"
+  end
+
   create_table "languages", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -96,10 +106,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_151404) do
 
   create_table "snippet_codes", force: :cascade do |t|
     t.text "code"
-    t.bigint "snippet_id", null: false
+    t.bigint "guide_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["snippet_id"], name: "index_snippet_codes_on_snippet_id"
+    t.index ["guide_id"], name: "index_snippet_codes_on_guide_id"
   end
 
   create_table "snippet_descriptions", force: :cascade do |t|
@@ -148,9 +158,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_151404) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "guide_codes", "guides"
+  add_foreign_key "guide_codes", "langs"
   add_foreign_key "guide_descriptions", "guides"
   add_foreign_key "guides", "languages"
-  add_foreign_key "snippet_codes", "snippets"
+  add_foreign_key "snippet_codes", "guides"
   add_foreign_key "snippet_descriptions", "snippets"
   add_foreign_key "snippets", "languages"
   add_foreign_key "taggable_guides", "guides"

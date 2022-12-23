@@ -480,17 +480,17 @@ trix-editor .attachment__metadata .attachment__size {
   margin-right: 1em;
 }
 
-.trix-content pre {
-  display: inline-block;
-  width: 100%;
-  vertical-align: top;
-  font-family: monospace;
-  font-size: 0.9em;
-  padding: 0.5em;
-  white-space: pre;
-  background-color: #eee;
-  overflow-x: auto;
-}
+// .trix-content pre {
+//   display: inline-block;
+//   width: 100%;
+//   vertical-align: top;
+//   font-family: monospace;
+//   font-size: 0.9em;
+//   padding: 0.5em;
+//   white-space: pre;
+//   background-color: #eee;
+//   overflow-x: auto;
+// }
 
 .trix-content img {
   max-width: 100%;
@@ -571,5 +571,5 @@ img {
 }
 
 trix-editor {
-  height: 20em !important;
+  // height: 20em !important;
 }

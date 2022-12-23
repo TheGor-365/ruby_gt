@@ -5,14 +5,11 @@ class LanguagesController < ApplicationController
     @languages = Language.all
   end
 
-  def show
-  end
+  def show; end
+  def edit; end
 
   def new
     @language = Language.new
-  end
-
-  def edit
   end
 
   def create
@@ -20,11 +17,9 @@ class LanguagesController < ApplicationController
 
     respond_to do |format|
       if @language.save
-        format.html { redirect_to language_url(@language), notice: "Language was successfully created." }
-        format.json { render :show, status: :created, location: @language }
+        format.html { redirect_to language_url(@language) }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @language.errors, status: :unprocessable_entity }
+        format.html { render :new }
       end
     end
   end
@@ -32,31 +27,29 @@ class LanguagesController < ApplicationController
   def update
     respond_to do |format|
       if @language.update(language_params)
-        format.html { redirect_to language_url(@language), notice: "Language was successfully updated." }
-        format.json { render :show, status: :ok, location: @language }
+        format.html { redirect_to language_url(@language) }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @language.errors, status: :unprocessable_entity }
+        format.html { render :edit }
       end
     end
   end
 
   def destroy
     @language.destroy
-
     respond_to do |format|
-      format.html { redirect_to languages_url, notice: "Language was successfully destroyed." }
-      format.json { head :no_content }
+      format.html { redirect_to languages_url }
     end
   end
 
   private
-  
+
   def set_language
     @language = Language.find(params[:id])
   end
 
   def language_params
-    params.require(:language).permit(:name)
+    params.require(:language).permit(
+      :name
+    )
   end
 end

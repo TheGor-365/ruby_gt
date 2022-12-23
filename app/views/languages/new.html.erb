@@ -3,9 +3,7 @@
     New language
   </h1>
 
-  <div class="p-5 shadow card bg-secondary">
-    <%= render "form", language: @language %>
-  </div>
+  <%= render "form", language: @language %>
 
   <div class="d-grid mt-3">
     <%= link_to "Back to languages", languages_path, class: "btn btn-sm btn-secondary shadow" %>
