@@ -54,6 +54,7 @@ class GuideCodesController < ApplicationController
     params.require(:guide_code).permit(
       :code,
       :description,
+      :path,
       :guide_id,
       :lang_id,
       :_destroy

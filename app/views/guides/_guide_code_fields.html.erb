@@ -6,7 +6,10 @@
       <%= f.label :Choose_technology, class: "form-label text-muted" %>
       <%= collection_select :guide_code, :lang_id, Lang.all, :id, :name, { class: 'form-select form-select-sm bg-dark' } %>
 
-      <%= f.text_area :code, rows: 10, class: "form-control" %>
+      <%= f.label :add_directory_path, class: "form-label text-muted mt-3" %>
+      <%= f.text_field :path, placeholder: "Add code using directory...", class: "form-label text-muted mb-3" %>
+
+      <%= f.text_area :code, placeholder: "Add your code snippet...", rows: 10, class: "form-control" %>
     </div>
 
     <div class="p-5 col-8 card shadow m-3 bg-light" id="guide_description">

@@ -7,8 +7,6 @@ class Guide < ApplicationRecord
   has_many :guide_codes, inverse_of: :guide, dependent: :destroy
   accepts_nested_attributes_for :guide_codes, allow_destroy: true, reject_if: :all_blank
 
-  accepts_nested_attributes_for :guide_descriptions
-
   has_rich_text :description
 
   def all_tags=(names)

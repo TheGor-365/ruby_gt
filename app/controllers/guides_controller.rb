@@ -81,12 +81,14 @@ class GuidesController < ApplicationController
       :body,
       :all_tags,
       :description,
+      :path,
       :language_id,
       :_destroy,
       guide_codes_attributes: [
         :id,
         :code,
         :description,
+        :path,
         :guide_id,
         :lang_id,
         :_destroy
