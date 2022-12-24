@@ -1,4 +1,4 @@
-<div class="bg-secondary">
+<div class="bg-skyblue">
   <%= form_with(model: snippet) do |f| %>
     <% if snippet.errors.any? %>
       <div style="color: red">
@@ -12,50 +12,38 @@
       </div>
     <% end %>
 
-    <div class="p-5 col-8 card shadow m-3 bg-light">
-      <%= f.label :title, style: "display: block", class: "form-label" %>
-      <%= f.text_field :title, placeholder: "Add your snippet title...", class: "form-control" %>
-    </div>
-
-    <div class="p-5 col-8 card shadow m-3 bg-light">
-      <%= f.label :code, style: "display: block", class: "form-label" %>
-
-      <%= f.label :Choose_technology, style: "display: block", class: "form-label" %>
-      <%= collection_select(:snippet, :language_id, @languages, :id, :name, { class: 'form-control' }) %>
-
-      <%= f.text_area :body, placeholder: "Add your code snippet...", rows: 10, class: "form-control" %>
-    </div>
-
-    <div class="p-5 col-8 card shadow m-3 bg-light">
-      <%= f.label :description, style: "display: block", class: "form-label" %>
-      <%= f.rich_text_area :description, placeholder: "Add short description of pasted snippet...", class: "form-control" %>
-    </div>
-
-    <div id='snippet_codes'>
-      <%= f.fields_for :snippet_codes do |snippet_code| %>
-        <%= render 'snippet_code_fields', :f => snippet_code %>
-      <% end %>
-      <div class="btn-group ms-3" role="group" aria-label="Basic mixed styles example">
-        <%= link_to_add_association 'Add Snippet Code', f, :snippet_codes, { class: "btn btn-sm btn-success my-2 shadow" } %>
+    <div class="row mb-3">
+      <div class="p-5 card col-6 shadow me-3 bg-light">
+        <%= f.label :title, style: "display: block", class: "form-label" %>
+        <%= f.text_field :title, placeholder: "Add your snippet title...", class: "form-control" %>
+      </div>
+      <div class="p-5 card col shadow bg-light">
+        <%= f.label :Add_tags, style: "display: block", class: "form-label" %>
+        <%= f.text_field :all_tags, placeholder: "Enter tags, separated by commas...", class: "form-control" %>
       </div>
     </div>
 
-    <div id='snippet_descriptions'>
-      <%= f.fields_for :snippet_descriptions do |snippet_description| %>
-        <%= render 'snippet_description_fields', :f => snippet_description %>
-      <% end %>
-      <div class="btn-group ms-3" role="group" aria-label="Basic mixed styles example">
-        <%= link_to_add_association 'Add Snippet Description', f, :snippet_descriptions, { class: "btn btn-sm btn-success my-2 shadow" } %>
+    <div class="p-5 card shadow mb-3 bg-light">      
+      <div class="p-5 col-8 card shadow mb-3 bg-light">
+        <%= f.label :code, style: "display: block", class: "form-label" %>
+
+        <%= f.label :Choose_technology, style: "display: block", class: "form-label" %>
+        <%= collection_select(:snippet, :language_id, @languages, :id, :name, { class: 'form-control' }) %>
+
+        <%= f.label :add_directory_path, class: "form-label text-muted mt-3" %>
+        <%= f.text_field :path, placeholder: "Add code using directory...", class: "form-label text-muted mb-3" %>
+
+        <%= f.text_area :body, placeholder: "Add your code snippet...", rows: 10, class: "form-control" %>
       </div>
-    </div>
 
-    <div class="p-5 col-8 card shadow m-3 bg-light">
-      <%= f.label :Add_tags, style: "display: block", class: "form-label" %>
-      <%= f.text_field :all_tags, placeholder: "Enter tags, separated by commas...", class: "form-control" %>
-    </div>
+      <div class="p-5 col-8 card shadow mb-3 bg-light">
+        <%= f.label :description, style: "display: block", class: "form-label" %>
+        <%= f.rich_text_area :description, placeholder: "Add short description of pasted snippet...", class: "form-control" %>
+      </div>
 
-    <div class="d-grid gap-2 col-8 m-3 mt-4">
-      <%= f.submit class: "btn btn-sm btn-success mb-5 shadow" %>
+      <div class="d-grid gap-2 col-8 m-3 mt-4">
+        <%= f.submit class: "btn btn-sm btn-success mb-5 shadow" %>
+      </div>
     </div>
   <% end %>
 </div>

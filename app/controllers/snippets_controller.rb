@@ -81,11 +81,10 @@ class SnippetsController < ApplicationController
     params.require(:snippet).permit(
       :title,
       :body,
+      :path,
       :all_tags,
       :description,
-      :language_id,
-      snippet_codes_attributes: [:id, :code, :_destroy],
-      snippet_descriptions_attributes: [:id, :description, :_destroy]
+      :language_id
     )
   end
 end

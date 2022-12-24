@@ -3,15 +3,15 @@
     <%= render "snippets_nav_group_list" %>
   </div>
 
-  <div class="col-8">
+  <div class="col-8 mx-3">
     <h1 class="display-6 mb-3 mt-5 text-muted text-center card shadow bg-dark p-5 header-nav">
       Ruby Snippets
     </h1>
 
     <% @snippets.each do |snippet| %>
-      <div class="p-5 mb-5 shadow card bg-secondary">
+      <div class="p-5 mb-5 shadow card bg-skyblue">
         <div class="row">
-          <div id="snippet_<%= snippet.id %>" class="card p-5 shadow bg-dark display-6 text-muted col-12">
+          <div id="snippet_<%= snippet.id %>" class="card p-5 shadow bg-light display-6 text-muted col-12">
             <%= snippet.language.name.upcase %> / SNIPPETS / <%= render html: snippet.title %>
           </div>
         </div>
@@ -23,14 +23,14 @@
         </div>
       </div>
     <% end %>
-    <%= link_to "New snippet", new_snippet_path, class: "btn btn-sm btn-primary shadow d-grid fixed-button col-8" %>
+    <%= link_to "New snippet", new_snippet_path, class: "btn btn-sm btn-primary shadow d-grid gap-2 fixed-button col-8" %>
   </div>
-  <div class="col-2">
-    <h1 class="display-6 mb-3 mt-5 text-muted text-center card shadow bg-dark me-2 p-5 header-nav">
+  <div class="col">
+    <h1 class="display-6 mb-3 mt-5 text-muted text-center card shadow bg-dark p-5 me-2 header-nav">
       Filters
     </h1>
-    <div class="p-5 mb-5 shadow card bg-secondary me-2 sticky-nav">
-      <p class="text-center h4 .text-black-50 p-3">
+    <div class="p-5 mb-5 shadow card bg-skyblue me-2 sticky-nav">
+      <p class="text-center h4 text-black-50 p-3">
         <span class="text-muted">Finded</span> <%= pluralize(@snippets.all.length, 'snippet') %>
       </p>
       <%= will_paginate @snippets, list_classes: %w(pagination justify-content-center), previous_label: '&laquo;', next_label: '&raquo;' %>

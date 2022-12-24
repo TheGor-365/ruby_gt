@@ -5,9 +5,19 @@
         <div class="col-12">
           <div>
             <small>
-              <strong class="text-muted">Technology |</strong> <%= guide.language.name %>
+              <strong class="text-muted">Technology</strong>&emsp;&emsp;<span class="badge bg-nightsky p-1 shadow"><%= guide.language.name %></span>
             </small>
           </div>
+          <div>
+            <small>
+              <% if guide.path.nil? %>
+                <strong class="text-muted">Directory</strong>&emsp;&emsp;&emsp;<span class="badge bg-nightsky p-1 shadow">no path</span>
+              <% else %>
+                <strong class="text-muted">Directory</strong>&emsp;&emsp;&emsp;<span class="badge bg-nightsky p-1 shadow"><%= guide.path %></span>
+              <% end %>
+            </small>
+          </div>
+          <br>
           <pre class="hljs">
             <code id="copy_txt" class="hljs <%= guide.language.name %> rounded"><%= guide.body %></code>
           </pre>
@@ -15,11 +25,11 @@
       </div>
     </div>
 
-    <div class="accordion card shadow bg-light rounded" id="guide-accordion">
+    <div class="accordion card shadow bg-description rounded mt-5" id="guide-accordion">
       <div class="accordion-item">
-        <h1 class="accordion-header bg-secondary" id="headingTwo">
+        <h1 class="accordion-header bg-description" id="headingTwo">
           <button
-            class="accordion-button collapsed display-5 bg-light"
+            class="accordion-button collapsed display-5  bg-description"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#collapseTwo"
@@ -35,7 +45,7 @@
           aria-labelledby="headingTwo"
           data-bs-parent="#guide-accordion"
         >
-          <div class="accordion-body">
+          <div class="accordion-body bg-description">
             <%= guide.description.present? ? (guide.description) : (render 'guides/no_description') %>
           </div>
         </div>
@@ -48,19 +58,29 @@
       <div class="col-12">
         <div>
           <small>
-            <strong class="text-muted">Technology |</strong> <%= guide_code.lang.name %>
+            <strong class="text-muted">Technology</strong>&emsp;&emsp;<span class="badge bg-nightsky p-1 shadow"><%= guide_code.lang.name %></span>
           </small>
         </div>
+        <div>
+          <small>
+            <% if guide_code.path.nil? %>
+              <strong class="text-muted">Directory</strong>&emsp;&emsp;&emsp;<span class="badge bg-nightsky p-1 shadow">no path</span>
+            <% else %>
+              <strong class="text-muted">Directory</strong>&emsp;&emsp;&emsp;<span class="badge bg-nightsky p-1 shadow"><%= guide_code.path %></span>
+            <% end %>
+          </small>
+        </div>
+        <br>
         <pre class="hljs">
           <code class="hljs <%= guide_code.lang.name %> rounded"><%= guide_code.code %></code>
         </pre>
       </div>
 
-      <div class="accordion card shadow bg-light rounded" id="guide_code-accordion">
+      <div class="accordion card shadow bg-description rounded mt-5" id="guide_code-accordion">
         <div class="accordion-item">
-          <h1 class="accordion-header bg-secondary" id="headingTwo">
+          <h1 class="accordion-header bg-description" id="headingTwo">
             <button
-              class="accordion-button collapsed display-5 bg-light"
+              class="accordion-button collapsed display-5 bg-description"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#collapseTwo"
@@ -76,7 +96,7 @@
             aria-labelledby="headingTwo"
             data-bs-parent="#guide_code-accordion"
           >
-            <div class="accordion-body">
+            <div class="accordion-body bg-description">
               <%= guide_code.description.present? ? (guide_code.description) : (render 'guides/no_description') %>
             </div>
           </div>

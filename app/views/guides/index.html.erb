@@ -12,8 +12,7 @@
       <div class="p-5 mb-5 shadow card bg-skyblue">
         <div class="row">
           <div id="guide_<%= guide.id %>" class="card p-5 shadow bg-light display-6 text-muted col-12">
-            <%= guide.language.name.upcase %>
-             / GUIDES / <%= render html: guide.title %>
+            <%= guide.language.name.upcase %> / GUIDES / <%= render html: guide.title %>
           </div>
         </div>
         <div class="row">
@@ -26,7 +25,7 @@
     <% end %>
     <%= link_to "New guide", new_guide_path, class: "btn btn-sm btn-primary shadow d-grid gap-2 fixed-button col-8" %>
   </div>
-  
+
   <div class="col">
     <h1 class="display-6 mb-3 mt-5 text-muted text-center card shadow bg-dark p-5 me-2 header-nav">
       Filters

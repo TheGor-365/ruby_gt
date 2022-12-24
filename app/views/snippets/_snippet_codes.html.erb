@@ -1,9 +1,0 @@
-<% @snippet.snippet_codes.each do |snippet_code| %>
-  <div class="p-4 shadow col-8 mb-3 card mt-3 bg-secondary me-3">
-    <div class="col-12">
-      <pre>
-        <code class="hljs <%= @snippet.language.name %> rounded"><%= snippet_code.code %></code>
-      </pre>
-    </div>
-  </div>
-<% end %>

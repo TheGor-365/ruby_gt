@@ -1,8 +1,23 @@
 <div class="col-8">
-  <div class="p-4 shadow card mb-3 mt-3 bg-secondary me-3">
+  <div class="p-4 shadow card mb-3 mt-3 bg-light me-3">
     <div id="<%= dom_id snippet %>" class="col-12">
       <div class="row">
         <div class="col-12">
+          <div>
+            <small>
+              <strong class="text-muted">Technology</strong>&emsp;&emsp;<span class="badge bg-nightsky p-1 shadow"><%= snippet.language.name %></span>
+            </small>
+          </div>
+          <div>
+            <small>
+              <% if snippet.path.nil? %>
+                <strong class="text-muted">Directory</strong>&emsp;&emsp;&emsp;<span class="badge bg-nightsky p-1 shadow">no path</span>
+              <% else %>
+                <strong class="text-muted">Directory</strong>&emsp;&emsp;&emsp;<span class="badge bg-nightsky p-1 shadow"><%= snippet.path %></span>
+              <% end %>
+            </small>
+          </div>
+          <br>
           <pre class="hljs">
             <code class="hljs <%= snippet.language.name %> rounded"><%= snippet.body %></code>
           </pre>
@@ -10,11 +25,11 @@
       </div>
     </div>
 
-    <div class="accordion card shadow bg-light rounded" id="snippet-accordion">
+    <div class="accordion card shadow bg-description rounded mt-5" id="snippet-accordion">
       <div class="accordion-item">
-        <h1 class="accordion-header bg-secondary" id="headingTwo">
+        <h1 class="accordion-header bg-description" id="headingTwo">
           <button
-            class="accordion-button collapsed display-5 bg-light"
+            class="accordion-button collapsed display-5 bg-description"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#collapseTwo"
@@ -30,55 +45,16 @@
           aria-labelledby="headingTwo"
           data-bs-parent="#snippet-accordion"
         >
-          <div class="accordion-body">
+          <div class="accordion-body bg-description">
             <%= snippet.description.present? ? (snippet.description) : (render 'snippets/no_description') %>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  <% snippet.snippet_codes.each do |snippet_code| %>
-    <div class="p-4 shadow mb-3 card mt-3 bg-secondary me-3">
-      <div class="col-12">
-        <pre class="hljs">
-          <code class="hljs <%= snippet.language.name %> rounded"><%= snippet_code.code %></code>
-        </pre>
-      </div>
-
-      <div class="accordion card shadow bg-light rounded" id="snippet_code-accordion">
-        <div class="accordion-item">
-          <h1 class="accordion-header bg-secondary" id="headingTwo">
-            <button
-              class="accordion-button collapsed display-5 bg-light"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseTwo"
-              aria-expanded="false"
-              aria-controls="collapseTwo"
-            >
-              <span class="fw-bold"><%= snippet.title %></span>| | snippet description
-            </button>
-          </h1>
-          <div
-            id="collapseTwo"
-            class="accordion-collapse collapse"
-            aria-labelledby="headingTwo"
-            data-bs-parent="#snippet_code-accordion"
-          >
-            <div class="accordion-body">
-              <% snippet.snippet_descriptions.each do |snippet_description| %>
-                <%= snippet_description.description.present? ? (snippet_description.description) : (render 'snippets/no_description') %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  <% end %>
 </div>
 
-<div class="p-4 pt-5 shadow col-2 card mb-3 mt-3 bg-secondary me-3">
+<div class="p-4 pt-5 shadow col-2 card mb-3 mt-3 bg-light me-3">
   <% snippet.tags.each do |tag| %>
     <div>
       <%= link_to tag.name, snippets_path(tag: tag.name), class: "badge bg-secondary text-decoration-none shadow p-2 m-1" %>
@@ -86,7 +62,7 @@
   <% end %>
 </div>
 
-<div class="p-4 pt-5 shadow col card mb-3 mt-3 me-0 bg-secondary">
+<div class="p-4 pt-5 shadow col card mb-3 mt-3 me-0 bg-light">
   <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
     <%= link_to "Show", snippet, type: 'button', class: 'btn btn-sm btn-secondary shadow py-2' %>
     <%= link_to "Edit", edit_snippet_path(snippet), type: 'button', class: 'btn btn-sm btn-secondary shadow py-2' %>
