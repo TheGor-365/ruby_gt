@@ -64,14 +64,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_23_193109) do
     t.index ["lang_id"], name: "index_guide_codes_on_lang_id"
   end
 
-  create_table "guide_descriptions", force: :cascade do |t|
-    t.text "description"
-    t.bigint "guide_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["guide_id"], name: "index_guide_descriptions_on_guide_id"
-  end
-
   create_table "guides", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -95,31 +87,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_23_193109) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_languages_on_name"
-  end
-
-  create_table "rails_guides", force: :cascade do |t|
-    t.string "title"
-    t.string "author"
-    t.string "description"
-    t.string "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "snippet_codes", force: :cascade do |t|
-    t.text "code"
-    t.bigint "guide_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["guide_id"], name: "index_snippet_codes_on_guide_id"
-  end
-
-  create_table "snippet_descriptions", force: :cascade do |t|
-    t.text "description"
-    t.bigint "snippet_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["snippet_id"], name: "index_snippet_descriptions_on_snippet_id"
   end
 
   create_table "snippets", force: :cascade do |t|
@@ -162,10 +129,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_23_193109) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "guide_codes", "guides"
   add_foreign_key "guide_codes", "langs"
-  add_foreign_key "guide_descriptions", "guides"
   add_foreign_key "guides", "languages"
-  add_foreign_key "snippet_codes", "guides"
-  add_foreign_key "snippet_descriptions", "snippets"
   add_foreign_key "snippets", "languages"
   add_foreign_key "taggable_guides", "guides"
   add_foreign_key "taggable_guides", "tags"
