@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_23_193109) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_25_171703) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -98,6 +98,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_23_193109) do
     t.text "description"
     t.string "path"
     t.index ["language_id"], name: "index_snippets_on_language_id"
+  end
+
+  create_table "steps", force: :cascade do |t|
+    t.integer "number"
+    t.string "overview"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "stepable_type"
+    t.integer "stepable_id"
   end
 
   create_table "taggable_guides", force: :cascade do |t|

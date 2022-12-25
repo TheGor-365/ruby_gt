@@ -9,6 +9,8 @@ class Guide < ApplicationRecord
 
   has_rich_text :description
 
+  has_many :steps, as: :stepable
+
   def all_tags=(names)
     self.tags = names.split(',').map do |name|
       Tag.where(name: name.strip).first_or_create!

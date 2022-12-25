@@ -1,8 +1,18 @@
 <div class="col-8">
   <div class="p-4 shadow card mb-3 mt-3 bg-light me-3">
     <div id="<%= dom_id snippet %>" class="col-12">
-      <div class="row">
-        <div class="col-12">
+      <div class="row shadow p-3 mb-3 rounded bg-description">
+        <div class="col-4 p-2">
+          <div>
+            <small>
+              <strong class="text-muted">Step</strong>&emsp;&emsp;&emsp;&emsp;&emsp;
+              <span class="badge bg-nightsky p-1 shadow">
+                <% snippet.steps.each do |step| %>
+                  Step <%= step.number %>
+                <% end %>
+              </span>
+            </small>
+          </div>
           <div>
             <small>
               <strong class="text-muted">Technology</strong>&emsp;&emsp;<span class="badge bg-nightsky p-1 shadow"><%= snippet.language.name %></span>
@@ -18,10 +28,18 @@
             </small>
           </div>
           <br>
-          <pre class="hljs">
-            <code class="hljs <%= snippet.language.name %> rounded"><%= snippet.body %></code>
-          </pre>
         </div>
+        <div class="col-8 p-2">
+          <span class="text-muted">
+            <% snippet.steps.each do |step| %>
+              <small>Step <%= step.number %> overview</small>
+              <p><%= step.overview %></p>
+            <% end %>
+          </span>
+        </div>
+        <pre class="hljs">
+          <code class="hljs <%= snippet.language.name %> rounded"><%= snippet.body %></code>
+        </pre>
       </div>
     </div>
 
