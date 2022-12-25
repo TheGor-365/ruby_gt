@@ -48,6 +48,23 @@
             <li><a class="dropdown-item" href=<%= new_guide_path %> >Create new Guide</a></li>
           </ul>
         </li>
+        <li class="nav-item dropdown px-10">
+          <a
+            class="nav-link dropdown-toggle card p-2 m-1 bg-nightsky shadow px-10"
+            href="#"
+            id="dropdown08"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Snippets
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark shadow" aria-labelledby="dropdown08">
+            <li><%= link_to "Home", home_path, class: "dropdown-item" %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href=<%= snippets_path %> >Snippets</a></li>
+            <li><a class="dropdown-item" href=<%= new_snippet_path %> >Create new Snippet</a></li>
+          </ul>
+        </li>
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle card p-2 m-1 bg-nightsky shadow px-10"

@@ -203,10 +203,15 @@ textarea {
 }
 
 .dropdown-menu {
-  opacity: .95;
+  opacity: .99;
   background-color: #1F262B;
 }
 
 .pre {
   background-color: #282C34;
+}
+
+.dropdown-menu {
+  max-height: 500px !important;
+  overflow-y: scroll;
 }
