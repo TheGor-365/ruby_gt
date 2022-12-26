@@ -26,11 +26,16 @@
     </div>
 
     <div class="p-5 card shadow mb-3 bg-light">
+      <div class="p-5 col-8 card shadow mb-3 bg-light">
+        <%= f.label :add_step_short_overview, class: "form-label" %>
+        <%= f.text_area :overview, rows: 3, placeholder: "Enter short overview for snippet...", class: "form-control" %>
+      </div>
+
       <div class="p-5 col-8 card shadow mb-3 bg-light" id="guide_code">
         <%= f.label :guide_code, class: "form-label h5 text-muted" %>
 
         <%= f.label :Choose_technology, class: "form-label text-muted" %>
-        <%= collection_select :guide, :language_id, @languages, :id, :name, { class: 'form-select form-select-sm bg-dark' } %>
+        <%= collection_select :guide, :language_id, @languages, :id, :name, {}, {class: 'form-select'} %>
 
         <%= f.label :add_directory_path, class: "form-label text-muted mt-3" %>
         <%= f.text_field :path, placeholder: "Add code using directory...", class: "form-label text-muted mb-3" %>

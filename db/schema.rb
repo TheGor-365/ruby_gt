@@ -54,6 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_25_171703) do
 
   create_table "guide_codes", force: :cascade do |t|
     t.text "code"
+    t.string "overview"
     t.text "description"
     t.bigint "guide_id", null: false
     t.datetime "created_at", null: false
@@ -66,6 +67,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_25_171703) do
 
   create_table "guides", force: :cascade do |t|
     t.string "title"
+    t.string "overview"
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -91,6 +93,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_25_171703) do
 
   create_table "snippets", force: :cascade do |t|
     t.string "title"
+    t.string "overview"
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -102,7 +105,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_25_171703) do
 
   create_table "steps", force: :cascade do |t|
     t.integer "number"
-    t.string "overview"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "stepable_type"

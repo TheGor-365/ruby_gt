@@ -10,7 +10,9 @@ class GuideCodesController < ApplicationController
 
   def new
     @guide_code = GuideCode.new
+
     @guide_code.build_lang
+    @guide_code.steps.build
   end
 
   def create
@@ -53,8 +55,9 @@ class GuideCodesController < ApplicationController
   def guide_code_params
     params.require(:guide_code).permit(
       :code,
-      :description,
       :path,
+      :overview,
+      :description,
       :guide_id,
       :lang_id,
       :_destroy

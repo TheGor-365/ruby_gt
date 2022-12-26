@@ -1,5 +1,10 @@
 <div class='nested-fields'>
   <div class="p-5 card shadow mb-3 bg-light">
+    <div class="p-5 col-8 card shadow mb-3 bg-light">
+      <%= f.label :add_step_short_overview, class: "form-label" %>
+      <%= f.text_area :overview, rows: 3, placeholder: "Enter short overview for snippet...", class: "form-control" %>
+    </div>
+
     <div class="p-5 col-8 card shadow m-3 bg-light">
       <%= f.label :guide_code, class: "form-label h5 text-muted" %>
 

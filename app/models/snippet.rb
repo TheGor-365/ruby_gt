@@ -5,7 +5,9 @@ class Snippet < ApplicationRecord
 
   has_rich_text :description
 
-  has_many :steps, as: :stepable
+  has_many :steps, as: :stepable, dependent: :destroy
+
+  after_create :create_step
 
   def all_tags=(names)
     self.tags = names.split(',').map do |name|
@@ -15,5 +17,11 @@ class Snippet < ApplicationRecord
 
   def all_tags
     tags.map(&:name).join(', ')
+  end
+
+  private
+
+  def create_step
+    self.steps.create(number: 1)
   end
 end

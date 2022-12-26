@@ -33,7 +33,7 @@
           <span class="text-muted">
             <% guide.steps.each do |step| %>
               <small>Step <%= step.number %> overview</small>
-              <p><%= step.overview %></p>
+              <p><%= guide.overview %></p>
             <% end %>
           </span>
         </div>
@@ -106,7 +106,7 @@
             <span class="text-muted">
               <% guide_code.steps.each do |step| %>
                 <small>Step <%= step.number %> overview</small>
-                <p><%= step.overview %></p>
+                <p><%= guide_code.overview %></p>
               <% end %>
             </span>
           </div>

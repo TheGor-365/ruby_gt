@@ -13,6 +13,7 @@ class GuidesController < ApplicationController
     @guide = Guide.new
 
     @guide.guide_codes.build
+    @guide.steps.build
   end
 
   def create
@@ -78,17 +79,19 @@ class GuidesController < ApplicationController
   def guide_params
     params.require(:guide).permit(
       :title,
-      :body,
-      :all_tags,
-      :description,
       :path,
+      :overview,
+      :body,
+      :description,
+      :all_tags,
       :language_id,
       :_destroy,
       guide_codes_attributes: [
         :id,
         :code,
-        :description,
         :path,
+        :overview,
+        :description,
         :guide_id,
         :lang_id,
         :_destroy

@@ -11,6 +11,7 @@ class SnippetsController < ApplicationController
 
   def new
     @snippet = Snippet.new
+    @snippet.steps.build
   end
 
   def edit
@@ -80,10 +81,11 @@ class SnippetsController < ApplicationController
   def snippet_params
     params.require(:snippet).permit(
       :title,
-      :body,
       :path,
-      :all_tags,
+      :overview,
+      :body,
       :description,
+      :all_tags,
       :language_id
     )
   end
