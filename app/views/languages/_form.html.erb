@@ -1,26 +1,24 @@
-<%= form_for @language do |f| %>
+<div class="bg-dark">
+  <%= form_for @language do |f| %>
 
-  <% if @language.errors.any? %>
-    <div class="card p-5 shadow bg-white mb-5 border border-danger rouded">
-      <div id="error_explanation" class="danger">
-        <h5><%= pluralize(@language.errors.count, "error") %> <span class="text-muted">prohibited this language from being saved:</span></h5>
-        <ul>
-          <% @language.errors.each do |error| %>
-            <li><small class="text-muted"><%= error.full_message %></small></li>
-          <% end %>
-        </ul>
+    <% if @language.errors.any? %>
+      <div class="card p-5 shadow bg-error mb-5 rouded">
+        <h5><%= pluralize(@language.errors.count, "error") %> <span>prohibited this language from being saved:</span></h5>
+        <% @language.errors.each do |error| %>
+          <small><%= error.full_message %></small><hr>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="rounded card col-12 p-5 shadow mb-3 bg-backcard">
+      <div class="p-5 col-8 card shadow mb-3 bg-focuscard">
+        <%= f.label :add_technology, class: "form-label h5 text-light" %>
+        <%= f.text_field :name, placeholder: "Add technology name...", class: "form-control" %>
+      </div>
+
+      <div class="d-grid gap-2 col-8">
+        <%= f.submit class: "btn btn-sm btn-success mb-5 shadow" %>
       </div>
     </div>
   <% end %>
-
-  <div class="p-5 card shadow m-3 bg-skyblue">
-    <div class="p-5 col-8 card shadow mb-3 bg-light">
-      <%= f.label :add_technology, class: "form-label h5 text-muted" %>
-      <%= f.text_field :name, class: "form-control" %>
-    </div>
-
-    <div class="d-grid gap-2 col-8">
-      <%= f.submit class: "btn btn-sm btn-success mb-5 shadow" %>
-    </div>
-  </div>
-<% end %>
+</div>

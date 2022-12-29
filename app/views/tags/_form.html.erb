@@ -1,24 +1,24 @@
-<div class="bg-secondary">
-  <%= form_with(model: tag) do |form| %>
-    <% if tag.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(tag.errors.count, "error") %> prohibited this tag from being saved:</h2>
+<div class="bg-dark">
+  <%= form_for @tag do |form| %>
 
-      <ul>
-        <% tag.errors.each do |error| %>
-        <li><%= error.full_message %></li>
+    <% if @tag.errors.any? %>
+      <div class="card p-5 shadow bg-error mb-5 rouded">
+        <h5><%= pluralize(@tag.errors.count, "error") %> <span>prohibited this tag from being saved:</span></h5>
+        <% @tag.errors.each do |error| %>
+          <small><%= error.full_message %></small><hr>
         <% end %>
-      </ul>
-    </div>
+      </div>
     <% end %>
 
-    <div class="p-5 col-8 card shadow m-3">
-      <%= form.label :name, style: "display: block", class: "form-label" %>
-      <%= form.text_field :name, class: "form-control" %>
-    </div>
+    <div class="rounded card col-12 p-5 shadow mb-3 bg-backcard">
+      <div class="p-5 col-8 card shadow mb-3 bg-focuscard">
+        <%= form.label :tag_name, class: "form-label h6 text-light" %>
+        <%= form.text_field :name, placeholder: "Add tag name...", class: "form-control" %>
+      </div>
 
-    <div class="d-grid gap-2 col-8 m-3 mt-4">
-      <%= form.submit class: "btn btn-sm btn-success mb-5 shadow" %>
+      <div class="d-grid gap-2 col-8">
+        <%= form.submit class: "btn btn-sm btn-success mb-5 shadow" %>
+      </div>
     </div>
   <% end %>
 </div>

@@ -76,13 +76,14 @@
             Languages
           </a>
           <ul class="dropdown-menu dropdown-menu-dark shadow" aria-labelledby="dropdown09">
-            <% @languages.each do |lang| %>
-              <li><%= link_to lang.name, snippets_path(lang: lang.name), class: 'dropdown-item' %></li>
-            <% end %>
-            <li><hr class="dropdown-divider"></li>
             <li><%= link_to 'All languages', languages_path, class: 'dropdown-item' %></li>
             <li><hr class="dropdown-divider"></li>
             <li><%= link_to 'Add language', new_language_path, class: 'dropdown-item' %></li>
+            <li><hr class="dropdown-divider"></li>
+            
+            <% @languages.each do |lang| %>
+              <li><%= link_to lang.name, snippets_path(lang: lang.name), class: 'dropdown-item' %></li>
+            <% end %>
           </ul>
         </li>
       </ul>
