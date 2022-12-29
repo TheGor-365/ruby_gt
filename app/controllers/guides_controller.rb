@@ -7,24 +7,33 @@ class GuidesController < ApplicationController
   end
 
   def show; end
-  def edit; end
+
+  def edit
+    @guide.guide_codes.map do |guide_code|
+      @lang = guide_code.lang
+    end
+  end
 
   def new
     @guide = Guide.new
 
     @guide.guide_codes.build
     @guide.steps.build
+
+    @guide_code = GuideCode.new
+    @guide_code.build_lang
   end
 
   def create
+    @guide = Guide.new(guide_params)
+
+    @guide.guide_codes.map do |guide_code|
+      guide_code.build_lang
+      @lang = guide_code.lang
+      guide_code.lang = Lang.find(params[:guide_code][:lang_id])
+    end
+
     respond_to do |format|
-      @guide = Guide.new(guide_params)
-
-      @guide.guide_codes.each do |guide_code|
-        guide_code.build_lang
-        guide_code.lang = Lang.find(params[:guide_code][:lang_id])
-      end
-
       if @guide.save
         format.html { redirect_to guide_url(@guide) }
       else
@@ -34,6 +43,11 @@ class GuidesController < ApplicationController
   end
 
   def update
+    @guide.guide_codes.map do |guide_code|
+      @lang = guide_code.lang
+      guide_code.lang = Lang.find(params[:guide_code][:lang_id])
+    end
+
     respond_to do |format|
       if @guide.update(guide_params)
         format.html { redirect_to guide_url(@guide) }

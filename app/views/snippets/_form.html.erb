@@ -1,52 +1,52 @@
-<div class="bg-skyblue">
-  <%= form_with(model: snippet) do |f| %>
-    <% if snippet.errors.any? %>
-      <div style="color: red">
-        <h2><%= pluralize(snippet.errors.count, "error") %> prohibited this snippet from being saved:</h2>
-
-        <ul>
-          <% snippet.errors.each do |error| %>
-            <li><%= error.full_message %></li>
-          <% end %>
-        </ul>
+<div class="bg-dark">
+  <%= form_for @snippet do |f| %>
+    <% if @snippet.errors.any? %>
+      <div class="card p-5 shadow bg-error mb-5 rouded">
+        <h5><%= pluralize(@snippet.errors.count, "error") %> <span>prohibited this snippet from being saved:</span></h5>
+        <% @snippet.errors.each do |error| %>
+          <small><%= error.full_message %></small><hr>
+        <% end %>
       </div>
     <% end %>
 
-    <div class="row mb-3">
-      <div class="p-5 card col-6 shadow me-3 bg-light">
-        <%= f.label :title, class: "form-label" %>
-        <%= f.text_area :title, rows: 3, placeholder: "Add your snippet title...", class: "form-control" %>
-      </div>
-      <div class="p-5 card col shadow bg-light">
-        <%= f.label :Add_tags, class: "form-label" %>
-        <%= f.text_area :all_tags, rows: 3, placeholder: "Enter tags, separated by commas...", class: "form-control" %>
+    <div class="rounded card col-12 p-5 shadow mb-3 bg-backcard">
+      <div class="row">
+        <div class="p-5 card col-6 shadow me-3 bg-focuscard" id="snippet_title">
+          <%= f.label :title, class: "form-label h6 text-light" %>
+          <%= f.text_area :title, rows: 3, placeholder: "Add your snippet title...", class: "form-control" %>
+        </div>
+        <div class="p-5 card col shadow bg-focuscard">
+          <%= f.label :Add_tags, class: "form-label h6 text-light" %>
+          <%= f.text_area :all_tags, rows: 3, placeholder: "Enter tags, separated by commas...", class: "form-control" %>
+        </div>
       </div>
     </div>
 
-    <div class="p-5 card shadow mb-3 bg-light">
-      <div class="p-5 col-8 card shadow mb-3 bg-light">
-        <%= f.label :add_step_short_overview, class: "form-label" %>
+    <div class="p-5 card shadow mb-3 bg-backcard">
+      <div class="p-5 col-8 card shadow mb-3 bg-focuscard">
+        <%= f.label :add_step_short_overview, class: "form-label h6 text-light" %>
         <%= f.text_area :overview, rows: 3, placeholder: "Enter short overview for snippet...", class: "form-control" %>
       </div>
 
-      <div class="p-5 col-8 card shadow mb-3 bg-light">
-        <%= f.label :code, class: "form-label" %>
+      <div class="p-5 col-8 card shadow mb-3 bg-focuscard" id="snippet">
+        <%= f.label :code, class: "form-label h5 mb-3 text-light" %>
 
-        <%= f.label :Choose_technology, class: "form-label" %>
-        <%= collection_select(:snippet, :language_id, @languages, :id, :name, {}, {class: 'form-select'}) %>
+        <%= f.label :Choose_technology, class: "form-label text-muted" %>
+        <%= collection_select :snippet, :language_id, @languages, :id, :name, {}, { class: 'form-control' } %>
 
-        <%= f.label :add_directory_path, class: "form-label mt-3" %>
+        <%= f.label :add_directory_path, class: "form-label text-muted mt-3" %>
         <%= f.text_field :path, placeholder: "Add code using directory...", class: "form-control mb-3" %>
 
+        <%= f.label :guide_code_snippet, class: "form-label h6 mb-3 mt-3 text-light" %>
         <%= f.text_area :body, placeholder: "Add your code snippet...", rows: 10, class: "form-control" %>
       </div>
 
-      <div class="p-5 col-8 card shadow mb-3 bg-light">
+      <div class="p-5 col-8 card shadow mb-3 bg-focuscard" id="snippet_description">
         <%= f.label :description, class: "form-label" %>
         <%= f.rich_text_area :description, placeholder: "Add short description of pasted snippet...", class: "form-control" %>
       </div>
 
-      <div class="d-grid gap-2 col-8 m-3 mt-4">
+      <div class="d-grid gap-2 col-8 mb-3 mt-4">
         <%= f.submit class: "btn btn-sm btn-success mb-5 shadow" %>
       </div>
     </div>

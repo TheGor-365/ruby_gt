@@ -15,7 +15,7 @@
 
 .card:hover {
   // transform: scale(1.005);
-  filter: brightness(102%);
+  // filter: brightness(102%);
 }
 
 
@@ -145,39 +145,40 @@ textarea {
   z-index: 1;
 }
 
+input[type="text"], textarea, select {
+  background-color : #C5E7F5 !important;
+}
+
 
 
 // ---------------------------------------------------------------------------------------------------------------------------
 // CUSTOM BACKGROUND COLORS
 // ---------------------------------------------------------------------------------------------------------------------------
 
-.bg-bootstrap {
-  background-color: #7430F9;
-}
 
-.bg-darlbar {
-  background-color: #793A19;
-}
-
-.bg-nightsky {
-  background-color: #063A50;
-}
-
-.bg-skyblue {
-  background-color: #87CEEB;
-}
-
-.bg-pinksome {
-  background-color: #DB6362;
-}
-
-.bg-dark {
-  background-color: #1F262B;
-}
-
-.bg-description {
-  background-color: #C5E7F5;
-}
+.bg-darlbar { background-color: #793A19; }
+.bg-pinksome { background-color: #DB6362; }
+.bg-error { background-color: #CF6679; }
+.bg-nightsky { background-color: #063A50; }
+.bg-skyblue { background-color: #87CEEB; }
+.bg-description { background-color: #C5E7F5; }
+.bg-bootstrap { background-color: #7430F9; }
+.bg-dbootstrap { background-color: #332940; }
+.bg-purple { background-color: #BB86FC; }
+.bg-save { background-color: #03DAC5; }
+.bg-linfocard { background-color: #DBB2FF; }
+.bg-lightboot { background-color: #C89EFC; }
+.bg-backcard { background-color: #1D2024; }
+.bg-focuscard { background-color: #2D3338; }
+.bg-dark { background-color: #1F262B; }
+.bg-darkbrown { background-color: #1A120B; }
+.bg-material { background-color: #292929; }
+.bg-materialo { background-color: #2E2E2E; }
+.bg-onedi { background-color: #1D1D1D; }
+.bg-watdark { background-color: #121212; }
+.bg-dragget { background-color: #242424; }
+.bg-activedark { background-color: #413D46; }
+.bg-lightdark { background-color: #373737; }
 
 
 
@@ -214,4 +215,13 @@ textarea {
 .dropdown-menu {
   max-height: 500px !important;
   overflow-y: scroll;
+}
+
+
+// ---------------------------------------------------------------------------------------------------------------------------
+// TEXT STYLES
+// ---------------------------------------------------------------------------------------------------------------------------
+
+label {
+  --bs-text-opacity: .75 !important;
 }

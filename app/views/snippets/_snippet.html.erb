@@ -1,5 +1,5 @@
 <div class="col-8">
-  <div class="p-4 shadow card mb-3 mt-3 bg-light me-3">
+  <div class="p-4 shadow card mb-3 mt-3 bg-focuscard me-3">
     <div id="<%= dom_id snippet %>" class="col-12">
       <div class="row shadow p-3 mb-3 rounded bg-description">
         <div class="col-4 p-2">
@@ -72,18 +72,18 @@
   </div>
 </div>
 
-<div class="p-4 pt-5 shadow col-2 card mb-3 mt-3 bg-light me-3">
+<div class="p-4 pt-5 shadow col-2 card mb-3 mt-3 bg-description me-3">
   <% snippet.tags.each do |tag| %>
     <div>
-      <%= link_to tag.name, snippets_path(tag: tag.name), class: "badge bg-secondary text-decoration-none shadow p-2 m-1" %>
+      <%= link_to tag.name, snippets_path(tag: tag.name), class: "badge bg-focuscard text-decoration-none shadow p-2 m-1" %>
     </div>
   <% end %>
 </div>
 
-<div class="p-4 pt-5 shadow col card mb-3 mt-3 me-0 bg-light">
+<div class="p-4 pt-5 shadow col card mb-3 mt-3 me-0 bg-description">
   <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-    <%= link_to "Show", snippet, type: 'button', class: 'btn btn-sm btn-secondary shadow py-2' %>
-    <%= link_to "Edit", edit_snippet_path(snippet), type: 'button', class: 'btn btn-sm btn-secondary shadow py-2' %>
-    <%= link_to "Delete", snippet, method: :delete, data: { confirm: "Are you shure?" }, type: 'button', class: 'btn btn-sm btn-secondary shadow py-2' %>
+    <%= link_to "Show", snippet, type: 'button', class: 'btn btn-sm shadow py-2' %>
+    <%= link_to "Edit", edit_snippet_path(snippet), type: 'button', class: 'btn btn-sm shadow py-2' %>
+    <%= link_to "Delete", snippet, method: :delete, data: { confirm: "Are you shure?" }, type: 'button', class: 'btn btn-sm shadow py-2' %>
   </div>
 </div>

@@ -1,5 +1,5 @@
 trix-editor {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 20px;
   margin: 0;
   padding: 30px;
@@ -22,9 +22,9 @@ trix-toolbar .trix-button-group {
   display: flex;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 30px;
-  border: 1px solid #bbb;
-  border-top-color: #ccc;
-  // border-bottom-color: #888;
+  border: 1px solid #03DAC5;
+  border-top-color: #03DAC5;
+  border-bottom-color: #03DAC5;
   border-radius: 5px;
 }
 
@@ -59,9 +59,9 @@ trix-toolbar .trix-button {
   margin: 0;
   outline: none;
   border: none;
-  // border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #03DAC5;
   border-radius: 0;
-  background: transparent;
+  background: #03DAC5;
 }
 
 trix-toolbar .trix-button:not(:first-child) {
@@ -69,12 +69,12 @@ trix-toolbar .trix-button:not(:first-child) {
 }
 
 trix-toolbar .trix-button.trix-active {
-  background: #cbeefa;
+  // background: #028578;
   color: black;
 }
 
 trix-toolbar .trix-button:hover {
-  background: #DDDDDD;
+  background: #8DEAE1;
   color: black;
   transition: 0.3s;
 }
@@ -116,7 +116,7 @@ trix-toolbar .trix-button--icon::before {
   right: 0;
   bottom: 0;
   left: 0;
-  opacity: 0.5;
+  opacity: 0.9;
   content: "";
   background-position: center;
   background-repeat: no-repeat;
@@ -131,11 +131,11 @@ trix-toolbar .trix-button--icon::before {
 }
 
 trix-toolbar .trix-button--icon.trix-active::before {
-  opacity: 1;
+  opacity: 0.9;
 }
 
 trix-toolbar .trix-button--icon:disabled::before {
-  opacity: 0.125;
+  opacity: 0.5;
 }
 
 trix-toolbar .trix-button--icon-attach::before {
@@ -207,7 +207,7 @@ trix-toolbar .trix-dialog {
   right: 0;
   font-size: 0.75em;
   padding: 15px 10px;
-  background: #fff;
+  background: #C5E7F5;
   box-shadow: 0 0.3em 1em #ccc;
   border-top: 2px solid #888;
   border-radius: 5px;
@@ -221,7 +221,7 @@ trix-toolbar .trix-input--dialog {
   margin: 0 10px 0 0;
   border-radius: 3px;
   border: 1px solid #bbb;
-  background-color: #fff;
+  background-color: #C5E7F5;
   box-shadow: none;
   outline: none;
   -webkit-appearance: none;
@@ -265,29 +265,29 @@ trix-editor [data-trix-mutable]:not(.attachment__caption-editor) {
 
 trix-editor [data-trix-mutable]::-moz-selection,
 trix-editor [data-trix-cursor-target]::-moz-selection, trix-editor [data-trix-mutable] ::-moz-selection {
-  background: none;
+  background-color: #C5E7F5;
 }
 
 trix-editor [data-trix-mutable]::selection,
 trix-editor [data-trix-cursor-target]::selection, trix-editor [data-trix-mutable] ::selection {
-  background: none;
+  background-color: #C5E7F5;
 }
 
 trix-editor [data-trix-mutable].attachment__caption-editor:focus::-moz-selection {
-  background: highlight;
+  background-color: #C5E7F5;
 }
 
 trix-editor [data-trix-mutable].attachment__caption-editor:focus::selection {
-  background: highlight;
+  background-color: #C5E7F5;
 }
 
 trix-editor [data-trix-mutable].attachment.attachment--file {
-  box-shadow: 0 0 0 2px highlight;
+  box-shadow: 0 0 0 2px #C5E7F5;
   border-color: transparent;
 }
 
 trix-editor [data-trix-mutable].attachment img {
-  box-shadow: 0 0 0 2px highlight;
+  box-shadow: 0 0 0 2px #C5E7F5;
 }
 
 trix-editor .attachment {
@@ -358,7 +358,7 @@ trix-editor .trix-button {
   outline: none;
   border: none;
   border-radius: 0;
-  background: transparent;
+  // background: transparent;
 }
 
 trix-editor .trix-button:not(:first-child) {
@@ -382,8 +382,8 @@ trix-editor .trix-button--remove {
   height: 1.8em;
   line-height: 1.8em;
   border-radius: 50%;
-  background-color: #fff;
-  border: 2px solid highlight;
+  background-color: #C5E7F5;
+  border: 2px solid #C5E7F5;
   box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.25);
 }
 
@@ -407,7 +407,7 @@ trix-editor .trix-button--remove:hover {
 }
 
 trix-editor .trix-button--remove:hover::before {
-  opacity: 1;
+  opacity: .9;
 }
 
 trix-editor .attachment__metadata-container {
@@ -422,9 +422,9 @@ trix-editor .attachment__metadata {
   max-width: 90%;
   padding: 0.1em 0.6em;
   font-size: 0.8em;
-  color: #fff;
+  color: #C5E7F5;
   background-color: rgba(0, 0, 0, 0.7);
-  border-radius: 3px;
+  border-radius: 5px;
 }
 
 trix-editor .attachment__metadata .attachment__name {
@@ -498,7 +498,7 @@ trix-editor .attachment__metadata .attachment__size {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 5px;
   margin: 10px;
-  border-radius: 1%;
+  border-radius: 5px;
 }
 
 img {
@@ -507,7 +507,7 @@ img {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 5px;
   margin-bottom: 10px;
-  border-radius: 1%;
+  border-radius: 5px;
 }
 
 .trix-content .attachment {
@@ -571,5 +571,5 @@ img {
 }
 
 trix-editor {
-  // height: 20em !important;
+  background-color: #C5E7F5 !important;
 }

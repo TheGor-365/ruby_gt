@@ -9,10 +9,12 @@
     </h1>
 
     <% @snippets.each do |snippet| %>
-      <div class="p-5 mb-5 shadow card bg-skyblue">
+      <div class="p-5 mb-5 shadow card bg-dark">
         <div class="row">
-          <div id="snippet_<%= snippet.id %>" class="card p-5 shadow bg-light display-6 text-muted col-12">
-            <%= snippet.language.name.upcase %> / SNIPPETS / <%= render html: snippet.title %>
+          <div id="snippet_<%= snippet.id %>" class="card p-5 shadow bg-description col-12">
+            <p>
+              <%= snippet.language.name.upcase %> / SNIPPETS / <%= render html: snippet.title %>
+            </p>
           </div>
         </div>
         <div class="row">
