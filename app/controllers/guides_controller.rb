@@ -25,14 +25,11 @@ class GuidesController < ApplicationController
     @guide = Guide.new(guide_params)
 
     @guide.guide_codes.map do |guide_code|
-      @guide_code = guide_code
-      @guide_code.build_lang
-      @guide_code.lang = Lang.find(params[:guide_code][:lang_id])
+      guide_code.lang = Lang.find(params[:guide_code][:lang_id])
     end
 
     respond_to do |format|
       if @guide.save
-        @guide_code.lang.save
         format.html { redirect_to guide_url(@guide) }
       else
         format.html { render :new }
@@ -41,10 +38,6 @@ class GuidesController < ApplicationController
   end
 
   def update
-    @guide.guide_codes.map do |guide_code|
-      guide_code.lang = Lang.find(params[:guide_code][:lang_id])
-    end
-
     respond_to do |format|
       if @guide.update(guide_params)
         format.html { redirect_to guide_url(@guide) }
