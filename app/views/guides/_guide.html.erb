@@ -2,7 +2,7 @@
   <div class="p-4 shadow card mb-3 mt-3 bg-focuscard me-3">
     <div id="<%= dom_id guide %>" class="col-12">
       <div class="row shadow p-3 mb-3 rounded bg-description">
-        <div class="col-4 p-2">
+        <div class="col-5 p-2">
           <div>
             <small>
               <strong class="text-muted">Step</strong>&emsp;&emsp;&emsp;&emsp;&emsp;
@@ -29,8 +29,8 @@
           </div>
           <br>
         </div>
-        <div class="col-8 p-2">
-          <span class="text-muted">
+        <div class="col-7 p-2">
+          <span>
             <% guide.steps.each do |step| %>
               <small>Step <%= step.number %> overview</small>
               <p><%= guide.overview %></p>
@@ -75,7 +75,7 @@
     <div class="p-4 shadow mb-3 card mt-3 bg-focuscard me-3">
       <div class="col-12">
         <div class="row shadow p-3 mb-3 rounded bg-description">
-          <div class="col-4 p-2">
+          <div class="col-5 p-2">
             <div>
               <small>
                 <strong class="text-muted">Step</strong>&emsp;&emsp;&emsp;&emsp;&emsp;
@@ -102,8 +102,8 @@
             </div>
             <br>
           </div>
-          <div class="col-8 p-2">
-            <span class="text-muted">
+          <div class="col-7 p-2">
+            <span>
               <% guide_code.steps.each do |step| %>
                 <small>Step <%= step.number %> overview</small>
                 <p><%= guide_code.overview %></p>

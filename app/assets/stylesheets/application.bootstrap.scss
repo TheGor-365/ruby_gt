@@ -1,6 +1,5 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
-// @import 'actiontext.css';
 @import "./at.scss";
 
 
@@ -72,7 +71,6 @@ pre[class*="hljs"] {
   padding: 1.75rem 0 1.75rem 1rem;
   background-color: #1F262B !important;
   border-radius: 5px;
-  // box-shadow: 5px 5px 5px 5px black;
   box-shadow: 0 0.5rem 1rem black !important;
 }
 
@@ -82,17 +80,17 @@ pre[class*="hljs"] button {
   right: 5px;
 
   font-size: 0.9rem;
-  padding: 0.15rem;
-  background-color: #828282;
+  padding: 0.25rem;
+  background-color: #C5E7F5;
 
-  border: ridge 1px #7b7b7c;
+  border: ridge 1px #C5E7F5;
   border-radius: 5px;
   text-shadow: #c4c4c4 0 0 2px;
 }
 
 pre[class*="hljs"] button:hover {
   cursor: pointer;
-  background-color: #bcbabb;
+  background-color: #81C5E0;
 }
 
 code {
