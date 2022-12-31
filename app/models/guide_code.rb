@@ -1,7 +1,9 @@
 class GuideCode < ApplicationRecord
-  belongs_to :guide, inverse_of: :guide_codes, optional: true
+  belongs_to :guide
   belongs_to :lang
+
   validates_presence_of :guide
+  validates_presence_of :lang
 
   has_many :steps, as: :stepable, dependent: :destroy
 

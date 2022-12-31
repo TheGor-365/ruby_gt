@@ -5,7 +5,7 @@ class Guide < ApplicationRecord
   belongs_to :language
 
   has_many :guide_codes, inverse_of: :guide, dependent: :destroy
-  accepts_nested_attributes_for :guide_codes, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :guide_codes, reject_if: :all_blank, allow_destroy: true
 
   has_rich_text :description
 

@@ -5,8 +5,9 @@
         <div class="col-5 p-2">
           <div>
             <small>
-              <strong class="text-muted">Step</strong>&emsp;&emsp;&emsp;&emsp;&emsp;
-              <span class="badge bg-nightsky p-1 shadow">
+              <strong class="text-muted">Step</strong>
+              &emsp;&emsp;&emsp;&emsp;&emsp;
+              <span class="badge bg-focuscard text-decoration-none shadow p-2 ms-2 m-1">
                 <% guide.steps.each do |step| %>
                   Step <%= step.number %>
                 <% end %>
@@ -15,25 +16,43 @@
           </div>
           <div>
             <small>
-              <strong class="text-muted">Technology</strong>&emsp;&emsp;<span class="badge bg-nightsky p-1 shadow"><%= guide.language.name %></span>
+              <strong class="text-muted">
+                Technology
+              </strong>
+              &emsp;&emsp;
+              <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
+                <%= guide.language.name %>
+              </span>
             </small>
           </div>
           <div>
             <small>
               <% if guide.path.nil? %>
-                <strong class="text-muted">Directory</strong>&emsp;&emsp;&emsp;<span class="badge bg-nightsky p-1 shadow">no path</span>
+                <strong class="text-muted">
+                  Directory
+                </strong>
+                &emsp;&emsp;&emsp;
+                <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
+                  no path
+                </span>
               <% else %>
-                <strong class="text-muted">Directory</strong>&emsp;&emsp;&emsp;<span class="badge bg-nightsky p-1 shadow"><%= guide.path %></span>
+                <strong class="text-muted">
+                  Directory
+                </strong>
+                &emsp;&emsp;&emsp;
+                <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
+                  <%= guide.path %>
+                </span>
               <% end %>
             </small>
           </div>
           <br>
         </div>
-        <div class="col-7 p-2">
+        <div class="col-7 px-4 py-2 mb-2 shadow-lg rounded">
           <span>
             <% guide.steps.each do |step| %>
-              <small>Step <%= step.number %> overview</small>
-              <p><%= guide.overview %></p>
+              <p class="bold">Step <%= step.number %> overview</p>
+              <small><%= guide.overview %></small>
             <% end %>
           </span>
         </div>
@@ -78,8 +97,9 @@
           <div class="col-5 p-2">
             <div>
               <small>
-                <strong class="text-muted">Step</strong>&emsp;&emsp;&emsp;&emsp;&emsp;
-                <span class="badge bg-nightsky p-1 shadow">
+                <strong class="text-muted">Step</strong>
+                &emsp;&emsp;&emsp;&emsp;&emsp;
+                <span class="badge bg-focuscard text-decoration-none shadow p-2 ms-2 m-1">
                   <% guide_code.steps.each do |step| %>
                     Step <%= step.number %>
                   <% end %>
@@ -88,25 +108,43 @@
             </div>
             <div>
               <small>
-                <strong class="text-muted">Technology</strong>&emsp;&emsp;<span class="badge bg-nightsky p-1 shadow"><%= guide_code.lang.name %></span>
+                <strong class="text-muted">
+                  Technology
+                </strong>
+                &emsp;&emsp;
+                <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
+                  <%= guide_code.lang.name %>
+                </span>
               </small>
             </div>
             <div>
               <small>
                 <% if guide_code.path.nil? %>
-                  <strong class="text-muted">Directory</strong>&emsp;&emsp;&emsp;<span class="badge bg-nightsky p-1 shadow">no path</span>
+                  <strong class="text-muted">
+                    Directory
+                  </strong>
+                  &emsp;&emsp;&emsp;
+                  <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
+                    no path
+                  </span>
                 <% else %>
-                  <strong class="text-muted">Directory</strong>&emsp;&emsp;&emsp;<span class="badge bg-nightsky p-1 shadow"><%= guide_code.path %></span>
+                  <strong class="text-muted">
+                    Directory
+                  </strong>
+                  &emsp;&emsp;&emsp;
+                  <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
+                    <%= guide_code.path %>
+                  </span>
                 <% end %>
               </small>
             </div>
             <br>
           </div>
-          <div class="col-7 p-2">
+          <div class="col-7 py-2 px-4 mb-2 shadow-lg rounded">
             <span>
               <% guide_code.steps.each do |step| %>
-                <small>Step <%= step.number %> overview</small>
-                <p><%= guide_code.overview %></p>
+                <p>Step <%= step.number %> overview</p>
+                <small><%= guide_code.overview %></small>
               <% end %>
             </span>
           </div>

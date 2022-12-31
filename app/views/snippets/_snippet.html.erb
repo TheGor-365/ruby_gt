@@ -1,12 +1,13 @@
 <div class="col-8">
-  <div class="p-4 shadow card mb-3 mt-3 bg-focuscard me-3">
+  <div class="p-4 shadow card mb-3 mt-3 bg-skyblue me-3">
     <div id="<%= dom_id snippet %>" class="col-12">
       <div class="row shadow p-3 mb-3 rounded bg-description">
         <div class="col-5 p-2">
           <div>
             <small>
-              <strong class="text-muted">Step</strong>&emsp;&emsp;&emsp;&emsp;&emsp;
-              <span class="badge bg-nightsky p-1 shadow">
+              <strong class="text-muted">Step</strong>
+              &emsp;&emsp;&emsp;&emsp;&emsp;
+              <span class="badge bg-focuscard text-decoration-none shadow p-2 ms-2 m-1">
                 <% snippet.steps.each do |step| %>
                   Step <%= step.number %>
                 <% end %>
@@ -15,21 +16,39 @@
           </div>
           <div>
             <small>
-              <strong class="text-muted">Technology</strong>&emsp;&emsp;<span class="badge bg-nightsky p-1 shadow"><%= snippet.language.name %></span>
+              <strong class="text-muted">
+                Technology
+              </strong>
+              &emsp;&emsp;
+              <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
+                <%= snippet.language.name %>
+              </span>
             </small>
           </div>
           <div>
             <small>
               <% if snippet.path.nil? %>
-                <strong class="text-muted">Directory</strong>&emsp;&emsp;&emsp;<span class="badge bg-nightsky p-1 shadow">no path</span>
+                <strong class="text-muted">
+                  Directory
+                </strong>
+                &emsp;&emsp;&emsp;
+                <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
+                  no path
+                </span>
               <% else %>
-                <strong class="text-muted">Directory</strong>&emsp;&emsp;&emsp;<span class="badge bg-nightsky p-1 shadow"><%= snippet.path %></span>
+                <strong class="text-muted">
+                  Directory
+                </strong>
+                &emsp;&emsp;&emsp;
+                <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
+                  <%= snippet.path %>
+                </span>
               <% end %>
             </small>
           </div>
           <br>
         </div>
-        <div class="col-7 p-2">
+        <div class="col-7 px-4 py-2 mb-2 shadow-lg rounded">
           <span>
             <% snippet.steps.each do |step| %>
               <small>Step <%= step.number %> overview</small>

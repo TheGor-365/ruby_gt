@@ -52,13 +52,15 @@
       <%= f.fields_for :guide_codes do |guide_code| %>
         <%= render 'guide_code_fields', :f => guide_code %>
       <% end %>
-      <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-        <%= link_to_add_association 'Add Guide', f, :guide_codes, { class: "btn btn-sm btn-success my-2 shadow" } %>
-      </div>
+      <!-- <div class="d-grid gap-2">
+      </div> -->
     </div>
 
-    <div class="d-grid gap-2">
-      <%= f.submit class: "btn btn-sm btn-success mb-5 shadow" %>
+    <div class="row">      
+      <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+        <%= link_to_add_association 'Add Guide', f, :guide_codes, { class: "btn btn-sm btn-primary mb-5 shadow" } %>
+        <%= f.submit class: "btn btn-sm btn-success mb-5 shadow" %>
+      </div>
     </div>
   <% end %>
 </div>
