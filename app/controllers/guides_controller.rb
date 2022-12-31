@@ -24,10 +24,10 @@ class GuidesController < ApplicationController
     @guide = Guide.new guide_params
     @guide_code = GuideCode.new params[:guide_codes_attributes]
 
-    # @guide.guide_codes.map do |guide_code|
-    #   lang = Lang.find_by_id params[:id]
-    #   guide_code.lang = Lang.find(params[:guide_code][:lang_id])
-    # end
+    @guide.guide_codes.map do |guide_code|
+      lang = Lang.find_by_id params[:id]
+      guide_code.lang = Lang.find(params[:guide_code][:lang_id])
+    end
 
     respond_to do |format|
       if @guide.save
