@@ -22,6 +22,9 @@
       <%= f.label :description, class: "form-label h6 text-light mb-3" %>
       <%= f.rich_text_area :description, placeholder: "Add short description of pasted guide...", class: "form-control" %>
     </div>
-    <%= link_to_remove_association "Remove Guide Code", f, { class: "btn btn-sm btn-danger my-2 shadow" } %>
+
+    <div class="row">
+      <%= link_to_remove_association "Remove Guide Code", f, { class: "btn btn-sm btn-danger my-2 shadow col-8" } %>
+    </div>
   </div>
 </div>
