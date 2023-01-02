@@ -13,19 +13,12 @@ class GuidesController < ApplicationController
 
   def new
     @guide = Guide.new
-
-    @guide.guide_codes.build
-    @guide.steps.build
-
-    @guide_code = GuideCode.new
   end
 
   def create
     @guide = Guide.new guide_params
-    @guide_code = GuideCode.new params[:guide_codes_attributes]
 
-    @guide.guide_codes.map do |guide_code|
-      lang = Lang.find_by_id params[:id]
+    @guide.guide_codes.each do |guide_code|
       guide_code.lang = Lang.find(params[:guide_code][:lang_id])
     end
 

@@ -32,7 +32,7 @@
         <%= f.label :code, class: "form-label h5 mb-3 text-light" %>
 
         <%= f.label :Choose_technology, class: "form-label text-muted" %>
-        <%= collection_select :snippet, :language_id, @languages, :id, :name, {}, { class: 'form-control' } %>
+        <%= collection_select(:snippet, :language_id, @languages, :id, :name, { include_blank: "Select Technology" }, { class: 'form-control' }) %>
 
         <%= f.label :add_directory_path, class: "form-label text-muted mt-3" %>
         <%= f.text_field :path, placeholder: "Add code using directory...", class: "form-control mb-3" %>
