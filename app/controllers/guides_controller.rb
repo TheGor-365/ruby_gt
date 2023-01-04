@@ -17,13 +17,9 @@ class GuidesController < ApplicationController
 
   def create
     @guide = Guide.new guide_params
-
-    @guide.guide_codes.each do |guide_code|
-      guide_code.lang = Lang.find(params[:guide_code][:lang_id])
-    end
-
+    
     respond_to do |format|
-      if @guide.save
+      if @guide.save && @guide.guide_codes.each { |guide_code| guide_code.save }
         format.html { redirect_to guide_url(@guide) }
       else
         format.html { render :new }
