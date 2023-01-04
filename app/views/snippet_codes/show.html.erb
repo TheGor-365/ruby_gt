@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @snippet_code %>
+
+<div>
+  <%= link_to "Edit this snippet code", edit_snippet_code_path(@snippet_code) %> |
+  <%= link_to "Back to snippet codes", snippet_codes_path %>
+
+  <%= button_to "Destroy this snippet code", @snippet_code, method: :delete %>
+</div>

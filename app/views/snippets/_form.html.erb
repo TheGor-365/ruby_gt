@@ -1,5 +1,6 @@
 <div class="bg-dark">
   <%= form_for @snippet do |f| %>
+
     <% if @snippet.errors.any? %>
       <div class="card p-5 shadow bg-error mb-5 rouded">
         <h5><%= pluralize(@snippet.errors.count, "error") %> <span>prohibited this snippet from being saved:</span></h5>
@@ -24,7 +25,7 @@
 
     <div class="p-5 card shadow mb-3 bg-backcard">
       <div class="p-5 col-8 card shadow mb-3 bg-focuscard">
-        <%= f.label :add_step_short_overview, class: "form-label h6 text-light" %>
+        <%= f.label :add_short_overview, class: "form-label h6 text-light" %>
         <%= f.text_area :overview, rows: 3, placeholder: "Enter short overview for snippet...", class: "form-control" %>
       </div>
 
@@ -32,7 +33,7 @@
         <%= f.label :code, class: "form-label h5 mb-3 text-light" %>
 
         <%= f.label :Choose_technology, class: "form-label text-muted" %>
-        <%= collection_select(:snippet, :language_id, @languages, :id, :name, { include_blank: "Select Technology" }, { class: 'form-control' }) %>
+        <%= f.collection_select(:language_id, @languages, :id, :name, { include_blank: "Select Technology" }, class: 'form-control') %>
 
         <%= f.label :add_directory_path, class: "form-label text-muted mt-3" %>
         <%= f.text_field :path, placeholder: "Add code using directory...", class: "form-control mb-3" %>
@@ -42,11 +43,20 @@
       </div>
 
       <div class="p-5 col-8 card shadow mb-3 bg-focuscard" id="snippet_description">
-        <%= f.label :description, class: "form-label" %>
+        <%= f.label :description, class: "form-label h6 text-light mb-3" %>
         <%= f.rich_text_area :description, placeholder: "Add short description of pasted snippet...", class: "form-control" %>
       </div>
+    </div>
 
-      <div class="d-grid gap-2 col-8 mb-3 mt-4">
+    <div id='snippet_codes'>
+      <%= f.fields_for :snippet_codes do |snippet_code| %>
+        <%= render 'snippet_code_fields', :f => snippet_code %>
+      <% end %>
+    </div>
+
+    <div class="row">
+      <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+        <%= link_to_add_association 'Add Snippet', f, :snippet_codes, { class: "btn btn-sm btn-primary mb-5 shadow" } %>
         <%= f.submit class: "btn btn-sm btn-success mb-5 shadow" %>
       </div>
     </div>

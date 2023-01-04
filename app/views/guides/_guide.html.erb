@@ -8,9 +8,7 @@
               <strong class="text-muted">Step</strong>
               &emsp;&emsp;&emsp;&emsp;&emsp;
               <span class="badge bg-focuscard text-decoration-none shadow p-2 ms-2 m-1">
-                <% guide.steps.each do |step| %>
-                  Step <%= step.number %>
-                <% end %>
+                Step 1
               </span>
             </small>
           </div>
@@ -50,10 +48,8 @@
         </div>
         <div class="col-7 px-4 py-2 mb-2 shadow-lg rounded">
           <span>
-            <% guide.steps.each do |step| %>
-              <p class="bold">Step <%= step.number %> overview</p>
-              <small><%= guide.overview %></small>
-            <% end %>
+            <p class="bold">Step 1 overview</p>
+            <small><%= guide.overview %></small>
           </span>
         </div>
         <pre class="hljs">
@@ -100,9 +96,9 @@
                 <strong class="text-muted">Step</strong>
                 &emsp;&emsp;&emsp;&emsp;&emsp;
                 <span class="badge bg-focuscard text-decoration-none shadow p-2 ms-2 m-1">
-                  <% guide_code.steps.each do |step| %>
-                    Step <%= step.number %>
-                  <% end %>
+                  <%# guide_code.steps.each do |step| %>
+                    Step <%= :count_of_guide_codes %>
+                  <%# end %>
                 </span>
               </small>
             </div>
@@ -142,10 +138,10 @@
           </div>
           <div class="col-7 py-2 px-4 mb-2 shadow-lg rounded">
             <span>
-              <% guide_code.steps.each do |step| %>
-                <p>Step <%= step.number %> overview</p>
+              <%# guide_code.steps.each do |step| %>
+                <p>Step <%= :count_of_guide_codes %> overview</p>
                 <small><%= guide_code.overview %></small>
-              <% end %>
+              <%# end %>
             </span>
           </div>
           <pre class="hljs">

@@ -6,15 +6,11 @@ class SnippetsController < ApplicationController
     @snippets = Snippet.paginate(page: params[:page], per_page: 3)
   end
 
-  def show
-  end
+  def show; end
+  def edit; end
 
   def new
     @snippet = Snippet.new
-    @snippet.steps.build
-  end
-
-  def edit
   end
 
   def create
@@ -22,11 +18,9 @@ class SnippetsController < ApplicationController
 
     respond_to do |format|
       if @snippet.save
-        format.html { redirect_to snippet_url(@snippet), notice: "Snippet was successfully created." }
-        format.json { render :show, status: :created, location: @snippet }
+        format.html { redirect_to snippet_url(@snippet) }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @snippet.errors, status: :unprocessable_entity }
+        format.html { render :new }
       end
     end
   end
@@ -34,21 +28,17 @@ class SnippetsController < ApplicationController
   def update
     respond_to do |format|
       if @snippet.update(snippet_params)
-        format.html { redirect_to snippet_url(@snippet), notice: "Snippet was successfully updated." }
-        format.json { render :show, status: :ok, location: @snippet }
+        format.html { redirect_to snippet_url(@snippet) }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @snippet.errors, status: :unprocessable_entity }
+        format.html { render :edit }
       end
     end
   end
 
   def destroy
     @snippet.destroy
-
     respond_to do |format|
-      format.html { redirect_to snippets_url, notice: "Snippet was successfully destroyed." }
-      format.json { head :no_content }
+      format.html { redirect_to snippets_url }
     end
   end
 
@@ -86,7 +76,18 @@ class SnippetsController < ApplicationController
       :body,
       :description,
       :all_tags,
-      :language_id
+      :language_id,
+      :_destroy,
+      snippet_codes_attributes: [
+        :id,
+        :code,
+        :path,
+        :overview,
+        :description,
+        :snippet_id,
+        :lang_id,
+        :_destroy
+      ]
     )
   end
 end

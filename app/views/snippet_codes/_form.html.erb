@@ -1,0 +1,47 @@
+<%= form_with(model: snippet_code) do |form| %>
+  <% if snippet_code.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(snippet_code.errors.count, "error") %> prohibited this snippet_code from being saved:</h2>
+
+      <ul>
+        <% snippet_code.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :code, style: "display: block" %>
+    <%= form.text_area :code %>
+  </div>
+
+  <div>
+    <%= form.label :overview, style: "display: block" %>
+    <%= form.text_field :overview %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :path, style: "display: block" %>
+    <%= form.text_field :path %>
+  </div>
+
+  <div>
+    <%= form.label :lang_id, style: "display: block" %>
+    <%= form.text_field :lang_id %>
+  </div>
+
+  <div>
+    <%= form.label :snippet_id, style: "display: block" %>
+    <%= form.text_field :snippet_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

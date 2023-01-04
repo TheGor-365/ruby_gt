@@ -5,12 +5,10 @@
         <div class="col-5 p-2">
           <div>
             <small>
-              <strong class="text-muted">Step</strong>
-              &emsp;&emsp;&emsp;&emsp;&emsp;
-              <span class="badge bg-focuscard text-decoration-none shadow p-2 ms-2 m-1">
-                <% snippet.steps.each do |step| %>
-                  Step <%= step.number %>
-                <% end %>
+              <strong class="text-muted">Variant</strong>
+              &emsp;&emsp;&emsp;&emsp;
+              <span class="badge bg-focuscard text-decoration-none shadow p-2 ms-1 m-1">
+                Variant 1
               </span>
             </small>
           </div>
@@ -50,10 +48,8 @@
         </div>
         <div class="col-7 px-4 py-2 mb-2 shadow-lg rounded">
           <span>
-            <% snippet.steps.each do |step| %>
-              <small>Step <%= step.number %> overview</small>
-              <p><%= snippet.overview %></p>
-            <% end %>
+            <small>Variant 1 overview</small>
+            <p><%= snippet.overview %></p>
           </span>
         </div>
         <pre class="hljs">
@@ -89,6 +85,95 @@
       </div>
     </div>
   </div>
+
+  <% snippet.snippet_codes.each do |snippet_code| %>
+    <div class="p-4 shadow mb-3 card mt-3 bg-skyblue me-3">
+      <div class="col-12">
+        <div class="row shadow p-3 mb-3 rounded bg-description">
+          <div class="col-5 p-2">
+            <div>
+              <small>
+                <strong class="text-muted">Variant</strong>
+                &emsp;&emsp;&emsp;&emsp;
+                <span class="badge bg-focuscard text-decoration-none shadow p-2 ms-1 m-1">
+                  Variant <%= :count_of_snippet_codes %>
+                </span>
+              </small>
+            </div>
+            <div>
+              <small>
+                <strong class="text-muted">
+                  Technology
+                </strong>
+                &emsp;&emsp;
+                <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
+                  <%= snippet_code.lang.name %>
+                </span>
+              </small>
+            </div>
+            <div>
+              <small>
+                <% if snippet_code.path.nil? %>
+                  <strong class="text-muted">
+                    Directory
+                  </strong>
+                  &emsp;&emsp;&emsp;
+                  <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
+                    no path
+                  </span>
+                <% else %>
+                  <strong class="text-muted">
+                    Directory
+                  </strong>
+                  &emsp;&emsp;&emsp;
+                  <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
+                    <%= snippet_code.path %>
+                  </span>
+                <% end %>
+              </small>
+            </div>
+            <br>
+          </div>
+          <div class="col-7 py-2 px-4 mb-2 shadow-lg rounded">
+            <span>
+              <p>Variant <%= :count_of_snippet_codes %> overview</p>
+              <small><%= snippet_code.overview %></small>
+            </span>
+          </div>
+          <pre class="hljs">
+            <code class="hljs <%= snippet_code.lang.name %> rounded"><%= snippet_code.code %></code>
+          </pre>
+        </div>
+      </div>
+
+      <div class="accordion card shadow bg-description rounded" id="guide_code-accordion">
+        <div class="accordion-item">
+          <h1 class="accordion-header bg-description" id="headingTwo">
+            <button
+              class="accordion-button collapsed display-5 bg-description"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo"
+              aria-expanded="false"
+              aria-controls="collapseTwo"
+            >
+              <span class="fw-bold"><%= snippet.title %></span>| | snippet description
+            </button>
+          </h1>
+          <div
+            id="collapseTwo"
+            class="accordion-collapse collapse"
+            aria-labelledby="headingTwo"
+            data-bs-parent="#guide_code-accordion"
+          >
+            <div class="accordion-body bg-description">
+              <%= snippet_code.description.present? ? (snippet_code.description) : (render 'snippets/no_description') %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 <div class="p-4 pt-5 shadow col-2 card mb-3 mt-3 bg-description me-3">

@@ -7,9 +7,7 @@ class GuidesController < ApplicationController
   end
 
   def show; end
-
-  def edit
-  end
+  def edit; end
 
   def new
     @guide = Guide.new
@@ -17,7 +15,7 @@ class GuidesController < ApplicationController
 
   def create
     @guide = Guide.new guide_params
-    
+
     respond_to do |format|
       if @guide.save && @guide.guide_codes.each { |guide_code| guide_code.save }
         format.html { redirect_to guide_url(@guide) }

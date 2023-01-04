@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Snippet codes</h1>
+
+<div id="snippet_codes">
+  <% @snippet_codes.each do |snippet_code| %>
+    <%= render snippet_code %>
+    <p>
+      <%= link_to "Show this snippet code", snippet_code %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New snippet code", new_snippet_code_path %>
