@@ -6,6 +6,7 @@ class CreateSnippetCodes < ActiveRecord::Migration[7.0]
       t.string :overview
       t.text :description
       t.references :lang, null: false, foreign_key: true
+      t.references :snippet, null: false, foreign_key: true
 
       t.timestamps
     end

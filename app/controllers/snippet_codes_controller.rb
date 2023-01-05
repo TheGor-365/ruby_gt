@@ -59,6 +59,7 @@ class SnippetCodesController < ApplicationController
       :path,
       :lang_id,
       :snippet_id,
+      :guide_codes_count,
       :_destroy
     )
   end

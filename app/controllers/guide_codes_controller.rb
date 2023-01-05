@@ -12,7 +12,6 @@ class GuideCodesController < ApplicationController
     @guide_code = GuideCode.new
 
     @guide_code.build_lang
-    @guide_code.steps.build
   end
 
   def create
@@ -60,6 +59,7 @@ class GuideCodesController < ApplicationController
       :description,
       :guide_id,
       :lang_id,
+      :guide_codes_count,
       :_destroy
     )
   end

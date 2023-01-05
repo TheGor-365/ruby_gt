@@ -77,6 +77,7 @@ class GuidesController < ApplicationController
       :description,
       :all_tags,
       :language_id,
+      :guide_codes_count,
       :_destroy,
       guide_codes_attributes: [
         :id,

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_04_211317) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_05_091345) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -74,6 +74,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_04_211317) do
     t.bigint "language_id", null: false
     t.text "description"
     t.string "path"
+    t.integer "guide_codes_count", default: 0, null: false
     t.index ["language_id"], name: "index_guides_on_language_id"
   end
 
@@ -97,9 +98,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_04_211317) do
     t.string "overview"
     t.text "description"
     t.bigint "lang_id", null: false
+    t.bigint "snippet_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "snippet_id", null: false
     t.index ["lang_id"], name: "index_snippet_codes_on_lang_id"
     t.index ["snippet_id"], name: "index_snippet_codes_on_snippet_id"
   end
@@ -113,15 +114,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_04_211317) do
     t.bigint "language_id", null: false
     t.text "description"
     t.string "path"
+    t.integer "snippet_codes_count", default: 0, null: false
     t.index ["language_id"], name: "index_snippets_on_language_id"
-  end
-
-  create_table "steps", force: :cascade do |t|
-    t.integer "number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "stepable_type"
-    t.integer "stepable_id"
   end
 
   create_table "taggable_guides", force: :cascade do |t|

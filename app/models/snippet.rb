@@ -4,9 +4,9 @@ class Snippet < ApplicationRecord
 
   belongs_to :language
 
-  has_many :snippet_codes, inverse_of: :snippet, dependent: :destroy, counter_cache: :count_of_snippet_codes
+  has_many :snippet_codes, inverse_of: :snippet, dependent: :destroy
   accepts_nested_attributes_for :snippet_codes,
-  # reject_if: proc { |attributes| ( attributes['snippet_id'].blank? ) },
+  reject_if: :all_blank,
   allow_destroy: true
 
   has_rich_text :description
