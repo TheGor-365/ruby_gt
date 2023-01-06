@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_06_160356) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_06_173911) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -77,6 +77,33 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_06_160356) do
     t.datetime "updated_at", null: false
     t.integer "command_codes_count", default: 0, null: false
     t.index ["language_id"], name: "index_commands_on_language_id"
+  end
+
+  create_table "example_codes", force: :cascade do |t|
+    t.string "title"
+    t.string "overview"
+    t.text "code"
+    t.text "description"
+    t.string "path"
+    t.bigint "lang_id", null: false
+    t.bigint "example_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["example_id"], name: "index_example_codes_on_example_id"
+    t.index ["lang_id"], name: "index_example_codes_on_lang_id"
+  end
+
+  create_table "examples", force: :cascade do |t|
+    t.string "title"
+    t.string "overview"
+    t.text "body"
+    t.text "description"
+    t.string "path"
+    t.bigint "language_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "example_codes_count"
+    t.index ["language_id"], name: "index_examples_on_language_id"
   end
 
   create_table "guide_codes", force: :cascade do |t|
@@ -154,6 +181,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_06_160356) do
     t.index ["tag_id"], name: "index_taggable_commands_on_tag_id"
   end
 
+  create_table "taggable_examples", force: :cascade do |t|
+    t.bigint "tag_id", null: false
+    t.bigint "example_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["example_id"], name: "index_taggable_examples_on_example_id"
+    t.index ["tag_id"], name: "index_taggable_examples_on_tag_id"
+  end
+
   create_table "taggable_guides", force: :cascade do |t|
     t.bigint "tag_id", null: false
     t.bigint "guide_id", null: false
@@ -220,6 +256,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_06_160356) do
   add_foreign_key "command_codes", "commands"
   add_foreign_key "command_codes", "langs"
   add_foreign_key "commands", "languages"
+  add_foreign_key "example_codes", "examples"
+  add_foreign_key "example_codes", "langs"
+  add_foreign_key "examples", "languages"
   add_foreign_key "guide_codes", "guides"
   add_foreign_key "guide_codes", "langs"
   add_foreign_key "guides", "languages"
@@ -228,6 +267,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_06_160356) do
   add_foreign_key "snippets", "languages"
   add_foreign_key "taggable_commands", "commands"
   add_foreign_key "taggable_commands", "tags"
+  add_foreign_key "taggable_examples", "examples"
+  add_foreign_key "taggable_examples", "tags"
   add_foreign_key "taggable_guides", "guides"
   add_foreign_key "taggable_guides", "tags"
   add_foreign_key "taggable_tutorials", "tags"

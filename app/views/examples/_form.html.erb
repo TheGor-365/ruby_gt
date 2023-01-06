@@ -1,0 +1,64 @@
+<div class="bg-dark">
+  <%= form_for @example do |f| %>
+
+    <% if @example.errors.any? %>
+      <div class="card p-5 shadow bg-error mb-5 rouded">
+        <h5><%= pluralize(@example.errors.count, "error") %> <span>prohibited this example from being saved:</span></h5>
+        <% @example.errors.each do |error| %>
+          <hr><small><%= error.full_message %></small><hr>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="rounded card col-12 p-5 shadow mb-3 bg-backcard">
+      <div class="row">
+        <div class="p-5 card col-6 shadow me-3 bg-focuscard" id="example_title">
+          <%= f.label :example_title, class: "form-label h6 text-light" %>
+          <%= f.text_area :title, rows: 3, placeholder: "Enter title...", class: "form-control" %>
+        </div>
+        <div class="p-5 card col shadow bg-focuscard" id="example_title">
+          <%= f.label :tutorial_tags, class: "form-label h6 text-light" %>
+          <%= f.text_area :all_tags, rows: 3, placeholder: "Enter tags, separated by commas...", class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-5 card shadow mb-3 bg-backcard">
+      <div class="p-5 col-8 card shadow mb-3 bg-focuscard">
+        <%= f.label :add_example_step_short_overview, class: "form-label h6 text-light" %>
+        <%= f.text_area :overview, rows: 3, placeholder: "Enter short overview for command...", class: "form-control" %>
+      </div>
+
+      <div class="p-5 col-8 card shadow mb-3 bg-focuscard" id="example_code">
+        <%= f.label :example_code_info, class: "form-label h5 mb-3 text-light" %>
+
+        <%= f.label :Choose_technology, class: "form-label text-muted" %>
+        <%= f.collection_select(:language_id, @languages, :id, :name, { include_blank: "Select Technology" }, class: 'form-control') %>
+
+        <%= f.label :add_using_directory_path, class: "form-label text-muted mt-3" %>
+        <%= f.text_field :path, placeholder: "Add code using directory...", class: "form-control mb-3" %>
+
+        <%= f.label :example_code_snippet, class: "form-label h6 mb-3 mt-3 text-light" %>
+        <%= f.text_area :body, rows: 10, placeholder: "Add your code snippet...", class: "form-control" %>
+      </div>
+
+      <div class="p-5 col-8 card shadow mb-3 bg-focuscard" id="example_description">
+        <%= f.label :description_toolbar, class: "form-label h6 mb-3 text-light" %>
+        <%= f.rich_text_area :description, placeholder: "Add short description of pasted guide...", class: "form-control" %>
+      </div>
+    </div>
+
+    <div id='example_codes'>
+      <%= f.fields_for :example_codes do |example_code| %>
+        <%= render 'example_code_fields', :f => example_code %>
+      <% end %>
+    </div>
+
+    <div class="row">
+      <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+        <%= link_to_add_association 'Add Example', f, :example_codes, { class: "btn btn-sm btn-primary mb-5 shadow" } %>
+        <%= f.submit class: "btn btn-sm btn-success mb-5 shadow" %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -10,4 +10,7 @@ class Tag < ApplicationRecord
 
   has_many :taggable_tutorials, dependent: :destroy
   has_many :tutorials, through: :taggable_tutorials
+
+  has_many :taggable_examples, dependent: :destroy
+  has_many :examples, through: :taggable_examples
 end

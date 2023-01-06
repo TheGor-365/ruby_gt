@@ -1,0 +1,193 @@
+<div class="col-8">
+  <div class="p-4 shadow card mb-3 mt-3 bg-skyblue me-3">
+    <div id="<%= dom_id example %>" class="col-12">
+      <div class="row shadow p-3 mb-3 rounded bg-description">
+        <div class="col-5 p-2">
+          <div>
+            <small>
+              <strong class="text-muted">Step:</strong>
+              &emsp;&emsp;&emsp;&emsp;&emsp;
+              <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
+                Step 1
+              </span>
+            </small>
+          </div>
+          <div>
+            <small>
+              <strong class="text-muted">
+                Technology
+              </strong>
+              &emsp;&emsp;
+              <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
+                <%= example.language.name %>
+              </span>
+            </small>
+          </div>
+          <div>
+            <small>
+              <% if example.path.nil? %>
+                <strong class="text-muted">
+                  Directory
+                </strong>
+                &emsp;&emsp;&emsp;
+                <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
+                  no path
+                </span>
+              <% else %>
+                <strong class="text-muted">
+                  Directory
+                </strong>
+                &emsp;&emsp;&emsp;
+                <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
+                  <%= example.path %>
+                </span>
+              <% end %>
+            </small>
+          </div>
+          <br>
+        </div>
+        <div class="col-7 px-4 py-2 mb-2 shadow-lg rounded">
+          <span>
+            <p class="bold">Step 1 overview</p>
+            <small><%= example.overview %></small>
+          </span>
+        </div>
+        <pre class="hljs">
+          <code id="copy_txt" class="hljs <%= example.language.name %> rounded"><%= example.body %></code>
+        </pre>
+      </div>
+    </div>
+
+    <div class="accordion card shadow bg-description rounded" id="example-accordion">
+      <div class="accordion-item">
+        <h1 class="accordion-header bg-description" id="headingTwo">
+          <button
+            class="accordion-button collapsed display-5  bg-description"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseTwo"
+            aria-expanded="false"
+            aria-controls="collapseTwo"
+          >
+            <span class="fw-bold"><%= example.title %></span>| | example description
+          </button>
+        </h1>
+        <div
+          id="collapseTwo"
+          class="accordion-collapse collapse"
+          aria-labelledby="headingTwo"
+          data-bs-parent="#example-accordion"
+        >
+          <div class="accordion-body bg-description">
+            <%= example.description.present? ? (example.description) : (render 'examples/no_description') %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% example.example_codes.each do |example_code| %>
+    <div class="p-4 shadow mb-3 card mt-3 bg-skyblue me-3">
+      <div class="col-12">
+        <div class="row shadow p-3 mb-3 rounded bg-description">
+          <div class="col-5 p-2">
+            <div>
+              <small>
+                <strong class="text-muted">Step</strong>
+                &emsp;&emsp;&emsp;&emsp;&emsp;
+                <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1 ms-2">
+                  Step <%= example.example_codes_count %>
+                </span>
+              </small>
+            </div>
+            <div>
+              <small>
+                <strong class="text-muted">
+                  Technology
+                </strong>
+                &emsp;&emsp;
+                <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
+                  <%= example_code.lang.name %>
+                </span>
+              </small>
+            </div>
+            <div>
+              <small>
+                <% if example_code.path.nil? %>
+                  <strong class="text-muted">
+                    Directory
+                  </strong>
+                  &emsp;&emsp;&emsp;
+                  <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
+                    no path
+                  </span>
+                <% else %>
+                  <strong class="text-muted">
+                    Directory
+                  </strong>
+                  &emsp;&emsp;&emsp;
+                  <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
+                    <%= example_code.path %>
+                  </span>
+                <% end %>
+              </small>
+            </div>
+            <br>
+          </div>
+          <div class="col-7 py-2 px-4 mb-2 shadow-lg rounded">
+            <span>
+              <p>Step <%= example.example_codes_count %> overview</p>
+              <small><%= example_code.overview %></small>
+            </span>
+          </div>
+          <pre class="hljs">
+            <code class="hljs <%= example_code.lang.name %> rounded"><%= example_code.code %></code>
+          </pre>
+        </div>
+      </div>
+
+      <div class="accordion card shadow bg-description rounded" id="example_code-accordion">
+        <div class="accordion-item">
+          <h1 class="accordion-header bg-description" id="headingTwo">
+            <button
+              class="accordion-button collapsed display-5 bg-description"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo"
+              aria-expanded="false"
+              aria-controls="collapseTwo"
+            >
+              <span class="fw-bold"><%= example.title %></span>| example description
+            </button>
+          </h1>
+          <div
+            id="collapseTwo"
+            class="accordion-collapse collapse"
+            aria-labelledby="headingTwo"
+            data-bs-parent="#example_code-accordion"
+          >
+            <div class="accordion-body bg-description">
+              <%= example_code.description.present? ? (example_code.description) : (render 'examples/no_description') %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="p-4 pt-5 shadow col-2 card mb-3 mt-3 bg-description me-3">
+  <% example.tags.each do |tag| %>
+    <div>
+      <%= link_to tag.name, guides_path(tag: tag.name), class: "badge bg-focuscard text-decoration-none shadow p-2 m-1" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="p-4 pt-5 shadow col card mb-3 mt-3 me-0 bg-description">
+  <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+    <%= link_to "Show", example, type: 'button', class: 'btn btn-sm shadow py-2' %>
+    <%= link_to "Edit", edit_example_path(example), type: 'button', class: 'btn btn-sm shadow py-2' %>
+    <%= link_to "Delete", example, method: :delete, data: { confirm: "Are you shure?" }, type: 'button', class: 'btn btn-sm shadow py-2' %>
+  </div>
+</div>

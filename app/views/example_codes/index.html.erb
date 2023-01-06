@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Example codes</h1>
+
+<div id="example_codes">
+  <% @example_codes.each do |example_code| %>
+    <%= render example_code %>
+    <p>
+      <%= link_to "Show this example code", example_code %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New example code", new_example_code_path %>

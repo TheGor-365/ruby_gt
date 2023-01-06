@@ -1,0 +1,41 @@
+<div class="row mt-5">
+  <div class="col-2">
+    <h1 class="display-6 mb-3 mt-5 ms-3 text-muted text-center card shadow bg-dark p-5 header-nav">
+      Navigation
+    </h1>
+
+    <div class="sticky-nav">
+      <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-dark me-0 m-3 mt-3 card shadow rouded">
+        <div class="list-group list-group-flush scrollarea">
+          <a href="#guide_title" class="list-group-item list-group-item-action py-3 lh-sm rouded mb-1 bg-skyblue" aria-current="true">
+            <div class="d-flex w-100 align-items-center justify-content-between">
+              Add example title
+            </div>
+          </a>
+          <a href="#guide_code" class="list-group-item list-group-item-action py-3 lh-sm rouded mb-1 bg-skyblue" aria-current="true">
+            <div class="d-flex w-100 align-items-center justify-content-between">
+              Add example code
+            </div>
+          </a>
+          <a href="#guide_description" class="list-group-item list-group-item-action py-3 lh-sm rouded mb-1 bg-skyblue" aria-current="true">
+            <div class="d-flex w-100 align-items-center justify-content-between">
+              Add example description
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-8 mx-3">
+    <h1 class="display-6 mb-3 mt-5 text-muted text-center card shadow bg-dark p-5 header-nav">
+      New example
+    </h1>
+
+    <div class="p-5 shadow card bg-dark">
+      <%= render "form", example: @example %>
+    </div>
+
+    <%= link_to "Back to examples", examples_path, class: "btn btn-sm btn-secondary shadow d-grid gap-2 fixed-button col-8" %>
+  </div>
+</div>

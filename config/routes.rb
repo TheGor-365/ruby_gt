@@ -4,14 +4,16 @@ Rails.application.routes.draw do
   resources :languages
   resources :tags
   resources :langs
-  
+
   resources :guides
   resources :snippets
   resources :commands
   resources :tutorials
+  resources :examples
 
   resources :guide_codes
   resources :snippet_codes
   resources :command_codes
   resources :tutorial_codes
+  resources :example_codes
 end

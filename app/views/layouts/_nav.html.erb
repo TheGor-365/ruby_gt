@@ -112,6 +112,22 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
+            Examples
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark shadow" aria-labelledby="dropdown09">
+            <li><%= link_to 'Examples', examples_path, class: 'dropdown-item' %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to 'Add example', new_example_path, class: 'dropdown-item' %></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle card p-2 m-1 bg-dark shadow px-10"
+            href="#"
+            id="dropdown09"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
             Languages
           </a>
           <ul class="dropdown-menu dropdown-menu-dark shadow" aria-labelledby="dropdown09">

@@ -5,26 +5,20 @@ class TagsController < ApplicationController
     @tags = Tag.paginate(page: params[:page], per_page: 10)
   end
 
-  def show
-  end
+  def show; end
+  def edit; end
 
   def new
     @tag = Tag.new
   end
 
-  def edit
-  end
-
   def create
     @tag = Tag.new(tag_params)
-
     respond_to do |format|
       if @tag.save
-        format.html { redirect_to tag_url(@tag), notice: "Tag was successfully created." }
-        format.json { render :show, status: :created, location: @tag }
+        format.html { redirect_to tag_url(@tag) }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @tag.errors, status: :unprocessable_entity }
+        format.html { render :new }
       end
     end
   end
@@ -32,21 +26,17 @@ class TagsController < ApplicationController
   def update
     respond_to do |format|
       if @tag.update(tag_params)
-        format.html { redirect_to tag_url(@tag), notice: "Tag was successfully updated." }
-        format.json { render :show, status: :ok, location: @tag }
+        format.html { redirect_to tag_url(@tag) }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @tag.errors, status: :unprocessable_entity }
+        format.html { render :edit }
       end
     end
   end
 
   def destroy
     @tag.destroy
-
     respond_to do |format|
-      format.html { redirect_to tags_url, notice: "Tag was successfully destroyed." }
-      format.json { head :no_content }
+      format.html { redirect_to tags_url }
     end
   end
 
