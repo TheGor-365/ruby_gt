@@ -1,0 +1,52 @@
+<%= form_with(model: tutorial_code) do |form| %>
+  <% if tutorial_code.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(tutorial_code.errors.count, "error") %> prohibited this tutorial_code from being saved:</h2>
+
+      <ul>
+        <% tutorial_code.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :overview, style: "display: block" %>
+    <%= form.text_field :overview %>
+  </div>
+
+  <div>
+    <%= form.label :code, style: "display: block" %>
+    <%= form.text_area :code %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :path, style: "display: block" %>
+    <%= form.text_field :path %>
+  </div>
+
+  <div>
+    <%= form.label :lang_id, style: "display: block" %>
+    <%= form.text_field :lang_id %>
+  </div>
+
+  <div>
+    <%= form.label :tutorial_id, style: "display: block" %>
+    <%= form.text_field :tutorial_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -10,13 +10,11 @@ class CommandCodesController < ApplicationController
 
   def new
     @command_code = CommandCode.new
-
     @command_code.build_lang
   end
 
   def create
     @command_code = CommandCode.new(command_code_params)
-
     respond_to do |format|
       if @command_code.save
         format.html { redirect_to command_code_url(@command_code) }

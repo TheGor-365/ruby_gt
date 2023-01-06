@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_06_070620) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_06_160356) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -163,6 +163,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_06_070620) do
     t.index ["tag_id"], name: "index_taggable_guides_on_tag_id"
   end
 
+  create_table "taggable_tutorials", force: :cascade do |t|
+    t.bigint "tag_id", null: false
+    t.bigint "tutorial_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_taggable_tutorials_on_tag_id"
+    t.index ["tutorial_id"], name: "index_taggable_tutorials_on_tutorial_id"
+  end
+
   create_table "taggables", force: :cascade do |t|
     t.bigint "tag_id", null: false
     t.bigint "snippet_id", null: false
@@ -177,6 +186,33 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_06_070620) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_tags_on_name"
+  end
+
+  create_table "tutorial_codes", force: :cascade do |t|
+    t.string "title"
+    t.string "overview"
+    t.text "code"
+    t.text "description"
+    t.string "path"
+    t.bigint "lang_id", null: false
+    t.bigint "tutorial_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lang_id"], name: "index_tutorial_codes_on_lang_id"
+    t.index ["tutorial_id"], name: "index_tutorial_codes_on_tutorial_id"
+  end
+
+  create_table "tutorials", force: :cascade do |t|
+    t.string "title"
+    t.string "overview"
+    t.text "body"
+    t.text "description"
+    t.string "path"
+    t.bigint "language_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "tutorial_codes_count"
+    t.index ["language_id"], name: "index_tutorials_on_language_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -194,6 +230,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_06_070620) do
   add_foreign_key "taggable_commands", "tags"
   add_foreign_key "taggable_guides", "guides"
   add_foreign_key "taggable_guides", "tags"
+  add_foreign_key "taggable_tutorials", "tags"
+  add_foreign_key "taggable_tutorials", "tutorials"
   add_foreign_key "taggables", "snippets"
   add_foreign_key "taggables", "tags"
+  add_foreign_key "tutorial_codes", "langs"
+  add_foreign_key "tutorial_codes", "tutorials"
+  add_foreign_key "tutorials", "languages"
 end

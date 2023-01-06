@@ -1,0 +1,193 @@
+<div class="col-8">
+  <div class="p-4 shadow card mb-3 mt-3 bg-skyblue me-3">
+    <div id="<%= dom_id tutorial %>" class="col-12">
+      <div class="row shadow p-3 mb-3 rounded bg-description">
+        <div class="col-5 p-2">
+          <div>
+            <small>
+              <strong class="text-muted">Step:</strong>
+              &emsp;&emsp;&emsp;&emsp;&emsp;
+              <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
+                Step 1
+              </span>
+            </small>
+          </div>
+          <div>
+            <small>
+              <strong class="text-muted">
+                Technology
+              </strong>
+              &emsp;&emsp;
+              <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
+                <%= tutorial.language.name %>
+              </span>
+            </small>
+          </div>
+          <div>
+            <small>
+              <% if tutorial.path.nil? %>
+                <strong class="text-muted">
+                  Directory
+                </strong>
+                &emsp;&emsp;&emsp;
+                <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
+                  no path
+                </span>
+              <% else %>
+                <strong class="text-muted">
+                  Directory
+                </strong>
+                &emsp;&emsp;&emsp;
+                <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
+                  <%= tutorial.path %>
+                </span>
+              <% end %>
+            </small>
+          </div>
+          <br>
+        </div>
+        <div class="col-7 px-4 py-2 mb-2 shadow-lg rounded">
+          <span>
+            <p class="bold">Step 1 overview</p>
+            <small><%= tutorial.overview %></small>
+          </span>
+        </div>
+        <pre class="hljs">
+          <code id="copy_txt" class="hljs <%= tutorial.language.name %> rounded"><%= tutorial.body %></code>
+        </pre>
+      </div>
+    </div>
+
+    <div class="accordion card shadow bg-description rounded" id="tutorial-accordion">
+      <div class="accordion-item">
+        <h1 class="accordion-header bg-description" id="headingTwo">
+          <button
+            class="accordion-button collapsed display-5  bg-description"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseTwo"
+            aria-expanded="false"
+            aria-controls="collapseTwo"
+          >
+            <span class="fw-bold"><%= tutorial.title %></span>| | tutorial description
+          </button>
+        </h1>
+        <div
+          id="collapseTwo"
+          class="accordion-collapse collapse"
+          aria-labelledby="headingTwo"
+          data-bs-parent="#tutorial-accordion"
+        >
+          <div class="accordion-body bg-description">
+            <%= tutorial.description.present? ? (tutorial.description) : (render 'tutorials/no_description') %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% tutorial.tutorial_codes.each do |tutorial_code| %>
+    <div class="p-4 shadow mb-3 card mt-3 bg-skyblue me-3">
+      <div class="col-12">
+        <div class="row shadow p-3 mb-3 rounded bg-description">
+          <div class="col-5 p-2">
+            <div>
+              <small>
+                <strong class="text-muted">Step</strong>
+                &emsp;&emsp;&emsp;&emsp;&emsp;
+                <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1 ms-2">
+                  Step <%= tutorial.tutorial_codes_count %>
+                </span>
+              </small>
+            </div>
+            <div>
+              <small>
+                <strong class="text-muted">
+                  Technology
+                </strong>
+                &emsp;&emsp;
+                <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
+                  <%= tutorial_code.lang.name %>
+                </span>
+              </small>
+            </div>
+            <div>
+              <small>
+                <% if tutorial_code.path.nil? %>
+                  <strong class="text-muted">
+                    Directory
+                  </strong>
+                  &emsp;&emsp;&emsp;
+                  <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
+                    no path
+                  </span>
+                <% else %>
+                  <strong class="text-muted">
+                    Directory
+                  </strong>
+                  &emsp;&emsp;&emsp;
+                  <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
+                    <%= tutorial_code.path %>
+                  </span>
+                <% end %>
+              </small>
+            </div>
+            <br>
+          </div>
+          <div class="col-7 py-2 px-4 mb-2 shadow-lg rounded">
+            <span>
+              <p>Step <%= tutorial.tutorial_codes_count %> overview</p>
+              <small><%= tutorial_code.overview %></small>
+            </span>
+          </div>
+          <pre class="hljs">
+            <code class="hljs <%= tutorial_code.lang.name %> rounded"><%= tutorial_code.code %></code>
+          </pre>
+        </div>
+      </div>
+
+      <div class="accordion card shadow bg-description rounded" id="comment_code-accordion">
+        <div class="accordion-item">
+          <h1 class="accordion-header bg-description" id="headingTwo">
+            <button
+              class="accordion-button collapsed display-5 bg-description"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo"
+              aria-expanded="false"
+              aria-controls="collapseTwo"
+            >
+              <span class="fw-bold"><%= tutorial.title %></span>| | tutorial description
+            </button>
+          </h1>
+          <div
+            id="collapseTwo"
+            class="accordion-collapse collapse"
+            aria-labelledby="headingTwo"
+            data-bs-parent="#comment_code-accordion"
+          >
+            <div class="accordion-body bg-description">
+              <%= tutorial_code.description.present? ? (tutorial_code.description) : (render 'tutorials/no_description') %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="p-4 pt-5 shadow col-2 card mb-3 mt-3 bg-description me-3">
+  <% tutorial.tags.each do |tag| %>
+    <div>
+      <%= link_to tag.name, guides_path(tag: tag.name), class: "badge bg-focuscard text-decoration-none shadow p-2 m-1" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="p-4 pt-5 shadow col card mb-3 mt-3 me-0 bg-description">
+  <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+    <%= link_to "Show", tutorial, type: 'button', class: 'btn btn-sm shadow py-2' %>
+    <%= link_to "Edit", edit_tutorial_path(tutorial), type: 'button', class: 'btn btn-sm shadow py-2' %>
+    <%= link_to "Delete", tutorial, method: :delete, data: { confirm: "Are you shure?" }, type: 'button', class: 'btn btn-sm shadow py-2' %>
+  </div>
+</div>

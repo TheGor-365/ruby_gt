@@ -23,6 +23,12 @@
           <a class="nav-link card p-2 m-1 bg-dark shadow" href="<%= guides_path %>">Guides</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link card p-2 m-1 bg-dark shadow" href="<%= commands_path %>">Commands</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link card p-2 m-1 bg-dark shadow" href="<%= tutorials_path %>">Tutorials</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link card p-2 m-1 bg-dark shadow" href="<%= snippets_path %>">Snippets</a>
         </li>
         <li class="nav-item">
@@ -79,6 +85,23 @@
             <li><%= link_to 'Commands', commands_path, class: 'dropdown-item' %></li>
             <li><hr class="dropdown-divider"></li>
             <li><%= link_to 'Add command', new_command_path, class: 'dropdown-item' %></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown px-10">
+          <a
+            class="nav-link dropdown-toggle card p-2 m-1 bg-dark shadow px-10"
+            href="#"
+            id="dropdown08"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Tutorials
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark shadow" aria-labelledby="dropdown08">
+            <li><%= link_to "Home", home_path, class: "dropdown-item" %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href=<%= tutorials_path %> >Tutorials</a></li>
+            <li><a class="dropdown-item" href=<%= new_tutorial_path %> >Create new Tutorial</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">

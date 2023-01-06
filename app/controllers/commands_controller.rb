@@ -77,7 +77,7 @@ class CommandsController < ApplicationController
       :path,
       :all_tags,
       :language_id,
-      :command_codes_counter,
+      :command_codes_count,
       :_destroy,
       command_codes_attributes: [
         :id,
