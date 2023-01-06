@@ -4,8 +4,8 @@
 
 <div class="sticky-nav">
   <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-skyblue me-0 m-3 mt-3 card shadow rouded">
-    <div class="list-group nav-group-list list-group-flush scrollarea">
-      <% @languages.each do |language| %>
+    <% @languages.each do |language| %>
+      <div class="list-group nav-group-list list-group-flush">
         <a href="#language_<%= language.id %>" class="list-group-item list-group-item-action py-3 lh-sm rouded mb-1 bg-skyblue" aria-current="true">
           <div class="d-flex w-100 align-items-center justify-content-between">
             <strong class="mb-1"><%= language.name %></strong>
@@ -15,7 +15,7 @@
           <div class="col-10 mb-1 small"><%= language.snippets.count %> snippets</div>
           <div class="col-10 mb-1 small"><%= language.commands.count %> commands</div>
         </a>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>
