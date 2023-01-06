@@ -1,8 +1,9 @@
 <div class="row mt-5">
   <div class="col-2">
+    <%= render "tags_nav_group_list" %>
   </div>
 
-  <div class="col-8 mx-3">
+  <div class="col-7 mx-3">
     <h1 class="display-6 mb-3 mt-5 text-muted text-center card shadow bg-dark p-5 header-nav">
       Tags
     </h1>
@@ -24,5 +25,20 @@
     <% end %>
 
     <%= link_to "New tag", new_tag_path, class: "btn btn-sm btn-primary shadow d-grid gap-2 fixed-button col-8" %>
+  </div>
+
+  <div class="col">
+    <h1 class="display-6 mb-3 mt-5 text-muted text-center card shadow bg-dark py-5 me-2 header-nav">
+      Filters
+    </h1>
+    <div class="py-5 mb-5 shadow card bg-skyblue me-2 sticky-nav">
+      <p class="text-center h4 text-black-50 p-3">
+        <span class="text-muted">Finded</span> <%= pluralize(@tags.all.length, 'language') %>
+      </p>
+      <%= will_paginate @tags, list_classes: %w(pagination justify-content-center), previous_label: '&laquo;', next_label: '&raquo;' %>
+      <div class="text-center">
+        <%= page_entries_info @tags, list_classes: %w(text-center) %>
+      </div>
+    </div>
   </div>
 </div>
