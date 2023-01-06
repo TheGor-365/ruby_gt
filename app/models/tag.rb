@@ -13,4 +13,7 @@ class Tag < ApplicationRecord
 
   has_many :taggable_examples, dependent: :destroy
   has_many :examples, through: :taggable_examples
+
+  has_many :taggable_templates, dependent: :destroy
+  has_many :templates, through: :taggable_templates
 end

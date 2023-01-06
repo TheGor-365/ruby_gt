@@ -19,24 +19,6 @@
             <strong>Ruby GT</strong>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link card p-2 m-1 bg-dark shadow" href="<%= guides_path %>">Guides</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link card p-2 m-1 bg-dark shadow" href="<%= commands_path %>">Commands</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link card p-2 m-1 bg-dark shadow" href="<%= tutorials_path %>">Tutorials</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link card p-2 m-1 bg-dark shadow" href="<%= snippets_path %>">Snippets</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link card p-2 m-1 bg-dark shadow" href="<%= languages_path %>">Languages</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link card p-2 m-1 bg-dark shadow" href="<%= tags_path %>">Tags</a>
-        </li>
         <li class="nav-item dropdown px-10">
           <a
             class="nav-link dropdown-toggle card p-2 m-1 bg-dark shadow px-10"
@@ -104,6 +86,23 @@
             <li><a class="dropdown-item" href=<%= new_tutorial_path %> >Create new Tutorial</a></li>
           </ul>
         </li>
+        <li class="nav-item dropdown px-10">
+          <a
+            class="nav-link dropdown-toggle card p-2 m-1 bg-dark shadow px-10"
+            href="#"
+            id="dropdown08"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Templates
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark shadow" aria-labelledby="dropdown08">
+            <li><%= link_to "Home", home_path, class: "dropdown-item" %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href=<%= templates_path %> >Templates</a></li>
+            <li><a class="dropdown-item" href=<%= new_template_path %> >Create new Template</a></li>
+          </ul>
+        </li>
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle card p-2 m-1 bg-dark shadow px-10"
@@ -138,6 +137,27 @@
 
             <% @languages.each do |lang| %>
               <li><%= link_to lang.name, snippets_path(lang: lang.name), class: 'dropdown-item' %></li>
+            <% end %>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle card p-2 m-1 bg-dark shadow px-10"
+            href="#"
+            id="dropdown09"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Tags
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark shadow" aria-labelledby="dropdown09">
+            <li><%= link_to 'All tags', tags_path, class: 'dropdown-item' %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to 'Add tag', new_tag_path, class: 'dropdown-item' %></li>
+            <li><hr class="dropdown-divider"></li>
+
+            <% Tag.all.each do |tag| %>
+              <li><%= link_to tag.name, snippets_path(tag: tag.name), class: 'dropdown-item' %></li>
             <% end %>
           </ul>
         </li>

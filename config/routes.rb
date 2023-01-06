@@ -10,10 +10,12 @@ Rails.application.routes.draw do
   resources :commands
   resources :tutorials
   resources :examples
+  resources :templates
 
   resources :guide_codes
   resources :snippet_codes
   resources :command_codes
   resources :tutorial_codes
   resources :example_codes
+  resources :template_codes
 end

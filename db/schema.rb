@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_06_173911) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_06_191850) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -199,6 +199,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_06_173911) do
     t.index ["tag_id"], name: "index_taggable_guides_on_tag_id"
   end
 
+  create_table "taggable_templates", force: :cascade do |t|
+    t.bigint "tag_id", null: false
+    t.bigint "template_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_taggable_templates_on_tag_id"
+    t.index ["template_id"], name: "index_taggable_templates_on_template_id"
+  end
+
   create_table "taggable_tutorials", force: :cascade do |t|
     t.bigint "tag_id", null: false
     t.bigint "tutorial_id", null: false
@@ -222,6 +231,33 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_06_173911) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_tags_on_name"
+  end
+
+  create_table "template_codes", force: :cascade do |t|
+    t.string "title"
+    t.string "overview"
+    t.text "code"
+    t.text "description"
+    t.string "path"
+    t.bigint "lang_id", null: false
+    t.bigint "template_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lang_id"], name: "index_template_codes_on_lang_id"
+    t.index ["template_id"], name: "index_template_codes_on_template_id"
+  end
+
+  create_table "templates", force: :cascade do |t|
+    t.string "title"
+    t.string "overview"
+    t.text "body"
+    t.text "description"
+    t.string "path"
+    t.bigint "language_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "template_codes_count"
+    t.index ["language_id"], name: "index_templates_on_language_id"
   end
 
   create_table "tutorial_codes", force: :cascade do |t|
@@ -271,10 +307,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_06_173911) do
   add_foreign_key "taggable_examples", "tags"
   add_foreign_key "taggable_guides", "guides"
   add_foreign_key "taggable_guides", "tags"
+  add_foreign_key "taggable_templates", "tags"
+  add_foreign_key "taggable_templates", "templates"
   add_foreign_key "taggable_tutorials", "tags"
   add_foreign_key "taggable_tutorials", "tutorials"
   add_foreign_key "taggables", "snippets"
   add_foreign_key "taggables", "tags"
+  add_foreign_key "template_codes", "langs"
+  add_foreign_key "template_codes", "templates"
+  add_foreign_key "templates", "languages"
   add_foreign_key "tutorial_codes", "langs"
   add_foreign_key "tutorial_codes", "tutorials"
   add_foreign_key "tutorials", "languages"

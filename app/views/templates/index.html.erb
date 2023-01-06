@@ -1,0 +1,45 @@
+<div class="row mt-5">
+  <div class="col-2">
+    <%= render "templates_nav_group_list" %>
+  </div>
+
+  <div class="col-8 mx-3">
+    <h1 class="display-6 mb-3 mt-5 text-muted text-center card shadow bg-dark p-5 header-nav">
+      Templates
+    </h1>
+
+    <% @templates.each do |template| %>
+      <div class="p-5 mb-5 shadow card bg-dark">
+        <div class="row">
+          <div id="guide_<%= template.id %>" class="card p-5 shadow bg-description col-12">
+            <p>
+              <b><%= template.language.name %></b> / <b>templates</b> / <%= render html: template.title %>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <%= render template %>
+        </div>
+        <div class="d-grid gap-2">
+          <%= link_to "Show this template", template, class: "btn btn-sm btn-success mt-3 shadow" %>
+        </div>
+      </div>
+    <% end %>
+    <%= link_to "New template", new_template_path, class: "btn btn-sm btn-primary shadow d-grid gap-2 fixed-button col-8" %>
+  </div>
+
+  <div class="col">
+    <h1 class="display-6 mb-3 mt-5 text-muted text-center card shadow bg-dark p-5 me-2 header-nav">
+      Filters
+    </h1>
+    <div class="p-5 mb-5 shadow card bg-skyblue me-2 sticky-nav">
+      <p class="text-center h4 text-black-50 p-3">
+        <span class="text-muted">Finded</span> <%= pluralize(@templates.all.length, 'template') %>
+      </p>
+      <%= will_paginate @templates, list_classes: %w(pagination justify-content-center), previous_label: '&laquo;', next_label: '&raquo;' %>
+      <div class="text-center">
+        <%= page_entries_info @templates, list_classes: %w(text-center) %>
+      </div>
+    </div>
+  </div>
+</div>
