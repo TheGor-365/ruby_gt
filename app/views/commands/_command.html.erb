@@ -1,0 +1,193 @@
+<div class="col-8">
+  <div class="p-4 shadow card mb-3 mt-3 bg-skyblue me-3">
+    <div id="<%= dom_id command %>" class="col-12">
+      <div class="row shadow p-3 mb-3 rounded bg-description">
+        <div class="col-5 p-2">
+          <div>
+            <small>
+              <strong class="text-muted">Variant:</strong>
+              &emsp;&emsp;&emsp;&emsp;
+              <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
+                Variant 1
+              </span>
+            </small>
+          </div>
+          <div>
+            <small>
+              <strong class="text-muted">
+                Technology
+              </strong>
+              &emsp;&emsp;
+              <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1 ms-2">
+                <%= command.language.name %>
+              </span>
+            </small>
+          </div>
+          <div>
+            <small>
+              <% if command.path.nil? %>
+                <strong class="text-muted">
+                  Directory
+                </strong>
+                &emsp;&emsp;&emsp;
+                <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1 ms-2">
+                  no path
+                </span>
+              <% else %>
+                <strong class="text-muted">
+                  Directory
+                </strong>
+                &emsp;&emsp;&emsp;
+                <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1 ms-2">
+                  <%= command.path %>
+                </span>
+              <% end %>
+            </small>
+          </div>
+          <br>
+        </div>
+        <div class="col-7 px-4 py-2 mb-2 shadow-lg rounded">
+          <span>
+            <p class="bold">Variant 1 overview</p>
+            <small><%= command.overview %></small>
+          </span>
+        </div>
+        <pre class="hljs">
+          <code id="copy_txt" class="hljs <%= command.language.name %> rounded"><%= command.body %></code>
+        </pre>
+      </div>
+    </div>
+
+    <div class="accordion card shadow bg-description rounded" id="command-accordion">
+      <div class="accordion-item">
+        <h1 class="accordion-header bg-description" id="headingTwo">
+          <button
+            class="accordion-button collapsed display-5  bg-description"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseTwo"
+            aria-expanded="false"
+            aria-controls="collapseTwo"
+          >
+            <span class="fw-bold"><%= command.title %></span>| | command description
+          </button>
+        </h1>
+        <div
+          id="collapseTwo"
+          class="accordion-collapse collapse"
+          aria-labelledby="headingTwo"
+          data-bs-parent="#command-accordion"
+        >
+          <div class="accordion-body bg-description">
+            <%= command.description.present? ? (command.description) : (render 'commands/no_description') %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% command.command_codes.each do |command_code| %>
+    <div class="p-4 shadow mb-3 card mt-3 bg-skyblue me-3">
+      <div class="col-12">
+        <div class="row shadow p-3 mb-3 rounded bg-description">
+          <div class="col-5 p-2">
+            <div>
+              <small>
+                <strong class="text-muted">Variant</strong>
+                &emsp;&emsp;&emsp;&emsp;
+                <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
+                  Variant <%= command.command_codes_count %>
+                </span>
+              </small>
+            </div>
+            <div>
+              <small>
+                <strong class="text-muted">
+                  Technology
+                </strong>
+                &emsp;&emsp;
+                <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1 ms-1">
+                  <%= command_code.lang.name %>
+                </span>
+              </small>
+            </div>
+            <div>
+              <small>
+                <% if command_code.path.nil? %>
+                  <strong class="text-muted">
+                    Directory
+                  </strong>
+                  &emsp;&emsp;&emsp;
+                  <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1 ms-1">
+                    no path
+                  </span>
+                <% else %>
+                  <strong class="text-muted">
+                    Directory
+                  </strong>
+                  &emsp;&emsp;&emsp;
+                  <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1 ms-1">
+                    <%= command_code.path %>
+                  </span>
+                <% end %>
+              </small>
+            </div>
+            <br>
+          </div>
+          <div class="col-7 py-2 px-4 mb-2 shadow-lg rounded">
+            <span>
+              <p>Variant <%= command.command_codes_count %> overview</p>
+              <small><%= command_code.overview %></small>
+            </span>
+          </div>
+          <pre class="hljs">
+            <code class="hljs <%= command_code.lang.name %> rounded"><%= command_code.code %></code>
+          </pre>
+        </div>
+      </div>
+
+      <div class="accordion card shadow bg-description rounded" id="comment_code-accordion">
+        <div class="accordion-item">
+          <h1 class="accordion-header bg-description" id="headingTwo">
+            <button
+              class="accordion-button collapsed display-5 bg-description"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo"
+              aria-expanded="false"
+              aria-controls="collapseTwo"
+            >
+              <span class="fw-bold"><%= command.title %></span>| | command description
+            </button>
+          </h1>
+          <div
+            id="collapseTwo"
+            class="accordion-collapse collapse"
+            aria-labelledby="headingTwo"
+            data-bs-parent="#comment_code-accordion"
+          >
+            <div class="accordion-body bg-description">
+              <%= command_code.description.present? ? (command_code.description) : (render 'commands/no_description') %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="p-4 pt-5 shadow col-2 card mb-3 mt-3 bg-description me-3">
+  <% command.tags.each do |tag| %>
+    <div>
+      <%= link_to tag.name, guides_path(tag: tag.name), class: "badge bg-focuscard text-decoration-none shadow p-2 m-1" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="p-4 pt-5 shadow col card mb-3 mt-3 me-0 bg-description">
+  <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+    <%= link_to "Show", command, type: 'button', class: 'btn btn-sm shadow py-2' %>
+    <%= link_to "Edit", edit_command_path(command), type: 'button', class: 'btn btn-sm shadow py-2' %>
+    <%= link_to "Delete", command, method: :delete, data: { confirm: "Are you shure?" }, type: 'button', class: 'btn btn-sm shadow py-2' %>
+  </div>
+</div>

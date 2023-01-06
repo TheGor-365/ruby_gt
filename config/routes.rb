@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :langs
   resources :guides
   resources :snippets
+  resources :commands
   resources :guide_codes
   resources :snippet_codes
+  resources :command_codes
 end

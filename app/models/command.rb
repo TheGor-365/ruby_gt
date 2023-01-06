@@ -1,11 +1,11 @@
-class Guide < ApplicationRecord
-  has_many :taggable_guides, dependent: :destroy
-  has_many :tags, through: :taggable_guides
+class Command < ApplicationRecord
+  has_many :taggable_commands, dependent: :destroy
+  has_many :tags, through: :taggable_commands
 
   belongs_to :language
 
-  has_many :guide_codes, inverse_of: :guide, dependent: :destroy
-  accepts_nested_attributes_for :guide_codes,
+  has_many :command_codes, inverse_of: :command, dependent: :destroy
+  accepts_nested_attributes_for :command_codes,
   reject_if: :all_blank,
   allow_destroy: true
 

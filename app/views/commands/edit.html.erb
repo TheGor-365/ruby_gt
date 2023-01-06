@@ -1,0 +1,14 @@
+<div class="container mt-5 mb-5 pb-5 pt-5">
+  <h1 class="display-6 mb-3 text-muted text-center card shadow bg-dark p-5 header-nav">
+    Editing <%= render html:  @command.title %>
+  </h1>
+
+  <div class="p-5 shadow card bg-dark">
+    <%= render "form", command: @command %>
+
+    <div class="btn-group mt-5" role="group" aria-label="Basic mixed styles example">
+      <%= link_to "Show this command", @command, type: "button", class: "btn btn-sm btn-primary mt-2 shadow" %>
+      <%= link_to "Back to commands", commands_path, type: "button", class: "btn btn-sm btn-secondary mt-2 shadow" %>
+    </div>
+  </div>
+</div>

@@ -1,9 +1,0 @@
-<% @guide.guide_codes.each do |guide_code| %>
-  <div class="p-4 shadow col-8 mb-3 card mt-3 bg-secondary me-3">
-    <div class="col-12">
-      <pre>
-        <code class="hljs <%= @guide.language.name %> rounded"><%= guide_code.code %></code>
-      </pre>
-    </div>
-  </div>
-<% end %>

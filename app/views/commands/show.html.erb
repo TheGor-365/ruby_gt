@@ -1,0 +1,22 @@
+<div class="container mt-5 mb-5 pb-5 pt-5">
+  <div class="display-6 mb-3 text-muted text-center card shadow bg-dark p-5 header-nav">
+    <%= render html:  @command.title %> command
+  </div>
+
+  <div class="p-5 shadow card bg-backcard">
+    <div class="row">
+      <div class="row">
+        <%= render @command %>
+      </div>
+
+      <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+        <%= link_to "Edit this command", edit_command_path(@command), class: "btn btn-sm btn-primary mt-3 shadow" %>
+        <%= link_to "Back to commands", commands_path, class: "btn btn-sm btn-secondary mt-3 shadow" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-grid gap-2">
+    <%= button_to "Destroy this command", @command, method: :delete, type: "button", class: "btn btn-sm btn-danger shadow mt-4 col-12" %>
+  </div>
+</div>
