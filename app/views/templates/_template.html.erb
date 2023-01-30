@@ -58,25 +58,25 @@
       </div>
     </div>
 
-    <div class="accordion card shadow bg-description rounded" id="template-accordion">
+    <div class="accordion card shadow bg-description rounded" id="template_<%= template.id %>-accordion">
       <div class="accordion-item">
-        <h1 class="accordion-header bg-description" id="headingTwo">
+        <h1 class="accordion-header bg-description" id="template_<%= template.id %>-heading">
           <button
             class="accordion-button collapsed display-5  bg-description"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#collapseTwo"
+            data-bs-target="#template_<%= template.id %>-collapse"
             aria-expanded="false"
-            aria-controls="collapseTwo"
+            aria-controls="template_<%= template.id %>-collapse"
           >
-            <span class="fw-bold"><%= template.title %></span>| | template description
+            <span class="fw-bold"><%= template.title %></span>| &emsp; | <%= template.overview %> description
           </button>
         </h1>
         <div
-          id="collapseTwo"
+          id="template_<%= template.id %>-collapse"
           class="accordion-collapse collapse"
-          aria-labelledby="headingTwo"
-          data-bs-parent="#template-accordion"
+          aria-labelledby="template_<%= template.id %>-heading"
+          data-bs-parent="#template_<%= template.id %>-accordion"
         >
           <div class="accordion-body bg-description">
             <%= template.description.present? ? (template.description) : (render 'templates/no_description') %>
@@ -86,7 +86,7 @@
     </div>
   </div>
 
-  <% template.template_codes.each do |template_code| %>
+  <% template.template_codes.each_with_index do |template_code, index| %>
     <div class="p-4 shadow mb-3 card mt-3 bg-skyblue me-3">
       <div class="col-12">
         <div class="row shadow p-3 mb-3 rounded bg-description">
@@ -96,7 +96,7 @@
                 <strong class="text-muted">Step</strong>
                 &emsp;&emsp;&emsp;&emsp;&emsp;
                 <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1 ms-2">
-                  Step <%= template.template_codes_count %>
+                  Step <%= index + 2 %>
                 </span>
               </small>
             </div>
@@ -136,7 +136,7 @@
           </div>
           <div class="col-7 py-2 px-4 mb-2 shadow-lg rounded">
             <span>
-              <p>Step <%= template.template_codes_count %> overview</p>
+              <p>Step <%= index + 2 %> overview</p>
               <small><%= template_code.overview %></small>
             </span>
           </div>
@@ -146,25 +146,25 @@
         </div>
       </div>
 
-      <div class="accordion card shadow bg-description rounded" id="comment_code-accordion">
+      <div class="accordion card shadow bg-description rounded" id="template_code<%= template_code.id %>-accordion">
         <div class="accordion-item">
-          <h1 class="accordion-header bg-description" id="headingTwo">
+          <h1 class="accordion-header bg-description" id="template_code<%= template_code.id %>-heading">
             <button
               class="accordion-button collapsed display-5 bg-description"
               type="button"
               data-bs-toggle="collapse"
-              data-bs-target="#collapseTwo"
+              data-bs-target="#template_code<%= template_code.id %>-collapse"
               aria-expanded="false"
-              aria-controls="collapseTwo"
+              aria-controls="template_code<%= template_code.id %>-collapse"
             >
-              <span class="fw-bold"><%= template.title %></span>| | template description
+              <span class="fw-bold"><%= template.title %></span>| &emsp; | <%= template_code.overview %> description
             </button>
           </h1>
           <div
-            id="collapseTwo"
+            id="template_code<%= template_code.id %>-collapse"
             class="accordion-collapse collapse"
-            aria-labelledby="headingTwo"
-            data-bs-parent="#comment_code-accordion"
+            aria-labelledby="template_code<%= template_code.id %>-heading"
+            data-bs-parent="#template_code<%= template_code.id %>-accordion"
           >
             <div class="accordion-body bg-description">
               <%= template_code.description.present? ? (template_code.description) : (render 'templates/no_description') %>

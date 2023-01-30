@@ -1,5 +1,6 @@
 class GuidesController < ApplicationController
   before_action :set_guide, only: %i[ show edit update destroy ]
+  before_action :set_path_templates
 
   def index
     set_guides

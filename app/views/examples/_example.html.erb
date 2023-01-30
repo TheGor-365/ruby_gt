@@ -58,25 +58,25 @@
       </div>
     </div>
 
-    <div class="accordion card shadow bg-description rounded" id="example-accordion">
+    <div class="accordion card shadow bg-description rounded" id="example_<%= example.id %>-accordion">
       <div class="accordion-item">
-        <h1 class="accordion-header bg-description" id="headingTwo">
+        <h1 class="accordion-header bg-description" id="example_<%= example.id %>-heading">
           <button
             class="accordion-button collapsed display-5  bg-description"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#collapseTwo"
+            data-bs-target="#example_<%= example.id %>-collapse"
             aria-expanded="false"
-            aria-controls="collapseTwo"
+            aria-controls="example_<%= example.id %>-collapse"
           >
-            <span class="fw-bold"><%= example.title %></span>| | example description
+            <span class="fw-bold"><%= example.title %></span>| &emsp; | <%= example.overview %> description
           </button>
         </h1>
         <div
-          id="collapseTwo"
+          id="example_<%= example.id %>-collapse"
           class="accordion-collapse collapse"
-          aria-labelledby="headingTwo"
-          data-bs-parent="#example-accordion"
+          aria-labelledby="example_<%= example.id %>-heading"
+          data-bs-parent="#example_<%= example.id %>-accordion"
         >
           <div class="accordion-body bg-description">
             <%= example.description.present? ? (example.description) : (render 'examples/no_description') %>
@@ -86,7 +86,7 @@
     </div>
   </div>
 
-  <% example.example_codes.each do |example_code| %>
+  <% example.example_codes.each_with_index do |example_code, index| %>
     <div class="p-4 shadow mb-3 card mt-3 bg-skyblue me-3">
       <div class="col-12">
         <div class="row shadow p-3 mb-3 rounded bg-description">
@@ -96,7 +96,7 @@
                 <strong class="text-muted">Step</strong>
                 &emsp;&emsp;&emsp;&emsp;&emsp;
                 <span class="badge bg-focuscard text-decoration-none shadow p-2 m-1 ms-2">
-                  Step <%= example.example_codes_count %>
+                  Step <%= index + 2 %>
                 </span>
               </small>
             </div>
@@ -136,7 +136,7 @@
           </div>
           <div class="col-7 py-2 px-4 mb-2 shadow-lg rounded">
             <span>
-              <p>Step <%= example.example_codes_count %> overview</p>
+              <p>Step <%= index + 2 %> overview</p>
               <small><%= example_code.overview %></small>
             </span>
           </div>
@@ -146,25 +146,25 @@
         </div>
       </div>
 
-      <div class="accordion card shadow bg-description rounded" id="example_code-accordion">
+      <div class="accordion card shadow bg-description rounded" id="example_code<%= example_code.id %>-accordion">
         <div class="accordion-item">
-          <h1 class="accordion-header bg-description" id="headingTwo">
+          <h1 class="accordion-header bg-description" id="example_code<%= example_code.id %>-heading">
             <button
               class="accordion-button collapsed display-5 bg-description"
               type="button"
               data-bs-toggle="collapse"
-              data-bs-target="#collapseTwo"
+              data-bs-target="#example_code<%= example_code.id %>-collapse"
               aria-expanded="false"
-              aria-controls="collapseTwo"
+              aria-controls="example_code<%= example_code.id %>-collapse"
             >
-              <span class="fw-bold"><%= example.title %></span>| example description
+              <span class="fw-bold"><%= example.title %></span>| &emsp; | <%= example_code.overview %> description
             </button>
           </h1>
           <div
-            id="collapseTwo"
+            id="example_code<%= example_code.id %>-collapse"
             class="accordion-collapse collapse"
-            aria-labelledby="headingTwo"
-            data-bs-parent="#example_code-accordion"
+            aria-labelledby="example_code<%= example_code.id %>-heading"
+            data-bs-parent="#example_code<%= example_code.id %>-accordion"
           >
             <div class="accordion-body bg-description">
               <%= example_code.description.present? ? (example_code.description) : (render 'examples/no_description') %>

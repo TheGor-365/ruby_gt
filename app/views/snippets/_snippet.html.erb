@@ -58,25 +58,25 @@
       </div>
     </div>
 
-    <div class="accordion card shadow bg-description rounded" id="snippet-accordion">
+    <div class="accordion card shadow bg-description rounded" id="snippet_<%= snippet.id %>-accordion">
       <div class="accordion-item">
-        <h1 class="accordion-header bg-description" id="headingTwo">
+        <h1 class="accordion-header bg-description" id="snippet_<%= snippet.id %>-heading">
           <button
             class="accordion-button collapsed display-5 bg-description"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#collapseTwo"
+            data-bs-target="#snippet_<%= snippet.id %>-collapse"
             aria-expanded="false"
-            aria-controls="collapseTwo"
+            aria-controls="snippet_<%= snippet.id %>-collapse"
           >
-            <span class="fw-bold"><%= snippet.title %></span>| | snippet description
+            <span class="fw-bold"><%= snippet.title %></span>| &emsp; | <%= snippet.overview %> description
           </button>
         </h1>
         <div
-          id="collapseTwo"
+          id="snippet_<%= snippet.id %>-collapse"
           class="accordion-collapse collapse"
-          aria-labelledby="headingTwo"
-          data-bs-parent="#snippet-accordion"
+          aria-labelledby="snippet_<%= snippet.id %>-heading"
+          data-bs-parent="#snippet_<%= snippet.id %>-accordion"
         >
           <div class="accordion-body bg-description">
             <%= snippet.description.present? ? (snippet.description) : (render 'snippets/no_description') %>
@@ -86,7 +86,7 @@
     </div>
   </div>
 
-  <% snippet.snippet_codes.each do |snippet_code| %>
+  <% snippet.snippet_codes.each_with_index do |snippet_code, index| %>
     <div class="p-4 shadow mb-3 card mt-3 bg-skyblue me-3">
       <div class="col-12">
         <div class="row shadow p-3 mb-3 rounded bg-description">
@@ -96,7 +96,7 @@
                 <strong class="text-muted">Variant</strong>
                 &emsp;&emsp;&emsp;&emsp;
                 <span class="badge bg-focuscard text-decoration-none shadow p-2 ms-1 m-1">
-                  Variant <%= snippet.snippet_codes_count %>
+                  Variant <%= index + 2 %>
                 </span>
               </small>
             </div>
@@ -136,7 +136,7 @@
           </div>
           <div class="col-7 py-2 px-4 mb-2 shadow-lg rounded">
             <span>
-              <p>Variant <%= snippet.snippet_codes_count %> overview</p>
+              <p>Variant <%= index + 2 %> overview</p>
               <small><%= snippet_code.overview %></small>
             </span>
           </div>
@@ -146,25 +146,25 @@
         </div>
       </div>
 
-      <div class="accordion card shadow bg-description rounded" id="guide_code-accordion">
+      <div class="accordion card shadow bg-description rounded" id="snippet_code_<%= snippet_code.id %>-accordion">
         <div class="accordion-item">
-          <h1 class="accordion-header bg-description" id="headingTwo">
+          <h1 class="accordion-header bg-description" id="snippet_code_<%= snippet_code.id %>-heading">
             <button
               class="accordion-button collapsed display-5 bg-description"
               type="button"
               data-bs-toggle="collapse"
-              data-bs-target="#collapseTwo"
+              data-bs-target="#snippet_code_<%= snippet_code.id %>-collapse"
               aria-expanded="false"
-              aria-controls="collapseTwo"
+              aria-controls="snippet_code_<%= snippet_code.id %>-collapse"
             >
-              <span class="fw-bold"><%= snippet.title %></span>| | snippet description
+              <span class="fw-bold"><%= snippet.title %></span>| &emsp; | <%= snippet_code.overview %> description
             </button>
           </h1>
           <div
-            id="collapseTwo"
+            id="snippet_code_<%= snippet_code.id %>-collapse"
             class="accordion-collapse collapse"
-            aria-labelledby="headingTwo"
-            data-bs-parent="#guide_code-accordion"
+            aria-labelledby="snippet_code_<%= snippet_code.id %>-heading"
+            data-bs-parent="#snippet_code_<%= snippet_code.id %>-accordion"
           >
             <div class="accordion-body bg-description">
               <%= snippet_code.description.present? ? (snippet_code.description) : (render 'snippets/no_description') %>

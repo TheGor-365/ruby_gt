@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
   # -----------------------------------------------------------------
-  # Languages
+  # LANGUAGES
   # -----------------------------------------------------------------
 
   before_action :set_languages
@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
 
 
   # -----------------------------------------------------------------
-  # Langs
+  # LANGS
   # -----------------------------------------------------------------
 
   before_action :set_langs
@@ -47,5 +47,20 @@ class ApplicationController < ActionController::Base
     else
       Lang.find_by_id(session[:lang_id])
     end
+  end
+
+
+  # -----------------------------------------------------------------
+  # PATH TEMPLATES
+  # -----------------------------------------------------------------
+
+  def set_path_templates
+    @path_templates = [
+      '/',
+      '~',
+      '~HOME',
+      '/working directory',
+      '/app working directory',
+    ]
   end
 end

@@ -35,8 +35,8 @@
         <%= f.label :Choose_technology, class: "form-label text-muted" %>
         <%= f.collection_select(:language_id, @languages, :id, :name, { include_blank: "Select Technology" }, class: 'form-control') %>
 
-        <%= f.label :add_directory_path, class: "form-label text-muted mt-3" %>
-        <%= f.text_field :path, placeholder: "Add code using directory...", class: "form-control mb-3" %>
+        <%= f.label :add_directory_path, class: "form-label h6 mb-3 mt-3 text-light" %>
+        <%= f.text_field :path, placeholder: "Add custom path...", class: "form-control mb-3", id: "custom_path_input_field" %>
 
         <%= f.label :guide_code_snippet, class: "form-label h6 mb-3 mt-3 text-light" %>
         <%= f.text_area :body, rows: 10, placeholder: "Add your code snippet...", class: "form-control" %>
@@ -48,15 +48,17 @@
       </div>
     </div>
 
+    <% @guide_step = 1 %>
     <div id='guide_codes'>
       <%= f.fields_for :guide_codes do |guide_code| %>
-        <%= render 'guide_code_fields', :f => guide_code %>
+        <%= render 'guide_code_fields', f: guide_code %>
+        <% @guide_step += 1 %>
       <% end %>
     </div>
 
     <div class="row">
       <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-        <%= link_to_add_association 'Add Guide', f, :guide_codes, { class: "btn btn-sm btn-primary mb-5 shadow" } %>
+        <%= link_to_add_association 'Add Guide', f, :guide_codes, class: "btn btn-sm btn-primary mb-5 shadow newform" %>
         <%= f.submit class: "btn btn-sm btn-success mb-5 shadow" %>
       </div>
     </div>

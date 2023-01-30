@@ -58,25 +58,25 @@
       </div>
     </div>
 
-    <div class="accordion card shadow bg-description rounded" id="guide-accordion">
+    <div class="accordion card shadow bg-description rounded" id="guide_<%= guide.id %>-accordion">
       <div class="accordion-item">
-        <h1 class="accordion-header bg-description" id="headingTwo">
+        <h1 class="accordion-header bg-description" id="guide_<%= guide.id %>-heading">
           <button
             class="accordion-button collapsed display-5  bg-description"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#collapseTwo"
+            data-bs-target="#guide_<%= guide.id %>-collapse"
             aria-expanded="false"
-            aria-controls="collapseTwo"
+            aria-controls="guide_<%= guide.id %>-collapse"
           >
-            <span class="fw-bold"><%= guide.title %></span>| | guide description
+            <span class="fw-bold"><%= guide.title %></span>| &emsp; | <%= guide.overview %> description
           </button>
         </h1>
         <div
-          id="collapseTwo"
+          id="guide_<%= guide.id %>-collapse"
           class="accordion-collapse collapse"
-          aria-labelledby="headingTwo"
-          data-bs-parent="#guide-accordion"
+          aria-labelledby="guide_<%= guide.id %>-heading"
+          data-bs-parent="#guide_<%= guide.id %>-accordion"
         >
           <div class="accordion-body bg-description">
             <%= guide.description.present? ? (guide.description) : (render 'guides/no_description') %>
@@ -86,7 +86,7 @@
     </div>
   </div>
 
-  <% guide.guide_codes.each do |guide_code| %>
+  <% guide.guide_codes.each_with_index do |guide_code, index| %>
     <div class="p-4 shadow mb-3 card mt-3 bg-skyblue me-3">
       <div class="col-12">
         <div class="row shadow p-3 mb-3 rounded bg-description">
@@ -96,7 +96,7 @@
                 <strong class="text-muted">Step</strong>
                 &emsp;&emsp;&emsp;&emsp;&emsp;
                 <span class="badge bg-focuscard text-decoration-none shadow p-2 ms-2 m-1">
-                  Step <%= guide.guide_codes_count %>
+                  Step <%= index + 2 %>
                 </span>
               </small>
             </div>
@@ -136,7 +136,7 @@
           </div>
           <div class="col-7 py-2 px-4 mb-2 shadow-lg rounded">
             <span>
-              <p>Step <%= guide.guide_codes_count %> overview</p>
+              <p>Step <%= index + 2 %> overview</p>
               <small><%= guide_code.overview %></small>
             </span>
           </div>
@@ -146,25 +146,25 @@
         </div>
       </div>
 
-      <div class="accordion card shadow bg-description rounded" id="guide_code-accordion">
+      <div class="accordion card shadow bg-description rounded" id="guide_code_<%= guide_code.id %>-accordion">
         <div class="accordion-item">
-          <h1 class="accordion-header bg-description" id="headingTwo">
+          <h1 class="accordion-header bg-description" id="guide_code_<%= guide_code.id %>-heading">
             <button
               class="accordion-button collapsed display-5 bg-description"
               type="button"
               data-bs-toggle="collapse"
-              data-bs-target="#collapseTwo"
+              data-bs-target="#guide_code_<%= guide_code.id %>-collapse"
               aria-expanded="false"
-              aria-controls="collapseTwo"
+              aria-controls="guide_code_<%= guide_code.id %>-collapse"
             >
-              <span class="fw-bold"><%= guide.title %></span>| | guide description
+              <span class="fw-bold"><%= guide.title %></span>| &emsp; | <%= guide_code.overview %> description
             </button>
           </h1>
           <div
-            id="collapseTwo"
+            id="guide_code_<%= guide_code.id %>-collapse"
             class="accordion-collapse collapse"
-            aria-labelledby="headingTwo"
-            data-bs-parent="#guide_code-accordion"
+            aria-labelledby="guide_code_<%= guide_code.id %>-heading"
+            data-bs-parent="#guide_code_<%= guide_code.id %>-accordion"
           >
             <div class="accordion-body bg-description">
               <%= guide_code.description.present? ? (guide_code.description) : (render 'guides/no_description') %>
