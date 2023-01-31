@@ -1,7 +1,7 @@
 databases:
   - name: ruby_gt
     databaseName: ruby_gt_pro
-    user: postgres
+    user: gor
 
 services:
   - type: web
