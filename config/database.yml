@@ -16,4 +16,6 @@ test:
 
 production:
   <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
+  username: postgres
   database: ruby_gt_pro
