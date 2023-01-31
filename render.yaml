@@ -16,6 +16,7 @@ services:
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
+    plan: free
 
 # databases:
 #   - name: postgres
