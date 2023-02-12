@@ -6,7 +6,7 @@
   <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-skyblue me-0 m-3 mt-3 card shadow rouded">
     <% @tags.each do |tag| %>
       <div class="list-group nav-group-list list-group-flush scrollarea">
-        <a href="#tag<%= tag.id %>" class="list-group-item list-group-item-action py-3 lh-sm rouded mb-1 bg-skyblue" aria-current="true">
+        <a href="#tag_<%= tag.id %>" class="list-group-item list-group-item-action py-3 lh-sm rouded mb-1 bg-skyblue" aria-current="true">
           <div class="d-flex w-100 align-items-center justify-content-between">
             <strong class="mb-1"><%= tag.name %></strong>
             <small><%= tag.created_at %></small>
