@@ -16,4 +16,4 @@ test:
 
 production:
   <<: *default
-  database: ruby_gt_pro
+  url: <%= ENV['DATABASE_URL'] %>
