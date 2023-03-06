@@ -12,7 +12,7 @@
       <div class="p-5 mb-5 shadow card bg-dark">
         <div class="row">
           <div id="snippet_<%= snippet.id %>" class="card p-5 shadow bg-description col-12">
-            <p>
+            <p class="badge bg-focuscard text-decoration-none shadow p-2 m-1">
               <%= snippet.language.name.upcase %> / SNIPPETS / <%= render html: snippet.title %>
             </p>
           </div>
@@ -27,7 +27,7 @@
     <% end %>
     <%= link_to "New snippet", new_snippet_path, class: "btn btn-sm btn-primary shadow d-grid gap-2 fixed-button col-8" %>
   </div>
-  
+
   <div class="col">
     <h1 class="display-6 mb-3 mt-5 text-muted text-center card shadow bg-dark p-5 me-2 header-nav">
       Filters

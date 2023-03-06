@@ -46,9 +46,9 @@
           </div>
           <br>
         </div>
-        <div class="col-7">
-          <h6 class="text-muted">Variant 1 overview</h6>
-          <span class="px-4 py-2 mb-2 shadow-lg rounded bg-light">
+        <div class="col-7 px-4 py-2 mb-2 shadow-lg rounded bg-lightboot">
+          <span>
+            <h6>Variant 1 overview</h6>
             <small><%= snippet.overview %></small>
           </span>
         </div>
@@ -62,7 +62,7 @@
       <div class="accordion-item">
         <h1 class="accordion-header bg-light" id="snippet_<%= snippet.id %>-heading">
           <button
-            class="accordion-button collapsed display-5 bg-light"
+            class="accordion-button collapsed display-5 bg-lightboot"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#snippet_<%= snippet.id %>-collapse"
@@ -87,7 +87,7 @@
   </div>
 
   <% snippet.snippet_codes.each_with_index do |snippet_code, index| %>
-    <div class="p-4 shadow mb-3 card mt-3 bg-skyblue me-3">
+    <div class="p-4 shadow mb-3 card mt-3 bg-description me-3">
       <div class="col-12">
         <div class="row shadow p-3 mb-3 rounded bg-description">
           <div class="col-5 p-2">
@@ -134,9 +134,9 @@
             </div>
             <br>
           </div>
-          <div class="col-7">
-            <h6 class="text-muted">Variant <%= index + 2 %> overview</h6>
-            <span class="py-2 px-4 mb-2 shadow-lg rounded bg-light">
+          <div class="col-7 py-2 px-4 mb-2 shadow-lg rounded bg-lightboot">
+            <span>
+              <h6>Variant <%= index + 2 %> overview</h6>
               <small><%= snippet_code.overview %></small>
             </span>
           </div>
@@ -150,7 +150,7 @@
         <div class="accordion-item">
           <h1 class="accordion-header bg-light" id="snippet_code_<%= snippet_code.id %>-heading">
             <button
-              class="accordion-button collapsed display-5 bg-light"
+              class="accordion-button collapsed display-5 bg-lightboot"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#snippet_code_<%= snippet_code.id %>-collapse"
@@ -177,8 +177,8 @@
 </div>
 
 <div class="p-4 pt-5 shadow col-2 card mb-3 mt-3 bg-description me-3">
-  <h6 class="text-muted">Current Tags</h6>
-  <div class="px-4 py-2 mb-2 shadow-lg rounded bg-light">
+  <div class="px-4 py-2 mb-2 shadow-lg rounded bg-lightboot">
+    <h6>Current Tags</h6>
     <% snippet.tags.each do |tag| %>
       <div>
         <%= link_to tag.name, snippets_path(tag: tag.name), class: "badge bg-focuscard text-decoration-none shadow p-2 m-1" %>
@@ -188,8 +188,8 @@
 </div>
 
 <div class="p-4 pt-5 shadow col card mb-3 mt-3 me-0 bg-description">
-  <h6 class="text-muted">All Tags</h6>
-  <div class="px-4 py-2 mb-2 shadow-lg rounded bg-light">
+  <div class="px-4 py-2 mb-2 shadow-lg rounded bg-lightboot">
+    <h6>All Tags</h6>
     <% Tag.all.each do |tag| %>
       <div>
         <%= link_to tag.name, guides_path(tag: tag.name), class: "badge bg-focuscard text-decoration-none shadow p-2 m-1" %>
