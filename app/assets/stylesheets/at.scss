@@ -518,7 +518,12 @@ img {
 
 .trix-content .attachment a {
   color: inherit;
-  text-decoration: none;
+  text-decoration: none !important;
+}
+
+.trix-content a {
+  color: inherit;
+  text-decoration: none !important;
 }
 
 .trix-content .attachment a:hover, .trix-content .attachment a:visited:hover {
@@ -572,4 +577,9 @@ img {
 
 trix-editor {
   background-color: #C5E7F5 !important;
+}
+
+a {
+  color: var(--bs-link-color);
+  text-decoration: none !important;
 }

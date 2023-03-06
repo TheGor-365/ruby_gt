@@ -1,5 +1,5 @@
 <div class="col-8">
-  <div class="p-4 shadow card mb-3 mt-3 bg-skyblue me-3">
+  <div class="p-4 shadow card mb-3 mt-3 bg-description me-3">
     <div id="<%= dom_id template %>" class="col-12">
       <div class="row shadow p-3 mb-3 rounded bg-description">
         <div class="col-5 p-2">
@@ -46,9 +46,9 @@
           </div>
           <br>
         </div>
-        <div class="col-7 px-4 py-2 mb-2 shadow-lg rounded">
-          <span>
-            <p class="bold">Step 1 overview</p>
+        <div class="col-7">
+          <h6 class="text-muted">Step 1 overview</h6>
+          <span class="px-4 py-2 mb-2 shadow-lg rounded bg-light">
             <small><%= template.overview %></small>
           </span>
         </div>
@@ -58,11 +58,11 @@
       </div>
     </div>
 
-    <div class="accordion card shadow bg-description rounded" id="template_<%= template.id %>-accordion">
+    <div class="accordion card shadow bg-light rounded" id="template_<%= template.id %>-accordion">
       <div class="accordion-item">
-        <h1 class="accordion-header bg-description" id="template_<%= template.id %>-heading">
+        <h1 class="accordion-header bg-light" id="template_<%= template.id %>-heading">
           <button
-            class="accordion-button collapsed display-5  bg-description"
+            class="accordion-button collapsed display-5  bg-light"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#template_<%= template.id %>-collapse"
@@ -78,7 +78,7 @@
           aria-labelledby="template_<%= template.id %>-heading"
           data-bs-parent="#template_<%= template.id %>-accordion"
         >
-          <div class="accordion-body bg-description">
+          <div class="accordion-body bg-light">
             <%= template.description.present? ? (template.description) : (render 'templates/no_description') %>
           </div>
         </div>
@@ -134,9 +134,9 @@
             </div>
             <br>
           </div>
-          <div class="col-7 py-2 px-4 mb-2 shadow-lg rounded">
-            <span>
-              <p>Step <%= index + 2 %> overview</p>
+          <div class="col-7">
+            <h6 class="text-muted">Step <%= index + 2 %> overview</h6>
+            <span class="py-2 px-4 mb-2 shadow-lg rounded bg-light">
               <small><%= template_code.overview %></small>
             </span>
           </div>
@@ -146,11 +146,11 @@
         </div>
       </div>
 
-      <div class="accordion card shadow bg-description rounded" id="template_code<%= template_code.id %>-accordion">
+      <div class="accordion card shadow bg-light rounded" id="template_code<%= template_code.id %>-accordion">
         <div class="accordion-item">
-          <h1 class="accordion-header bg-description" id="template_code<%= template_code.id %>-heading">
+          <h1 class="accordion-header bg-light" id="template_code<%= template_code.id %>-heading">
             <button
-              class="accordion-button collapsed display-5 bg-description"
+              class="accordion-button collapsed display-5 bg-light"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#template_code<%= template_code.id %>-collapse"
@@ -166,7 +166,7 @@
             aria-labelledby="template_code<%= template_code.id %>-heading"
             data-bs-parent="#template_code<%= template_code.id %>-accordion"
           >
-            <div class="accordion-body bg-description">
+            <div class="accordion-body bg-light">
               <%= template_code.description.present? ? (template_code.description) : (render 'templates/no_description') %>
             </div>
           </div>
@@ -177,17 +177,23 @@
 </div>
 
 <div class="p-4 pt-5 shadow col-2 card mb-3 mt-3 bg-description me-3">
-  <% template.tags.each do |tag| %>
-    <div>
-      <%= link_to tag.name, guides_path(tag: tag.name), class: "badge bg-focuscard text-decoration-none shadow p-2 m-1" %>
-    </div>
-  <% end %>
+  <h6 class="text-muted">Current Tags</h6>
+  <div class="px-4 py-2 mb-2 shadow-lg rounded bg-light">
+    <% template.tags.each do |tag| %>
+      <div>
+        <%= link_to tag.name, templates_path(tag: tag.name), class: "badge bg-focuscard text-decoration-none shadow p-2 m-1" %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 <div class="p-4 pt-5 shadow col card mb-3 mt-3 me-0 bg-description">
-  <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-    <%= link_to "Show", template, type: 'button', class: 'btn btn-sm shadow py-2' %>
-    <%= link_to "Edit", edit_template_path(template), type: 'button', class: 'btn btn-sm shadow py-2' %>
-    <%= link_to "Delete", template, method: :delete, data: { confirm: "Are you shure?" }, type: 'button', class: 'btn btn-sm shadow py-2' %>
+  <h6 class="text-muted">All Tags</h6>
+  <div class="px-4 py-2 mb-2 shadow-lg rounded bg-light">
+    <% Tag.all.each do |tag| %>
+      <div>
+        <%= link_to tag.name, guides_path(tag: tag.name), class: "badge bg-focuscard text-decoration-none shadow p-2 m-1" %>
+      </div>
+    <% end %>
   </div>
 </div>

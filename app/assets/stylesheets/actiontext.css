@@ -33,3 +33,8 @@
 body {
   background: #B9B4B4
 }
+
+a {
+  color: var(--bs-link-color);
+  text-decoration: none !important;
+}

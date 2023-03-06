@@ -51,6 +51,22 @@ class ApplicationController < ActionController::Base
 
 
   # -----------------------------------------------------------------
+  # TAGS
+  # -----------------------------------------------------------------
+
+  before_action :set_tags
+  before_action :set_tag, only: %i[ show edit update destroy ]
+
+  def set_tags
+    @tag = Tag.all
+  end
+
+  def set_tag
+    @tag = Tag.find(params[:id])
+  end
+
+
+  # -----------------------------------------------------------------
   # PATH TEMPLATES
   # -----------------------------------------------------------------
 
