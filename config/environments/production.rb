@@ -4,7 +4,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present? || ENV["RENDER"].present?
   # config.public_file_server.enabled = ENV.fetch("RAILS_SERVE_STATIC_FILES") { true }
-  config.assets.compile = false
+  config.assets.compile = true
   # config.secret_key_base = ENV['SECRET_KEY_BASE']
 
   # Code is not reloaded between requests.
