@@ -4,6 +4,7 @@ import { Turbo } from "@hotwired/turbo-rails"
 Turbo.session.drive = false
 import "./controllers"
 import "./controllers/index"
+import "./features"
 
 import * as bootstrap from "bootstrap"
 
